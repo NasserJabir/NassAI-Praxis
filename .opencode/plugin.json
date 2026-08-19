@@ -1,18 +1,21 @@
 {
   "name": "nassai-praxis",
+  "description": "Agentic skills framework & development methodology for OpenCode: memory, personas, sub-agents, and 29 specialized skills",
   "version": "1.0.0",
-  "description": "Agentic skills framework for OpenCode",
-  "instructions": [
-    "../AGENTS.md",
-    "../CLAUDE.md"
-  ],
-  "skills": [
-    "../skills/brainstorming/SKILL.md",
-    "../skills/tdd/SKILL.md",
-    "../skills/debugging/SKILL.md",
-    "../skills/planning/SKILL.md",
-    "../skills/code-review/SKILL.md",
-    "../skills/security/SKILL.md",
-    "../skills/subagent-management/SKILL.md"
+  "author": {
+    "name": "Nasser Jabir"
+  },
+  "homepage": "https://github.com/NasserJabir/NassAI-Praxis",
+  "repository": "https://github.com/NasserJabir/NassAI-Praxis",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "personas",
+    "memory",
+    "sub-agents",
+    "methodology",
+    "tdd",
+    "debugging",
+    "workflows"
   ]
 }

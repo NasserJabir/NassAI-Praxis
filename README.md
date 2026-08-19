@@ -92,6 +92,162 @@ Each agent gets a plugin configuration file (`.claude-plugin/`, `.cursor-plugin/
 
 ---
 
+## Installation
+
+Installation differs by harness. If you use more than one, install NassAI Praxis separately for each one.
+
+### Claude Code
+
+NassAI Praxis is available via the Claude plugin marketplace.
+
+#### Official Marketplace
+
+- Install the plugin from the marketplace:
+
+  ```bash
+  /plugin install nassai-praxis
+  ```
+
+#### Manual Installation
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/.claude-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
+cp NassAI-Praxis/AGENTS.md your-project/
+cp NassAI-Praxis/CLAUDE.md your-project/
+```
+
+- Detailed docs: [docs/README.claude.md](docs/README.claude.md)
+
+### Cursor
+
+- In Cursor Agent chat, install from marketplace:
+
+  ```text
+  /add-plugin nassai-praxis
+  ```
+
+- Or search for "nassai-praxis" in the plugin marketplace.
+
+- Detailed docs: [docs/README.cursor.md](docs/README.cursor.md)
+
+### GitHub Copilot
+
+- Open the plugin search interface:
+
+  ```text
+  /plugins
+  ```
+
+- Search for NassAI Praxis:
+
+  ```text
+  nassai-praxis
+  ```
+
+- Select `Install Plugin`.
+
+- Detailed docs: [docs/README.copilot.md](docs/README.copilot.md)
+
+### OpenCode
+
+Add NassAI Praxis to the `plugin` array in your `opencode.json`:
+
+```json
+{
+  "plugin": ["nassai-praxis@git+https://github.com/NasserJabir/NassAI-Praxis.git"]
+}
+```
+
+Restart OpenCode. The plugin installs through OpenCode's plugin manager.
+
+- Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)
+
+### Kimi Code
+
+NassAI Praxis is available in Kimi Code's plugin marketplace.
+
+- Open Kimi Code's plugin manager:
+
+  ```text
+  /plugins
+  ```
+
+- Go to `Marketplace` > `NassAI Praxis` and install it.
+
+- Or install directly from this repository:
+
+  ```text
+  /plugins install https://github.com/NasserJabir/NassAI-Praxis
+  ```
+
+- Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)
+
+### Codex
+
+NassAI Praxis is available via the official Codex plugin marketplace.
+
+- In the Codex app, click on Plugins in the sidebar.
+- You should see `NassAI Praxis` in the Coding section.
+- Click the `+` next to NassAI Praxis and follow the prompts.
+
+- Detailed docs: [docs/README.codex.md](docs/README.codex.md)
+
+### Pi
+
+Install NassAI Praxis as a Pi package from this repository:
+
+```bash
+pi install git:github.com/NasserJabir/NassAI-Praxis
+```
+
+For local development, run Pi with this checkout loaded as a temporary package:
+
+```bash
+pi -e /path/to/NassAI-Praxis
+```
+
+- Detailed docs: [docs/README.pi.md](docs/README.pi.md)
+
+### Windsurf
+
+- Manual installation:
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/.windsurf-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
+```
+
+- Detailed docs: [docs/README.windsurf.md](docs/README.windsurf.md)
+
+---
+
+## The Basic Workflow
+
+1. **brainstorming** — Activates before writing code. Refines rough ideas through questions, explores alternatives, presents design in sections for validation.
+
+2. **writing-plans** — Activates with approved design. Breaks work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.
+
+3. **executing-plans** — Activates with plan. Dispatches fresh subagent per task with two-stage review (spec compliance, then code quality), or executes in batches with human checkpoints.
+
+4. **test-driven-development** — Activates during implementation. Enforces RED-GREEN-REFACTOR: write failing test, watch it fail, write minimal code, watch it pass, commit.
+
+5. **requesting-code-review** — Activates between tasks. Reviews against plan, reports issues by severity. Critical issues block progress.
+
+6. **verification** — Activates before claiming completion. Evidence before assertions always.
+
+**The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.
+
+---
+
 ## How It Works
 
 ### 1. Memory System — Your Project's Institutional Knowledge
@@ -391,41 +547,6 @@ evolve/
 
 ---
 
-## Quick Start
-
-### Install for Claude Code
-
-```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.claude-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp NassAI-Praxis/CLAUDE.md your-project/
-```
-
-### Install for Cursor
-
-```bash
-cp -r NassAI-Praxis/.cursor-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-```
-
-### Install for GitHub Copilot
-
-```bash
-cp -r NassAI-Praxis/.copilot-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-```
-
-### Install for OpenCode
-
-```bash
-cp -r NassAI-Praxis/.opencode your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp NassAI-Praxis/AGENTS.md your-project/
-```
-
----
-
 ## Project Structure
 
 ```
@@ -494,6 +615,15 @@ nassai-praxis/
 │   │   └── auto-skills.md   # Skill auto-generation
 │   └── agents-gen/
 │       └── auto-agents.md   # Agent auto-generation
+├── docs/                    # Detailed documentation
+│   ├── README.claude.md     # Claude Code guide
+│   ├── README.opencode.md   # OpenCode guide
+│   ├── README.cursor.md     # Cursor guide
+│   ├── README.copilot.md    # GitHub Copilot guide
+│   ├── README.kimi.md       # Kimi Code guide
+│   ├── README.codex.md      # Codex guide
+│   ├── README.pi.md         # Pi guide
+│   └── README.windsurf.md   # Windsurf guide
 ├── .claude-plugin/          # Claude Code integration
 ├── .cursor-plugin/          # Cursor integration
 ├── .copilot-plugin/         # GitHub Copilot integration
@@ -505,73 +635,88 @@ nassai-praxis/
 
 ---
 
-## Customization
+## What's Inside
 
-### Add a New Skill
+### Skills Library
 
-```bash
-mkdir skills/my-skill
-cat > skills/my-skill/SKILL.md << 'EOF'
+**Testing**
+- **test-driven-development** — RED-GREEN-REFACTOR cycle
+- **verification** — Evidence before claims
+
+**Debugging**
+- **debugging** — Systematic bug investigation
+- **anti-patterns** — Shortcut prevention
+
+**Collaboration**
+- **brainstorming** — Socratic design refinement
+- **writing-plans** — Detailed implementation plans
+- **executing-plans** — Batch execution with checkpoints
+- **subagent-management** — Multi-agent orchestration
+- **code-review** — Pre-commit quality checks
+- **pr-review** — 5-agent parallel review
+- **risk-assessment** — Risk-based questioning
+
+**Technical**
+- **frontend-ui-engineering** — Component architecture
+- **api-design** — REST/GraphQL patterns
+- **database-design** — Schema optimization
+- **devops-pipelines** — CI/CD, Docker, K8s
+- **system-architecture** — Microservices, CQRS
+- **performance-tuning** — Core Web Vitals
+- **accessibility-compliance** — WCAG 2.2
+- **design-systems** — DTCG tokens
+- **observability** — Logging, metrics, tracing
+- **mobile-app-development** — React Native, Flutter
+
+**Methodology**
+- **planning** — Task breakdown
+- **spec-driven** — Interface contracts
+- **refactoring** — Safe code improvement
+
+**Meta**
+- **security** — Background security awareness
+- **writing-skills** — Create new skills
+
+### Personas Library
+
+**Generalists**
+- **Hassan** — Balanced, bilingual developer
+- **Yousef** — Senior architect
+- **Layla** — Junior developer
+
+**Specialists**
+- **Omar Al-Khatib** — Frontend
+- **Fatima Al-Zahra** — Backend
+- **Khaled Al-Mansour** — UI/UX
+- **Yasmin Al-Sharif** — QA
+- **Amr Al-Hassan** — DevOps
+- **Nour Al-Din** — Security
+- **Sami Al-Saeed** — Architecture
+
+### Memory System
+
+- **Working** — Current session context
+- **Episodic** — Historical records
+- **Semantic** — Extracted knowledge
+- **Procedural** — Workflows and processes
+
+### Self-Improvement
+
+- **Evaluation** — 33-point task scoring
+- **Refinement** — Pattern tracking
+- **Skill Generation** — Auto-create skills from patterns
+- **Agent Generation** — Auto-create agents from gaps
+
 ---
-name: my-skill
-description: What this skill does and when to use it
----
 
-# My Skill
+## Philosophy
 
-## Description
-What this skill does
-
-## When to Activate
-Conditions that trigger this skill
-
-## Process
-Step-by-step instructions
-
-## Quality Criteria
-How to know if done well
-EOF
-```
-
-### Add a New Agent
-
-```bash
-mkdir -p agents/my-agent/{memory,skills,experiences}
-cat > agents/my-agent/AGENT.md << 'EOF'
-# My Agent
-
-## Identity
-- Name: My Agent
-- Role: [What it does]
-- Expertise: [Skills]
-
-## Capabilities
-- [x] Can do X
-- [x] Can do Y
-
-## Constraints
-- Must not [limitation]
-EOF
-```
-
-### Add a New Persona
-
-```bash
-mkdir personas/my-persona
-cat > personas/my-persona/PERSONA.md << 'EOF'
-# Name — Specialty
-
-## Profile
-- Level: mid/senior/junior
-- Specialty: What they are expert in
-- Experience: Years of experience
-
-## Communication
-- Language: Arabic/English/Bilingual
-- Detail level: brief/moderate/detailed
-- Examples: yes/no
-EOF
-```
+- **Test-Driven Development** — Write tests first, always
+- **Systematic over ad-hoc** — Process over guessing
+- **Complexity reduction** — Simplicity as primary goal
+- **Evidence over claims** — Verify before declaring success
+- **Memory matters** — Learn from every task
+- **Specialization wins** — Right agent for the right task
 
 ---
 
@@ -579,8 +724,8 @@ EOF
 
 1. Fork the repository
 2. Create a feature branch
-3. Add your skills, agents, or personas
-4. Submit a pull request
+3. Follow the `writing-skills` skill for creating and testing new skills
+4. Submit a PR
 
 ### Guidelines
 
@@ -594,7 +739,7 @@ EOF
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT License - see LICENSE file for details.
 
 ---
 
@@ -602,6 +747,7 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 - [GitHub Repository](https://github.com/NasserJabir/NassAI-Praxis)
 - [Contributing Guide](CONTRIBUTING.md)
+- [Documentation](docs/)
 
 ---
 

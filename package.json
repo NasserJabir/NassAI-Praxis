@@ -2,15 +2,25 @@
   "name": "nassai-praxis",
   "version": "1.0.0",
   "description": "Agentic skills framework & development methodology for coding agents",
-  "author": "NassAI",
+  "author": "Nasser Jabir",
   "license": "MIT",
   "keywords": [
     "ai",
     "coding-agent",
     "skills",
+    "personas",
+    "memory",
+    "sub-agents",
     "methodology",
     "claude",
     "copilot",
-    "cursor"
-  ]
+    "cursor",
+    "opencode",
+    "kimi",
+    "codex",
+    "pi",
+    "windsurf"
+  ],
+  "homepage": "https://github.com/NasserJabir/NassAI-Praxis",
+  "repository": "https://github.com/NasserJabir/NassAI-Praxis"
 }
