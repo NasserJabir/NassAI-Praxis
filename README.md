@@ -1,121 +1,458 @@
 # NassAI Praxis
 
-> Agentic Skills Framework & Development Methodology
+> Agentic Skills Framework & Development Methodology for AI Coding Agents
 
-NassAI Praxis is a methodology layer that transforms any coding agent into an intelligent agent with persistent memory, custom personas, specialized sub-agents, continuous self-improvement, and a unified workflow. It provides plugin configurations for Claude Code, Cursor, GitHub Copilot, and OpenCode.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/nassai-praxis?style=social)](https://github.com/YOUR_USERNAME/nassai-praxis/stargazers)
 
-## Features
+---
 
-- **Four-Tier Memory System** - Working, episodic, semantic, and procedural memory for persistent context across sessions
-- **Custom Personas** - Tailor agent behavior to different developer profiles (junior, senior, default)
-- **Specialized Sub-Agents** - Researcher, reviewer, tester, and security-auditor agents with independent memory
-- **Self-Improvement** - Evaluation, refinement, and automatic skill generation from repeated patterns
-- **7 Core Skills** - Brainstorming, TDD, debugging, planning, code review, security, and sub-agent management
-- **Multi-Agent Support** - Plugin configs for Claude Code, Cursor, GitHub Copilot, and OpenCode
+## 🎯 What is NassAI Praxis?
 
-## Quick Start
+NassAI Praxis (from Greek πρᾶξις = practice) is a markdown-only skills framework that enhances any AI coding agent with:
 
-### Claude Code
+- 🧠 **Persistent Memory** — Working, episodic, semantic, procedural
+- 👥 **Sub-Agents** — 12 specialized agents for different domains
+- 🎭 **Personas** — Customizable developer profiles
+- 📈 **Self-Improvement** — Evaluation, refinement, skill generation
+- 🛠️ **29 Skills** — From brainstorming to deployment
 
-Copy the `.claude-plugin/` directory into your project root or symlink it. Claude Code will automatically load `AGENTS.md` and `CLAUDE.md` as instructions and register all skills.
+---
 
-### Cursor
+## 🚀 Quick Start
 
-Copy the `.cursor-plugin/` directory into your project root. Cursor will load `AGENTS.md` as instructions and apply the configured rules.
+### Install for Claude Code
 
-### GitHub Copilot
+```bash
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/nassai-praxis.git
 
-Copy the `.copilot-plugin/` directory into your project root. Copilot will load `AGENTS.md` as instructions and use working memory for context.
+# Copy to your project
+cp -r nassai-praxis/.claude-plugin your-project/
+cp -r nassai-praxis/skills your-project/
+cp nassai-praxis/CLAUDE.md your-project/
+```
 
-### OpenCode
+### Install for Cursor
 
-Copy the `.opencode/` directory into your project root. OpenCode will load `AGENTS.md` and `CLAUDE.md` as instructions and register all skills.
+```bash
+cp -r nassai-praxis/.cursor-plugin your-project/
+cp -r nassai-praxis/skills your-project/
+```
 
-## Directory Structure
+### Install for GitHub Copilot
+
+```bash
+cp -r nassai-praxis/.copilot-plugin your-project/
+cp -r nassai-praxis/skills your-project/
+```
+
+### Install for OpenCode
+
+```bash
+cp -r nassai-praxis/.opencode your-project/
+cp -r nassai-praxis/skills your-project/
+cp nassai-praxis/AGENTS.md your-project/
+```
+
+---
+
+## 📁 Project Structure
 
 ```
 nassai-praxis/
-├── .claude-plugin/
-│   └── plugin.json            # Claude Code plugin config
-├── .cursor-plugin/
-│   └── plugin.json            # Cursor plugin config
-├── .copilot-plugin/
-│   └── plugin.json            # GitHub Copilot plugin config
-├── .opencode/
-│   └── plugin.json            # OpenCode plugin config
-├── AGENTS.md                  # Core methodology (read by all agents)
-├── CLAUDE.md                  # Claude Code specific instructions
-├── skills/                    # Reusable skills
+├── .claude-plugin/          # Claude Code integration
+│   ├── CLAUDE.md
+│   ├── agents/
+│   ├── personas/
+│   └── memory/
+├── .cursor-plugin/          # Cursor integration
+│   ├── .cursor/
+│   │   ├── rules/
+│   │   └── agents/
+│   └── rules/
+├── .copilot-plugin/         # GitHub Copilot integration
+│   ├── .copilot/
+│   │   ├── instructions.md
+│   │   └── skills/
+│   └── skills/
+├── .opencode/               # OpenCode integration
+│   ├── agents/
+│   ├── skills/
+│   └── personas/
+├── agents/                  # Sub-agent definitions
+│   ├── frontend-developer/
+│   ├── backend-developer/
+│   ├── ui-designer/
+│   ├── database-expert/
+│   ├── devops-engineer/
+│   ├── system-architect/
+│   ├── researcher/
+│   ├── reviewer/
+│   ├── tester/
+│   ├── security-auditor/
+│   ├── planner/
+│   └── orchestrator/
+├── skills/                  # All skill definitions
 │   ├── brainstorming/
 │   ├── tdd/
 │   ├── debugging/
 │   ├── planning/
 │   ├── code-review/
 │   ├── security/
-│   └── subagent-management/
-├── agents/                    # Specialized sub-agents
-│   ├── researcher/
-│   ├── reviewer/
-│   ├── tester/
-│   └── security-auditor/
-├── personas/                  # User personality profiles
+│   ├── subagent-management/
+│   ├── frontend-ui-engineering/
+│   ├── api-design/
+│   ├── database-design/
+│   ├── devops-pipelines/
+│   ├── mobile-app-development/
+│   ├── system-architecture/
+│   ├── performance-tuning/
+│   ├── accessibility-compliance/
+│   ├── design-systems/
+│   ├── observability/
+│   ├── writing-plans/
+│   ├── executing-plans/
+│   ├── verification/
+│   ├── spec-driven/
+│   ├── refactoring/
+│   ├── pr-review/
+│   ├── risk-assessment/
+│   └── anti-patterns/
+├── personas/                # Developer personas
 │   ├── default/
-│   ├── junior-dev/
-│   └── senior-dev/
-├── memory/                    # Four-tier memory system
+│   ├── senior-dev/
+│   └── junior-dev/
+├── memory/                  # Persistent memory layers
 │   ├── working/
 │   ├── episodic/
 │   ├── semantic/
 │   └── procedural/
-├── evolve/                    # Self-improvement
-│   ├── evaluation/
-│   ├── refine/
-│   └── skills-gen/
-├── docs/                      # Documentation
-└── package.json               # Package metadata
+├── references/              # Documentation & references
+│   ├── copilot-tools.md
+│   ├── codex-tools.md
+│   └── gemini-tools.md
+├── CLAUDE.md                # Claude Code entry point
+├── AGENTS.md                # OpenCode entry point
+├── GEMINI.md                # Gemini CLI entry point
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
 ```
 
-## How It Works
+---
 
-Every task follows the workflow: **brainstorm → plan → implement → review → commit**.
+## 🛠️ Available Skills
 
-1. **Brainstorm** - Explore the problem, ask questions, propose approaches
-2. **Plan** - Break work into small tasks with test cases and dependency mapping
-3. **Implement** - Write tests first (TDD), then minimal code to pass, then refactor
-4. **Review** - Self-review the diff for quality, security, and edge cases
-5. **Commit** - Atomic commits with clear, imperative messages
+### Core Skills
+| Skill | Description | When to Use |
+|-------|-------------|-------------|
+| brainstorming | Pre-coding ideation | Before writing any code |
+| tdd | Test-driven development | During implementation |
+| debugging | Systematic bug fixing | When encountering bugs |
+| planning | Task breakdown | Before complex tasks |
+| code-review | Pre-commit quality checks | Before commits |
+| security | Background security | Always |
+| subagent-management | Multi-agent orchestration | Complex tasks |
 
-The memory system maintains context across sessions, the persona system adapts behavior to the user's style, and the self-improvement loop captures lessons learned for future tasks.
+### Technical Skills
+| Skill | Description | When to Use |
+|-------|-------------|-------------|
+| frontend-ui-engineering | Component architecture | Building UI |
+| api-design | REST/GraphQL patterns | Designing APIs |
+| database-design | Schema optimization | Database work |
+| devops-pipelines | CI/CD, Docker, K8s | Infrastructure |
+| mobile-app-development | React Native, Flutter | Mobile apps |
+| system-architecture | Microservices, CQRS | Architecture decisions |
+| performance-tuning | Core Web Vitals, caching | Optimization |
+| accessibility-compliance | WCAG 2.2 | Accessibility |
+| design-systems | DTCG tokens, theming | Design systems |
+| observability | Logging, metrics, tracing | Production monitoring |
 
-## Available Skills
+### Methodology Skills
+| Skill | Description | When to Use |
+|-------|-------------|-------------|
+| writing-plans | Task breakdown (2-5 min) | Planning |
+| executing-plans | Batch execution | Implementation |
+| verification | Evidence before claims | Always |
+| spec-driven | Interface contracts | Before coding |
+| refactoring | Safe code improvement | Code cleanup |
+| pr-review | 5-agent parallel review | PR reviews |
+| risk-assessment | Risk-based questions | High-risk changes |
+| anti-patterns | Shortcut prevention | Always |
 
-| Skill | Purpose |
-|-------|---------|
-| `brainstorming` | Structured ideation before coding |
-| `tdd` | Test-driven development (RED → GREEN → REFACTOR) |
-| `debugging` | Systematic bug-finding methodology |
-| `planning` | Breaking complex tasks into ordered steps |
-| `code-review` | Honest code review for quality and correctness |
-| `security` | Background security awareness and vulnerability prevention |
-| `subagent-management` | Orchestrating parallel work across specialized agents |
+---
 
-## Available Agents
+## 👥 Available Agents
 
-| Agent | Role | Specialization |
-|-------|------|----------------|
-| `researcher` | Research & exploration | Web search, codebase analysis, documentation |
-| `reviewer` | Code review | Honest review, pattern checking, security |
-| `tester` | Testing | Test creation, coverage analysis, regression |
-| `security-auditor` | Security | Vulnerability scanning, threat modeling |
+### Development Agents
+| Agent | Expertise | Best For |
+|-------|-----------|----------|
+| frontend-developer | React, Vue, Angular, CSS | UI implementation |
+| backend-developer | APIs, databases, auth | Server-side code |
+| ui-designer | Design systems, tokens | Visual design |
+| database-expert | Schema, optimization, migrations | Data architecture |
+| devops-engineer | CI/CD, Docker, K8s | Infrastructure |
+| system-architect | Patterns, ADRs, scalability | Architecture decisions |
 
-## Contributing
+### Workflow Agents
+| Agent | Expertise | Best For |
+|-------|-----------|----------|
+| researcher | Web research, analysis | Information gathering |
+| reviewer | Code quality, security | Code reviews |
+| tester | Test generation, QA | Testing |
+| security-auditor | Vulnerability detection | Security audits |
+| planner | Task breakdown | Project planning |
+| orchestrator | Multi-agent coordination | Complex workflows |
 
-1. Follow the methodology in `AGENTS.md` - TDD, small commits, code review
-2. New skills go in `skills/<name>/SKILL.md` following the standard structure
-3. New agents go in `agents/<name>/AGENT.md` with their own memory and skills
-4. Test new skills across at least 2 different tasks before promoting
-5. Evolving patterns go in `evolve/` until ready for promotion
+---
 
-## License
+## 🎭 Available Personas
 
-MIT
+| Persona | Level | Style |
+|---------|-------|-------|
+| default | Mid-level | Balanced, bilingual |
+| senior-dev | Senior | Opinionated, brief |
+| junior-dev | Junior | Detailed, examples |
+
+---
+
+## 📝 How to Add Skills Manually
+
+### Create a New Skill
+
+1. Create a directory in `skills/`:
+```bash
+mkdir skills/my-new-skill
+```
+
+2. Create `SKILL.md` with YAML frontmatter:
+```markdown
+---
+name: my-new-skill
+description: What this skill does and when to use it
+---
+
+# My New Skill
+
+## Description
+What this skill does
+
+## When to Activate
+Conditions that trigger this skill
+
+## Process
+Step-by-step instructions
+
+## Quality Criteria
+How to know if done well
+
+## Examples
+Practical examples
+```
+
+3. Add references (optional):
+```bash
+mkdir skills/my-new-skill/references
+# Add reference files here
+```
+
+---
+
+## 🤖 How to Add Skills via Prompt
+
+### For Claude Code
+
+Tell Claude:
+```
+Create a new skill called "my-skill" that:
+1. Activates when [condition]
+2. Does [what it does]
+3. Follows these steps: [steps]
+4. Has these quality criteria: [criteria]
+
+Save it to skills/my-skill/SKILL.md
+```
+
+### For Cursor
+
+Tell Cursor:
+```
+Add a new skill to .cursor/rules/my-skill.md that:
+- Activates when [condition]
+- Follows [process]
+- Has [quality criteria]
+```
+
+### For GitHub Copilot
+
+Tell Copilot:
+```
+Create a .copilot/skills/my-skill.md file with:
+- Trigger: [when to use]
+- Process: [steps]
+- Quality: [criteria]
+```
+
+---
+
+## 👥 How to Add Sub-Agents Manually
+
+### Create a New Agent
+
+1. Create a directory in `agents/`:
+```bash
+mkdir -p agents/my-agent/{memory,skills,experiences}
+```
+
+2. Create `AGENT.md`:
+```markdown
+# My Agent
+
+## Identity
+- Name: My Agent
+- Role: [What it does]
+- Expertise: [Skills]
+
+## Capabilities
+- [x] Can do X
+- [x] Can do Y
+- [ ] Cannot do Z
+
+## Interactions
+- Receives from: [Who sends to it]
+- Sends to: [Who it sends to]
+
+## Constraints
+- Must not [limitation]
+- Requires approval for [action]
+```
+
+3. Create supporting files:
+```bash
+# Memory templates
+echo "# Working Memory" > agents/my-agent/memory/working.md
+echo "# Episodic Memory" > agents/my-agent/memory/episodic.md
+
+# Skills
+echo "# My Agent Skill" > agents/my-agent/skills/my-skill.md
+
+# Experience log
+echo "# Experience Log" > agents/my-agent/experiences/log.md
+```
+
+---
+
+## 🤖 How to Add Sub-Agents via Prompt
+
+### For Claude Code
+
+Tell Claude:
+```
+Create a new sub-agent called "my-agent" that:
+1. Specializes in [domain]
+2. Has these capabilities: [list]
+3. Receives tasks from: [source]
+4. Sends results to: [destination]
+5. Has these constraints: [limits]
+
+Create the full agent structure in agents/my-agent/
+```
+
+### For Cursor
+
+Tell Cursor:
+```
+Add a new agent to .cursor/agents/my-agent.md with:
+- Role: [what it does]
+- Capabilities: [list]
+- Constraints: [limits]
+```
+
+---
+
+## 🔧 Customization
+
+### Modify Existing Skills
+
+Edit any `SKILL.md` file to customize it for your project:
+```bash
+# Edit a skill
+vim skills/tdd/SKILL.md
+
+# Edit an agent
+vim agents/frontend-developer/AGENT.md
+
+# Edit a persona
+vim personas/senior-dev/PERSONA.md
+```
+
+### Add Custom Memory
+
+Update memory files to persist context:
+```bash
+# Add working context
+echo "- Project uses TypeScript strict mode" >> memory/working/context.md
+
+# Add learned patterns
+echo "- User prefers functional programming" >> memory/semantic/patterns.md
+
+# Add workflows
+echo "1. When adding a feature → Write test first" >> memory/procedural/workflows.md
+```
+
+---
+
+## 📊 Comparison with Other Frameworks
+
+| Feature | NassAI Praxis | Superpowers | Agent Skills |
+|---------|---------------|-------------|--------------|
+| Skills | 29 | 24 | Varies |
+| Sub-Agents | 12 | Basic | None |
+| Personas | 3 | None | None |
+| Memory | 4 layers | Basic | None |
+| Self-Improvement | ✅ | ❌ | ❌ |
+| Bilingual | ✅ | ❌ | ❌ |
+| Markdown Only | ✅ | ✅ | ✅ |
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Add your skills/agents
+4. Submit a pull request
+
+### Skill Guidelines
+
+- Keep `SKILL.md` under 500 lines
+- Use progressive disclosure
+- Include concrete examples
+- Add negative triggers in description
+
+### Agent Guidelines
+
+- Define clear boundaries
+- Include memory templates
+- Add domain-specific skills
+- Document interactions
+
+---
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/YOUR_USERNAME/nassai-praxis)
+- [Documentation](https://github.com/YOUR_USERNAME/nassai-praxis/blob/main/README.md)
+- [Contributing Guide](CONTRIBUTING.md)
+
+---
+
+Made with ❤️ by NassAI
