@@ -2,7 +2,9 @@
 
 Complete guide for using NassAI Praxis with [OpenCode.ai](https://opencode.ai).
 
-## Installation
+## Installation (Global)
+
+OpenCode uses its own plugin system. NassAI Praxis installs globally — all your projects get access.
 
 Add NassAI Praxis to the `plugin` array in your `opencode.json` (global or project-level):
 
@@ -76,29 +78,6 @@ description: Use when [condition] - [what it does]
 Create project-specific skills in `.opencode/skills/` within your project.
 
 **Skill Priority:** Project skills > Personal skills > NassAI Praxis skills
-
-## Configuration
-
-### Project-Level Configuration
-
-Create `.nassai-praxis/config.json` in your project root:
-
-```json
-{
-  "personas": {
-    "default": "omar",
-    "specialists": ["fatima", "nour"]
-  },
-  "skills": {
-    "enabled": ["brainstorming", "tdd", "debugging"],
-    "disabled": []
-  },
-  "memory": {
-    "auto-save": true,
-    "max-episodes": 100
-  }
-}
-```
 
 ## Updating
 

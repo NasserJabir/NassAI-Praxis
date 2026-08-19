@@ -2,29 +2,46 @@
 
 Complete guide for using NassAI Praxis with [Windsurf](https://windsurf.com).
 
-## Installation
+## Installation (Global)
 
-Clone the repository and copy to your project:
+NassAI Praxis installs globally for Windsurf — all your projects get access.
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.windsurf-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Clone the repository
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+
+# Install globally for Windsurf
+cp -r /tmp/nassai-praxis/.windsurf-plugin ~/.windsurf/
+cp -r /tmp/nassai-praxis/skills ~/.windsurf/
+cp -r /tmp/nassai-praxis/agents ~/.windsurf/
+cp -r /tmp/nassai-praxis/personas ~/.windsurf/
+cp -r /tmp/nassai-praxis/memory ~/.windsurf/
+
+# Clean up
+rm -rf /tmp/nassai-praxis
+```
+
+### Per-Project Activation
+
+Each project needs an entry point. Create `.windsurf/config.json` in your project root:
+
+```json
+{
+  "nassai-praxis": {
+    "enabled": true
+  }
+}
 ```
 
 ## Usage
 
 ### Automatic Activation
 
-NassAI Praxis activates automatically when you start a session in Windsurf. The agent will:
+NassAI Praxis activates automatically when the agent sees the configuration in your project. It will:
 
-1. Read the plugin configuration
-2. Load available skills from `skills/`
-3. Load personas from `personas/`
-4. Initialize memory from `memory/`
+1. Load available skills from `~/.windsurf/skills/`
+2. Load personas from `~/.windsurf/personas/`
+3. Initialize memory from `~/.windsurf/memory/`
 
 ### Using Personas
 
@@ -52,68 +69,30 @@ Dispatch specialized agents for complex tasks:
 Use the Task tool to dispatch the frontend-developer agent to build the login form.
 ```
 
-## Configuration
-
-### Project-Level Configuration
-
-Create `.windsurf/config.json` in your project root:
-
-```json
-{
-  "personas": {
-    "default": "omar",
-    "specialists": ["fatima", "nour"]
-  },
-  "skills": {
-    "enabled": ["brainstorming", "tdd", "debugging"],
-    "disabled": []
-  },
-  "memory": {
-    "auto-save": true,
-    "max-episodes": 100
-  }
-}
-```
-
 ## Updating
 
-To update NassAI Praxis in Windsurf:
-
-1. Pull the latest changes:
-
 ```bash
-cd path/to/NassAI-Praxis
-git pull origin main
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/skills ~/.windsurf/
+cp -r /tmp/nassai-praxis/agents ~/.windsurf/
+cp -r /tmp/nassai-praxis/personas ~/.windsurf/
+cp -r /tmp/nassai-praxis/memory ~/.windsurf/
+rm -rf /tmp/nassai-praxis
 ```
-
-2. Recopy the plugin files:
-
-```bash
-cp -r NassAI-Praxis/.windsurf-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-```
-
-3. Restart Windsurf.
 
 ## Troubleshooting
 
 ### Plugin not loading
 
-1. Check that `.windsurf-plugin/` directory exists in your project
-2. Verify the plugin configuration files
-3. Restart Windsurf after installation
+1. Check that `~/.windsurf/.windsurf-plugin/` exists
+2. Verify files were copied to the correct locations
+3. Restart Windsurf
 
 ### Skills not found
 
-1. Verify `skills/` directory exists with SKILL.md files
+1. Verify `~/.windsurf/skills/` exists with SKILL.md files
 2. Check that each skill has valid YAML frontmatter
 3. Restart your session
-
-### Memory not persisting
-
-1. Check that `memory/` directory exists
-2. Verify write permissions
-3. Check `memory/working/` for current context
 
 ## Getting Help
 

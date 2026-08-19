@@ -94,28 +94,36 @@ Each agent gets a plugin configuration file (`.claude-plugin/`, `.cursor-plugin/
 
 ## Installation
 
-NassAI Praxis is not yet published on any marketplace. Installation is manual — clone the repository and copy files into your project.
+NassAI Praxis is not yet published on any marketplace. Installation is manual — clone the repository and copy files into your agent's global directory.
 
-Pick your agent below for the correct plugin files. If you use more than one agent, install separately for each.
+**Key concept:** Skills, personas, agents, and memory install **globally** for your coding agent. Only an activation file goes into each project.
+
+Pick your agent below. If you use more than one, install separately for each.
 
 ### Claude Code
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.claude-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
-cp NassAI-Praxis/AGENTS.md your-project/
-cp NassAI-Praxis/CLAUDE.md your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.claude-plugin ~/.claude/
+cp -r /tmp/nassai-praxis/skills ~/.claude/
+cp -r /tmp/nassai-praxis/agents ~/.claude/
+cp -r /tmp/nassai-praxis/personas ~/.claude/
+cp -r /tmp/nassai-praxis/memory ~/.claude/
+cp /tmp/nassai-praxis/AGENTS.md ~/.claude/
+cp /tmp/nassai-praxis/CLAUDE.md ~/.claude/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project
+cp ~/.claude/AGENTS.md your-project/
+cp ~/.claude/CLAUDE.md your-project/
 ```
 
 - Detailed docs: [docs/README.claude.md](docs/README.claude.md)
 
 ### OpenCode
 
-Add NassAI Praxis to the `plugin` array in your `opencode.json`:
+Add to your `opencode.json` (global or project-level):
 
 ```json
 {
@@ -123,19 +131,23 @@ Add NassAI Praxis to the `plugin` array in your `opencode.json`:
 }
 ```
 
-Restart OpenCode. The plugin installs through OpenCode's plugin manager.
+Restart OpenCode. No per-project setup needed.
 
 - Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)
 
 ### Cursor
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.cursor-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.cursor-plugin ~/.cursor/
+cp -r /tmp/nassai-praxis/skills ~/.cursor/
+cp -r /tmp/nassai-praxis/agents ~/.cursor/
+cp -r /tmp/nassai-praxis/personas ~/.cursor/
+cp -r /tmp/nassai-praxis/memory ~/.cursor/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project (create .cursor/rules/nassai-praxis.md)
 ```
 
 - Detailed docs: [docs/README.cursor.md](docs/README.cursor.md)
@@ -143,12 +155,16 @@ cp -r NassAI-Praxis/memory your-project/
 ### GitHub Copilot
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.copilot-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.copilot-plugin ~/.copilot/
+cp -r /tmp/nassai-praxis/skills ~/.copilot/
+cp -r /tmp/nassai-praxis/agents ~/.copilot/
+cp -r /tmp/nassai-praxis/personas ~/.copilot/
+cp -r /tmp/nassai-praxis/memory ~/.copilot/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project (create .github/copilot-instructions.md)
 ```
 
 - Detailed docs: [docs/README.copilot.md](docs/README.copilot.md)
@@ -156,11 +172,16 @@ cp -r NassAI-Praxis/memory your-project/
 ### Kimi Code
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.kimi-plugin ~/.kimi/
+cp -r /tmp/nassai-praxis/skills ~/.kimi/
+cp -r /tmp/nassai-praxis/agents ~/.kimi/
+cp -r /tmp/nassai-praxis/personas ~/.kimi/
+cp -r /tmp/nassai-praxis/memory ~/.kimi/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project (create .kimi/config.json)
 ```
 
 - Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)
@@ -168,11 +189,16 @@ cp -r NassAI-Praxis/memory your-project/
 ### Codex
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.codex-plugin ~/.codex/
+cp -r /tmp/nassai-praxis/skills ~/.codex/
+cp -r /tmp/nassai-praxis/agents ~/.codex/
+cp -r /tmp/nassai-praxis/personas ~/.codex/
+cp -r /tmp/nassai-praxis/memory ~/.codex/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project (create .codex/config.json)
 ```
 
 - Detailed docs: [docs/README.codex.md](docs/README.codex.md)
@@ -180,11 +206,16 @@ cp -r NassAI-Praxis/memory your-project/
 ### Pi
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.pi-plugin ~/.pi/
+cp -r /tmp/nassai-praxis/skills ~/.pi/
+cp -r /tmp/nassai-praxis/agents ~/.pi/
+cp -r /tmp/nassai-praxis/personas ~/.pi/
+cp -r /tmp/nassai-praxis/memory ~/.pi/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project (create .pi/config.json)
 ```
 
 - Detailed docs: [docs/README.pi.md](docs/README.pi.md)
@@ -192,12 +223,16 @@ cp -r NassAI-Praxis/memory your-project/
 ### Windsurf
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.windsurf-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Install globally
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/.windsurf-plugin ~/.windsurf/
+cp -r /tmp/nassai-praxis/skills ~/.windsurf/
+cp -r /tmp/nassai-praxis/agents ~/.windsurf/
+cp -r /tmp/nassai-praxis/personas ~/.windsurf/
+cp -r /tmp/nassai-praxis/memory ~/.windsurf/
+rm -rf /tmp/nassai-praxis
+
+# Activate per-project (create .windsurf/config.json)
 ```
 
 - Detailed docs: [docs/README.windsurf.md](docs/README.windsurf.md)

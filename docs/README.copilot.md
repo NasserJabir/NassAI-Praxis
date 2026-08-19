@@ -2,29 +2,47 @@
 
 Complete guide for using NassAI Praxis with [GitHub Copilot](https://github.com/features/copilot).
 
-## Installation
+## Installation (Global)
 
-Clone the repository and copy to your project:
+NassAI Praxis installs globally for GitHub Copilot — all your projects get access.
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.copilot-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
+# Clone the repository
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+
+# Install globally for Copilot
+cp -r /tmp/nassai-praxis/.copilot-plugin ~/.copilot/
+cp -r /tmp/nassai-praxis/skills ~/.copilot/
+cp -r /tmp/nassai-praxis/agents ~/.copilot/
+cp -r /tmp/nassai-praxis/personas ~/.copilot/
+cp -r /tmp/nassai-praxis/memory ~/.copilot/
+
+# Clean up
+rm -rf /tmp/nassai-praxis
+```
+
+### Per-Project Activation
+
+Each project needs an entry point. Create `.github/copilot-instructions.md` in your project root:
+
+```markdown
+# NassAI Praxis
+
+Use NassAI Praxis methodology for all tasks in this project.
+Skills are loaded from ~/.copilot/skills/
+Personas are loaded from ~/.copilot/personas/
+Memory is loaded from ~/.copilot/memory/
 ```
 
 ## Usage
 
 ### Automatic Activation
 
-NassAI Praxis activates automatically when you start a session in GitHub Copilot. The agent will:
+NassAI Praxis activates automatically when the agent sees the configuration in your project. It will:
 
-1. Read the plugin configuration
-2. Load available skills from `skills/`
-3. Load personas from `personas/`
-4. Initialize memory from `memory/`
+1. Load available skills from `~/.copilot/skills/`
+2. Load personas from `~/.copilot/personas/`
+3. Initialize memory from `~/.copilot/memory/`
 
 ### Using Personas
 
@@ -52,70 +70,30 @@ Dispatch specialized agents for complex tasks:
 Use the Task tool to dispatch the frontend-developer agent to build the login form.
 ```
 
-## Configuration
-
-### Project-Level Configuration
-
-Create `.github/copilot-instructions.md` in your project root:
-
-```markdown
-# NassAI Praxis Configuration
-
-## Active Personas
-- Default: Omar (Frontend)
-- Specialists: Fatima (Backend), Nour (Security)
-
-## Enabled Skills
-- brainstorming
-- tdd
-- debugging
-- code-review
-- security
-
-## Memory Settings
-- Auto-save: true
-- Max episodes: 100
-```
-
 ## Updating
 
-To update NassAI Praxis in GitHub Copilot:
-
-1. Pull the latest changes:
-
 ```bash
-cd path/to/NassAI-Praxis
-git pull origin main
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/skills ~/.copilot/
+cp -r /tmp/nassai-praxis/agents ~/.copilot/
+cp -r /tmp/nassai-praxis/personas ~/.copilot/
+cp -r /tmp/nassai-praxis/memory ~/.copilot/
+rm -rf /tmp/nassai-praxis
 ```
-
-2. Recopy the plugin files:
-
-```bash
-cp -r NassAI-Praxis/.copilot-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-```
-
-3. Restart GitHub Copilot.
 
 ## Troubleshooting
 
 ### Plugin not loading
 
-1. Check that `.copilot-plugin/` directory exists in your project
-2. Verify the plugin configuration files
-3. Restart GitHub Copilot after installation
+1. Check that `~/.copilot/.copilot-plugin/` exists
+2. Verify files were copied to the correct locations
+3. Restart GitHub Copilot
 
 ### Skills not found
 
-1. Verify `skills/` directory exists with SKILL.md files
+1. Verify `~/.copilot/skills/` exists with SKILL.md files
 2. Check that each skill has valid YAML frontmatter
 3. Restart your session
-
-### Memory not persisting
-
-1. Check that `memory/` directory exists
-2. Verify write permissions
-3. Check `memory/working/` for current context
 
 ## Getting Help
 

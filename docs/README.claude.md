@@ -2,31 +2,59 @@
 
 Complete guide for using NassAI Praxis with [Claude Code](https://claude.ai/code).
 
-## Installation
+## Installation (Global)
 
-Clone the repository and copy to your project:
+NassAI Praxis installs globally for Claude Code — all your projects get access.
 
 ```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git
-cp -r NassAI-Praxis/.claude-plugin your-project/
-cp -r NassAI-Praxis/skills your-project/
-cp -r NassAI-Praxis/agents your-project/
-cp -r NassAI-Praxis/personas your-project/
-cp -r NassAI-Praxis/memory your-project/
-cp NassAI-Praxis/AGENTS.md your-project/
-cp NassAI-Praxis/CLAUDE.md your-project/
+# Clone the repository
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+
+# Install globally for Claude Code
+cp -r /tmp/nassai-praxis/.claude-plugin ~/.claude/
+cp -r /tmp/nassai-praxis/skills ~/.claude/
+cp -r /tmp/nassai-praxis/agents ~/.claude/
+cp -r /tmp/nassai-praxis/personas ~/.claude/
+cp -r /tmp/nassai-praxis/memory ~/.claude/
+cp /tmp/nassai-praxis/AGENTS.md ~/.claude/
+cp /tmp/nassai-praxis/CLAUDE.md ~/.claude/
+
+# Clean up
+rm -rf /tmp/nassai-praxis
 ```
+
+### Per-Project Activation
+
+Each project needs an entry point. Add to your project root:
+
+```bash
+# In your project directory
+cp ~/.claude/AGENTS.md ./AGENTS.md
+cp ~/.claude/CLAUDE.md ./CLAUDE.md
+```
+
+This tells Claude Code: "Use NassAI Praxis for this project."
+
+### Verify Installation
+
+Start a new Claude Code session and ask:
+
+```
+What skills do you have?
+```
+
+The agent should list NassAI Praxis skills and personas.
 
 ## Usage
 
 ### Automatic Activation
 
-NassAI Praxis activates automatically when you start a session. The agent will:
+NassAI Praxis activates automatically when the agent sees `AGENTS.md` in the project. It will:
 
 1. Read `AGENTS.md` for the methodology
-2. Load available skills from `skills/`
-3. Load personas from `personas/`
-4. Initialize memory from `memory/`
+2. Load skills from `~/.claude/skills/`
+3. Load personas from `~/.claude/personas/`
+4. Initialize memory from `~/.claude/memory/`
 
 ### Using Personas
 
@@ -56,64 +84,42 @@ Use the Task tool to dispatch the frontend-developer agent to build the login fo
 
 ### Memory System
 
-The agent maintains 4 layers of memory:
+The agent maintains 4 layers of persistent memory:
 
-- `memory/working/` — Current session context
-- `memory/episodic/` — Past events and lessons
-- `memory/semantic/` — Patterns and conventions
-- `memory/procedural/` — Workflows and processes
-
-## Configuration
-
-### Project-Level Configuration
-
-Create `.nassai-praxis/config.json` in your project root:
-
-```json
-{
-  "personas": {
-    "default": "omar",
-    "specialists": ["fatima", "nour"]
-  },
-  "skills": {
-    "enabled": ["brainstorming", "tdd", "debugging"],
-    "disabled": []
-  },
-  "memory": {
-    "auto-save": true,
-    "max-episodes": 100
-  }
-}
-```
+- `~/.claude/memory/working/` — Current session context
+- `~/.claude/memory/episodic/` — Past events and lessons
+- `~/.claude/memory/semantic/` — Patterns and conventions
+- `~/.claude/memory/procedural/` — Workflows and processes
 
 ## Updating
 
-To update NassAI Praxis:
-
 ```bash
-cd NassAI-Praxis
-git pull origin main
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+cp -r /tmp/nassai-praxis/skills ~/.claude/
+cp -r /tmp/nassai-praxis/agents ~/.claude/
+cp -r /tmp/nassai-praxis/personas ~/.claude/
+cp -r /tmp/nassai-praxis/memory ~/.claude/
+rm -rf /tmp/nassai-praxis
 ```
 
 ## Troubleshooting
 
 ### Plugin not loading
 
-1. Check that `.claude-plugin/plugin.json` exists
-2. Verify the files were copied correctly
-3. Restart Claude Code after installation
+1. Check that `~/.claude/.claude-plugin/plugin.json` exists
+2. Verify files were copied to the correct locations
+3. Restart Claude Code
 
 ### Skills not found
 
-1. Verify `skills/` directory exists with SKILL.md files
+1. Verify `~/.claude/skills/` exists with SKILL.md files
 2. Check that each skill has valid YAML frontmatter
 3. Restart your session
 
 ### Memory not persisting
 
-1. Check that `memory/` directory exists
+1. Check that `~/.claude/memory/` exists
 2. Verify write permissions
-3. Check `memory/working/` for current context
 
 ## Getting Help
 
