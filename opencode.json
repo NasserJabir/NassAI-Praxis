@@ -1,0 +1,5 @@
+{
+  "plugin": [
+    "nassai-praxis@git+https://github.com/NasserJabir/NassAI-Praxis.git"
+  ]
+}

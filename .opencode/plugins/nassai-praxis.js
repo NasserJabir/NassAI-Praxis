@@ -11,34 +11,16 @@ import os from 'os';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const nassaiSkillsDir = path.resolve(__dirname, '../../skills');
-
-const extractAndStripFrontmatter = (content) => {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) return { frontmatter: {}, content };
-  const frontmatterStr = match[1];
-  const body = match[2];
-  const frontmatter = {};
-  for (const line of frontmatterStr.split('\n')) {
-    const colonIdx = line.indexOf(':');
-    if (colonIdx > 0) {
-      const key = line.slice(0, colonIdx).trim();
-      const value = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, '');
-      frontmatter[key] = value;
-    }
-  }
-  return { frontmatter, content: body };
-};
+const nassaiRoot = path.resolve(__dirname, '../..');
+const nassaiSkillsDir = path.join(nassaiRoot, 'skills');
 
 let _bootstrapCache = undefined;
 
 export const NassaiPraxisPlugin = async ({ client, directory }) => {
-  const homeDir = os.homedir();
-
   const getBootstrapContent = () => {
     if (_bootstrapCache !== undefined) return _bootstrapCache;
 
-    const introPath = path.resolve(__dirname, '../../AGENTS.md');
+    const introPath = path.join(nassaiRoot, 'AGENTS.md');
     if (!fs.existsSync(introPath)) {
       _bootstrapCache = null;
       return null;

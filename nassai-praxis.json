@@ -1,0 +1,14 @@
+{
+  "name": "nassai-praxis",
+  "version": "1.0.0",
+  "description": "NassAI Praxis — Agentic skills framework with memory, personas, and self-improvement",
+  "repository": "https://github.com/NasserJabir/NassAI-Praxis",
+  "activate": {
+    "skills": "skills/",
+    "personas": "personas/",
+    "agents": "agents/",
+    "memory": "memory/",
+    "evolve": "evolve/",
+    "bootstrap": "AGENTS.md"
+  }
+}
