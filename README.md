@@ -123,7 +123,14 @@ nassai-praxis/
 ├── personas/                # Developer personas
 │   ├── default/
 │   ├── senior-dev/
-│   └── junior-dev/
+│   ├── junior-dev/
+│   ├── omar/                # عمر الخطيب — Frontend
+│   ├── fatima/              # فاطمة الزهراء — Backend
+│   ├── khaled/              # خالد المنصور — UI/UX
+│   ├── yasmin/              # ياسمين الشريف — QA
+│   ├── amr/                 # عمرو الحسن — DevOps
+│   ├── nour/                # نور الدين — Security
+│   └── sami/                # سامي السعيد — Architecture
 ├── memory/                  # Persistent memory layers
 │   ├── working/
 │   ├── episodic/
@@ -210,11 +217,29 @@ nassai-praxis/
 
 ## 🎭 Available Personas
 
+### Base Personas
+
 | Persona | Level | Style |
 |---------|-------|-------|
 | default | Mid-level | Balanced, bilingual |
 | senior-dev | Senior | Opinionated, brief |
 | junior-dev | Junior | Detailed, examples |
+
+### Named Personas (Arabic Names)
+
+Each named persona is a specialist with a distinct personality for conversational interaction:
+
+| Persona | Arabic Name | Specialty | Level |
+|---------|-------------|-----------|-------|
+| عمر الخطيب | Omar Al-Khatib | Frontend — React, Next.js, TypeScript | Mid-Senior |
+| فاطمة الزهراء | Fatima Al-Zahra | Backend — Node.js, Python, PostgreSQL | Senior |
+| خالد المنصور | Khaled Al-Mansour | UI/UX — Design Systems, WCAG | Mid-Senior |
+| ياسمين الشريف | Yasmin Al-Sharif | QA — Playwright, Vitest, TDD | Mid |
+| عمرو الحسن | Amr Al-Hassan | DevOps — Docker, K8s, CI/CD | Mid-Senior |
+| نور الدين | Nour Al-Din | Security — OWASP, Pen Testing | Senior |
+| سامي السعيد | Sami Al-Saeed | Architecture — DDD, Microservices | Senior |
+
+> 💡 **Usage:** When working with NassAI Praxis, you can address personas by name (e.g., "عمر، how should I structure this React component?") for domain-specific guidance with personality.
 
 ---
 
@@ -410,7 +435,7 @@ echo "1. When adding a feature → Write test first" >> memory/procedural/workfl
 |---------|---------------|-------------|--------------|
 | Skills | 29 | 24 | Varies |
 | Sub-Agents | 12 | Basic | None |
-| Personas | 3 | None | None |
+| Personas | 10 | None | None |
 | Memory | 4 layers | Basic | None |
 | Self-Improvement | ✅ | ❌ | ❌ |
 | Bilingual | ✅ | ❌ | ❌ |
