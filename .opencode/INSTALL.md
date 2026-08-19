@@ -14,13 +14,11 @@ Add NassAI Praxis to the `plugin` array in your `opencode.json` (global or proje
 }
 ```
 
-Restart OpenCode. The plugin installs through OpenCode's plugin manager and
-registers all skills.
+Restart OpenCode. The plugin installs through OpenCode's plugin manager and registers all skills.
 
 Verify by asking: "Tell me about your skills and personas"
 
-OpenCode uses its own plugin install. If you also use Claude Code, Cursor, or
-another harness, install NassAI Praxis separately for each one.
+OpenCode uses its own plugin install. If you also use Claude Code, Cursor, or another harness, install NassAI Praxis separately for each one.
 
 ## Usage
 
@@ -59,8 +57,7 @@ To pin a specific version:
 
 ### Windows install issues
 
-Some Windows OpenCode builds have upstream installer issues with git-backed
-plugin specs. If OpenCode cannot install the plugin, try installing with system npm:
+Some Windows OpenCode builds have upstream installer issues with git-backed plugin specs. If OpenCode cannot install the plugin, try installing with system npm:
 
 ```powershell
 npm install nassai-praxis@git+https://github.com/NasserJabir/NassAI-Praxis.git --prefix "$HOME\.config\opencode"
