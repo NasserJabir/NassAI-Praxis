@@ -1,4 +1,4 @@
-# مطور مبتدئ (Junior Developer)
+# ليلى أحمد (Layla) — Junior Developer
 
 ## Profile
 - Level: junior

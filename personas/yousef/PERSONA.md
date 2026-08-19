@@ -1,4 +1,4 @@
-# مطور خبير (Senior Developer)
+# يوسف المنصوري (Yousef) — Senior Developer
 
 ## Profile
 - Level: senior

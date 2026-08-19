@@ -121,9 +121,9 @@ nassai-praxis/
 │   ├── risk-assessment/
 │   └── anti-patterns/
 ├── personas/                # Developer personas
-│   ├── default/
-│   ├── senior-dev/
-│   ├── junior-dev/
+│   ├── hassan/              # حسن万一 — General Developer
+│   ├── yousef/              # يوسف المنصوري — Senior Developer
+│   ├── layla/               # ليلى أحمد — Junior Developer
 │   ├── omar/                # عمر الخطيب — Frontend
 │   ├── fatima/              # فاطمة الزهراء — Backend
 │   ├── khaled/              # خالد المنصور — UI/UX
@@ -219,13 +219,13 @@ nassai-praxis/
 
 ### Base Personas
 
-| Persona | Level | Style |
-|---------|-------|-------|
-| default | Mid-level | Balanced, bilingual |
-| senior-dev | Senior | Opinionated, brief |
-| junior-dev | Junior | Detailed, examples |
+| Persona | Arabic Name | Level | Style |
+|---------|-------------|-------|-------|
+| حسن | Hassan | Mid-level | Balanced, bilingual |
+| يوسف | Yousef | Senior | Opinionated, brief |
+| ليلى | Layla | Junior | Detailed, examples |
 
-### Named Personas (Arabic Names)
+### Named Personas (Specialists)
 
 Each named persona is a specialist with a distinct personality for conversational interaction:
 
