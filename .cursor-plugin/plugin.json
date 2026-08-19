@@ -1,0 +1,13 @@
+{
+  "name": "nassai-praxis",
+  "version": "1.0.0",
+  "description": "Agentic skills framework for Cursor",
+  "instructions": [
+    "../AGENTS.md"
+  ],
+  "rules": [
+    "Always read AGENTS.md before starting work",
+    "Follow TDD workflow",
+    "Use memory system for context"
+  ]
+}
