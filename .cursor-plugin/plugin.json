@@ -1,13 +1,10 @@
 {
   "name": "nassai-praxis",
+  "description": "Skills framework & development methodology: memory, personas, sub-agents, and 29 specialized skills",
   "version": "1.0.0",
-  "description": "Agentic skills framework for Cursor",
-  "instructions": [
-    "../AGENTS.md"
-  ],
-  "rules": [
-    "Always read AGENTS.md before starting work",
-    "Follow TDD workflow",
-    "Use memory system for context"
-  ]
+  "author": "Nasser Jabir",
+  "license": "MIT",
+  "hooks": {
+    "session:start": "NassAI Praxis is active. Skills, personas, and memory are available. Use them automatically based on context."
+  }
 }

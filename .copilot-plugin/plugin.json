@@ -1,11 +1,10 @@
 {
   "name": "nassai-praxis",
+  "description": "Skills framework & development methodology: memory, personas, sub-agents, and 29 specialized skills",
   "version": "1.0.0",
-  "description": "Agentic skills framework for GitHub Copilot",
-  "instructions": [
-    "../AGENTS.md"
-  ],
-  "context": [
-    "../memory/working/context.md"
-  ]
+  "author": "Nasser Jabir",
+  "license": "MIT",
+  "hooks": {
+    "session:start": "NassAI Praxis is active. Skills, personas, and memory are available. Use them automatically based on context."
+  }
 }
