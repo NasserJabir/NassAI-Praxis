@@ -1,0 +1,64 @@
+# Planning
+
+## Description
+Breaking down complex tasks into manageable, ordered steps before execution.
+
+## When to Activate
+- Before complex, multi-step tasks
+- When tasks have dependencies
+- When estimation is needed
+- Before starting a sprint or work session
+
+## Process
+
+### 1. Break Down
+- Decompose the goal into atomic tasks
+- Each task should be:
+  - Independently completable
+  - Estimable (1-4 hours)
+  - Testable
+
+### 2. Estimate
+- Size each task (S/M/L/XL)
+- Note unknowns and risks
+- Add buffer for uncertainty
+
+### 3. Order
+- Identify dependencies
+- Sequence for parallel work where possible
+- Start with highest risk or most uncertain
+
+### 4. Document
+- Write a clear plan with:
+  - Goal statement
+  - Task list with estimates
+  - Dependencies
+  - Success criteria
+
+## Plan Format
+```
+## Goal
+[What we're building]
+
+## Tasks
+- [ ] Task 1 (S) - no dependencies
+- [ ] Task 2 (M) - depends on Task 1
+- [ ] Task 3 (L) - can parallel with Task 2
+
+## Success Criteria
+- [ ] All tests pass
+- [ ] Feature works as described
+- [ ] No regressions
+```
+
+## Quality Criteria
+- All tasks are actionable
+- Estimates are reasonable
+- Dependencies are clear
+- Plan is visible and agreed upon
+
+## Anti-Patterns
+- Planning forever without starting
+- Skipping planning for "simple" tasks
+- Not updating the plan as you learn
+- Over-planning (tasks too granular)

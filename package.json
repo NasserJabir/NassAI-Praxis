@@ -1,0 +1,16 @@
+{
+  "name": "nassai-praxis",
+  "version": "1.0.0",
+  "description": "Agentic skills framework & development methodology for coding agents",
+  "author": "NassAI",
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "skills",
+    "methodology",
+    "claude",
+    "copilot",
+    "cursor"
+  ]
+}
