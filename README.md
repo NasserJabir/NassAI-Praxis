@@ -334,6 +334,15 @@ Each persona includes 4 files:
 │         │                               │ patterns    │     │
 │         │                               └─────────────┘     │
 │         │                                       │            │
+│         │                                       ▼            │
+│         │                               ┌─────────────┐     │
+│         │                               │  Agent Gen  │     │
+│         │                               │             │     │
+│         │                               │ Auto-create │     │
+│         │                               │ new agents  │     │
+│         │                               │ from gaps   │     │
+│         │                               └─────────────┘     │
+│         │                                       │            │
 │         └───────────────────────────────────────┘            │
 │                    Continuous Loop                            │
 │                                                              │
@@ -342,10 +351,43 @@ Each persona includes 4 files:
 
 **How it works:**
 
-1. **Evaluation** — After each task, the system evaluates what worked and what did not
-2. **Pattern Discovery** — Identifies recurring patterns across multiple tasks
-3. **Refinement** — Updates existing skills based on project-specific learnings
-4. **Skill Generation** — Creates new skills from discovered patterns
+1. **Evaluation** — After each task, run the evaluation checklist (33-point score)
+2. **Pattern Discovery** — Log successful/failed patterns in `evolve/refine/`
+3. **Refinement** — Track user preferences and codebase conventions
+4. **Skill Generation** — When a procedure repeats 3+ times with score >= 30, auto-generate a new skill
+5. **Agent Generation** — When a task type doesn't fit existing agents, auto-generate a new agent
+
+**Evolve Directory:**
+
+```
+evolve/
+├── evaluation/
+│   └── checklist.md      # 33-point task evaluation checklist
+├── refine/
+│   └── patterns.md       # Successful/failed patterns, user preferences
+├── skills-gen/
+│   └── auto-skills.md    # Skills pending validation before promotion
+└── agents-gen/
+    └── auto-agents.md    # Agents pending validation before creation
+```
+
+**Skill Promotion Criteria:**
+
+| Criterion | Requirement |
+|-----------|-------------|
+| Repetition | Used 3+ times successfully |
+| Score | Average score >= 30/33 |
+| Generality | Works across different contexts |
+| Documentation | Steps are clear and complete |
+
+**Agent Creation Criteria:**
+
+| Criterion | Requirement |
+|-----------|-------------|
+| Gap | No existing agent handles this domain |
+| Repetition | Task type appears 3+ times |
+| Specialization | Requires deep domain knowledge |
+| Isolation | Task benefits from independent execution |
 
 ---
 
@@ -443,6 +485,15 @@ nassai-praxis/
 │   ├── episodic/
 │   ├── semantic/
 │   └── procedural/
+├── evolve/                  # Self-improvement system
+│   ├── evaluation/
+│   │   └── checklist.md     # 33-point task evaluation
+│   ├── refine/
+│   │   └── patterns.md      # Pattern tracking
+│   ├── skills-gen/
+│   │   └── auto-skills.md   # Skill auto-generation
+│   └── agents-gen/
+│       └── auto-agents.md   # Agent auto-generation
 ├── .claude-plugin/          # Claude Code integration
 ├── .cursor-plugin/          # Cursor integration
 ├── .copilot-plugin/         # GitHub Copilot integration
