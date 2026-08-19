@@ -4,19 +4,16 @@ Complete guide for using NassAI Praxis with [Pi](https://pi.ai).
 
 ## Installation
 
-Install NassAI Praxis as a Pi package from this repository:
+Clone the repository and copy to your project:
 
 ```bash
-pi install git:github.com/NasserJabir/NassAI-Praxis
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/.pi-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
 ```
-
-For local development, run Pi with this checkout loaded as a temporary package:
-
-```bash
-pi -e /path/to/NassAI-Praxis
-```
-
-The Pi package loads the NassAI Praxis skills and a small extension that injects the bootstrap at session startup and again after compaction.
 
 ## Usage
 
@@ -24,8 +21,8 @@ The Pi package loads the NassAI Praxis skills and a small extension that injects
 
 NassAI Praxis activates automatically when you start a session in Pi. The agent will:
 
-1. Load the plugin extension
-2. Register all skills from `skills/`
+1. Read the plugin configuration
+2. Load available skills from `skills/`
 3. Load personas from `personas/`
 4. Initialize memory from `memory/`
 
@@ -82,21 +79,27 @@ Create `.pi/config.json` in your project root:
 
 To update NassAI Praxis in Pi:
 
-```bash
-pi update nassai-praxis
-```
-
-Or reinstall from the repository:
+1. Pull the latest changes:
 
 ```bash
-pi install git:github.com/NasserJabir/NassAI-Praxis
+cd path/to/NassAI-Praxis
+git pull origin main
 ```
+
+2. Recopy the plugin files:
+
+```bash
+cp -r NassAI-Praxis/.pi-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+```
+
+3. Restart Pi.
 
 ## Troubleshooting
 
 ### Plugin not loading
 
-1. Check that the Pi package is installed correctly
+1. Check that `.pi-plugin/` directory exists in your project
 2. Verify the plugin configuration files
 3. Restart Pi after installation
 

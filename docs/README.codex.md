@@ -4,32 +4,6 @@ Complete guide for using NassAI Praxis with [Codex](https://openai.com/codex).
 
 ## Installation
 
-### Option 1: Plugin Marketplace (Recommended)
-
-NassAI Praxis is available via the official Codex plugin marketplace.
-
-- In the Codex app, click on Plugins in the sidebar.
-- You should see `NassAI Praxis` in the Coding section.
-- Click the `+` next to NassAI Praxis and follow the prompts.
-
-### Option 2: CLI Installation
-
-Open the plugin search interface:
-
-```text
-/plugins
-```
-
-Search for NassAI Praxis:
-
-```text
-nassai-praxis
-```
-
-Select `Install Plugin`.
-
-### Option 3: Manual Installation
-
 Clone the repository and copy to your project:
 
 ```bash
@@ -105,15 +79,21 @@ Create `.codex/config.json` in your project root:
 
 To update NassAI Praxis in Codex:
 
-1. Open the plugin manager:
+1. Pull the latest changes:
 
-   ```text
-   /plugins
-   ```
+```bash
+cd path/to/NassAI-Praxis
+git pull origin main
+```
 
-2. Go to `Updates` and select NassAI Praxis.
+2. Recopy the plugin files:
 
-3. Or reinstall from the marketplace.
+```bash
+cp -r NassAI-Praxis/.codex-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+```
+
+3. Restart Codex.
 
 ## Troubleshooting
 

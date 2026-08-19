@@ -94,21 +94,11 @@ Each agent gets a plugin configuration file (`.claude-plugin/`, `.cursor-plugin/
 
 ## Installation
 
-Installation differs by harness. If you use more than one, install NassAI Praxis separately for each one.
+NassAI Praxis is not yet published on any marketplace. Installation is manual — clone the repository and copy files into your project.
+
+Pick your agent below for the correct plugin files. If you use more than one agent, install separately for each.
 
 ### Claude Code
-
-NassAI Praxis is available via the Claude plugin marketplace.
-
-#### Official Marketplace
-
-- Install the plugin from the marketplace:
-
-  ```bash
-  /plugin install nassai-praxis
-  ```
-
-#### Manual Installation
 
 ```bash
 git clone https://github.com/NasserJabir/NassAI-Praxis.git
@@ -122,36 +112,6 @@ cp NassAI-Praxis/CLAUDE.md your-project/
 ```
 
 - Detailed docs: [docs/README.claude.md](docs/README.claude.md)
-
-### Cursor
-
-- In Cursor Agent chat, install from marketplace:
-
-  ```text
-  /add-plugin nassai-praxis
-  ```
-
-- Or search for "nassai-praxis" in the plugin marketplace.
-
-- Detailed docs: [docs/README.cursor.md](docs/README.cursor.md)
-
-### GitHub Copilot
-
-- Open the plugin search interface:
-
-  ```text
-  /plugins
-  ```
-
-- Search for NassAI Praxis:
-
-  ```text
-  nassai-praxis
-  ```
-
-- Select `Install Plugin`.
-
-- Detailed docs: [docs/README.copilot.md](docs/README.copilot.md)
 
 ### OpenCode
 
@@ -167,55 +127,69 @@ Restart OpenCode. The plugin installs through OpenCode's plugin manager.
 
 - Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)
 
+### Cursor
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/.cursor-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
+```
+
+- Detailed docs: [docs/README.cursor.md](docs/README.cursor.md)
+
+### GitHub Copilot
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/.copilot-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
+```
+
+- Detailed docs: [docs/README.copilot.md](docs/README.copilot.md)
+
 ### Kimi Code
 
-NassAI Praxis is available in Kimi Code's plugin marketplace.
-
-- Open Kimi Code's plugin manager:
-
-  ```text
-  /plugins
-  ```
-
-- Go to `Marketplace` > `NassAI Praxis` and install it.
-
-- Or install directly from this repository:
-
-  ```text
-  /plugins install https://github.com/NasserJabir/NassAI-Praxis
-  ```
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
+```
 
 - Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)
 
 ### Codex
 
-NassAI Praxis is available via the official Codex plugin marketplace.
-
-- In the Codex app, click on Plugins in the sidebar.
-- You should see `NassAI Praxis` in the Coding section.
-- Click the `+` next to NassAI Praxis and follow the prompts.
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
+```
 
 - Detailed docs: [docs/README.codex.md](docs/README.codex.md)
 
 ### Pi
 
-Install NassAI Praxis as a Pi package from this repository:
-
 ```bash
-pi install git:github.com/NasserJabir/NassAI-Praxis
-```
-
-For local development, run Pi with this checkout loaded as a temporary package:
-
-```bash
-pi -e /path/to/NassAI-Praxis
+git clone https://github.com/NasserJabir/NassAI-Praxis.git
+cp -r NassAI-Praxis/skills your-project/
+cp -r NassAI-Praxis/agents your-project/
+cp -r NassAI-Praxis/personas your-project/
+cp -r NassAI-Praxis/memory your-project/
 ```
 
 - Detailed docs: [docs/README.pi.md](docs/README.pi.md)
 
 ### Windsurf
-
-- Manual installation:
 
 ```bash
 git clone https://github.com/NasserJabir/NassAI-Praxis.git

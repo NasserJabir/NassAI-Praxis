@@ -4,18 +4,6 @@ Complete guide for using NassAI Praxis with [Cursor](https://cursor.sh).
 
 ## Installation
 
-### Option 1: Plugin Marketplace
-
-- In Cursor Agent chat, install from marketplace:
-
-  ```text
-  /add-plugin nassai-praxis
-  ```
-
-- Or search for "nassai-praxis" in the plugin marketplace.
-
-### Option 2: Manual Installation
-
 Clone the repository and copy to your project:
 
 ```bash

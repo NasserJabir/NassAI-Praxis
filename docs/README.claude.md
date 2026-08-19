@@ -4,16 +4,6 @@ Complete guide for using NassAI Praxis with [Claude Code](https://claude.ai/code
 
 ## Installation
 
-### Option 1: Plugin Marketplace (Recommended)
-
-Install from the Claude plugin marketplace:
-
-```bash
-/plugin install nassai-praxis
-```
-
-### Option 2: Manual Installation
-
 Clone the repository and copy to your project:
 
 ```bash
@@ -25,26 +15,6 @@ cp -r NassAI-Praxis/personas your-project/
 cp -r NassAI-Praxis/memory your-project/
 cp NassAI-Praxis/AGENTS.md your-project/
 cp NassAI-Praxis/CLAUDE.md your-project/
-```
-
-### Option 3: Global Installation
-
-Install globally for all your projects:
-
-```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git ~/.nassai-praxis
-```
-
-Then add to your `~/.claude/settings.json`:
-
-```json
-{
-  "projects": {
-    "~/.nassai-praxis": {
-      "allowedTools": ["*"]
-    }
-  }
-}
 ```
 
 ## Usage
@@ -64,14 +34,6 @@ Address personas by name for domain-specific guidance:
 
 ```
 You: Omar, how should I structure this React component?
-```
-
-```
-You: Fatima, what's the best approach for this API endpoint?
-```
-
-```
-You: Nour, review this code for security vulnerabilities.
 ```
 
 ### Using Skills
@@ -124,32 +86,13 @@ Create `.nassai-praxis/config.json` in your project root:
 }
 ```
 
-### Persona Preferences
-
-Edit persona files in `personas/` to customize behavior:
-
-```markdown
-# Omar Al-Khatib — Frontend Developer
-
-## Communication Style
-- Language: English
-- Detail level: moderate
-- Examples: yes
-```
-
 ## Updating
 
 To update NassAI Praxis:
 
 ```bash
-cd ~/.nassai-praxis
+cd NassAI-Praxis
 git pull origin main
-```
-
-Or reinstall from the marketplace:
-
-```bash
-/plugin install nassai-praxis@latest
 ```
 
 ## Troubleshooting
@@ -157,7 +100,7 @@ Or reinstall from the marketplace:
 ### Plugin not loading
 
 1. Check that `.claude-plugin/plugin.json` exists
-2. Verify the plugin line in your Claude Code settings
+2. Verify the files were copied correctly
 3. Restart Claude Code after installation
 
 ### Skills not found
@@ -176,4 +119,3 @@ Or reinstall from the marketplace:
 
 - **Issues**: https://github.com/NasserJabir/NassAI-Praxis/issues
 - **Documentation**: https://github.com/NasserJabir/NassAI-Praxis
-- **Contributing**: https://github.com/NasserJabir/NassAI-Praxis/blob/main/CONTRIBUTING.md

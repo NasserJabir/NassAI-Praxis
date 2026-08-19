@@ -4,28 +4,6 @@ Complete guide for using NassAI Praxis with [Kimi Code](https://kimi.ai).
 
 ## Installation
 
-NassAI Praxis is available in Kimi Code's plugin marketplace.
-
-### Option 1: Plugin Marketplace
-
-- Open Kimi Code's plugin manager:
-
-  ```text
-  /plugins
-  ```
-
-- Go to `Marketplace` > `NassAI Praxis` and install it.
-
-### Option 2: Direct Installation
-
-Install directly from this repository:
-
-```text
-/plugins install https://github.com/NasserJabir/NassAI-Praxis
-```
-
-### Option 3: Manual Installation
-
 Clone the repository and copy to your project:
 
 ```bash
@@ -101,19 +79,21 @@ Create `.kimi/config.json` in your project root:
 
 To update NassAI Praxis in Kimi Code:
 
-1. Open the plugin manager:
+1. Pull the latest changes:
 
-   ```text
-   /plugins
-   ```
+```bash
+cd path/to/NassAI-Praxis
+git pull origin main
+```
 
-2. Go to `Updates` and select NassAI Praxis.
+2. Recopy the plugin files:
 
-3. Or reinstall directly:
+```bash
+cp -r NassAI-Praxis/.kimi-plugin your-project/
+cp -r NassAI-Praxis/skills your-project/
+```
 
-   ```text
-   /plugins install https://github.com/NasserJabir/NassAI-Praxis
-   ```
+3. Restart Kimi Code.
 
 ## Troubleshooting
 

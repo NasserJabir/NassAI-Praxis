@@ -4,8 +4,6 @@ Complete guide for using NassAI Praxis with [Windsurf](https://windsurf.com).
 
 ## Installation
 
-### Manual Installation
-
 Clone the repository and copy to your project:
 
 ```bash

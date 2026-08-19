@@ -4,24 +4,6 @@ Complete guide for using NassAI Praxis with [GitHub Copilot](https://github.com/
 
 ## Installation
 
-### Option 1: Plugin Marketplace
-
-- Open the plugin search interface:
-
-  ```text
-  /plugins
-  ```
-
-- Search for NassAI Praxis:
-
-  ```text
-  nassai-praxis
-  ```
-
-- Select `Install Plugin`.
-
-### Option 2: Manual Installation
-
 Clone the repository and copy to your project:
 
 ```bash
