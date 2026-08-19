@@ -57,11 +57,74 @@ No servers. No databases. No runtime. Just markdown files that any AI agent can 
 
 ---
 
+## Supported Agents
+
+NassAI Praxis works with 8+ AI coding agents:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    NassAI Praxis Core                        │
+│                  (Skills + Memory + Agents)                  │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ▼                   ▼                   ▼
+┌───────────────┐   ┌───────────────┐   ┌───────────────┐
+│  Claude Code  │   │    Cursor     │   │    Copilot    │
+│  (.claude/)   │   │  (.cursor/)   │   │  (.copilot/)  │
+└───────────────┘   └───────────────┘   └───────────────┘
+        │                   │                   │
+        ▼                   ▼                   ▼
+┌───────────────┐   ┌───────────────┐   ┌───────────────┐
+│   OpenCode    │   │   Kimi Code   │   │     Codex     │
+│  (.opencode/) │   │               │   │               │
+└───────────────┘   └───────────────┘   └───────────────┘
+        │                   │                   │
+        ▼                   ▼                   ▼
+┌───────────────┐   ┌───────────────┐   ┌───────────────┐
+│   Windsurf    │   │    Pi         │   │   Gemini CLI  │
+│               │   │               │   │               │
+└───────────────┘   └───────────────┘   └───────────────┘
+```
+
+Each agent gets a plugin configuration file (`.claude-plugin/`, `.cursor-plugin/`, etc.) that tells it how to read NassAI Praxis skills, memory, and personas.
+
+---
+
 ## How It Works
 
 ### 1. Memory System — Your Project's Institutional Knowledge
 
 NassAI Praxis maintains four layers of persistent memory:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Memory Architecture                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐  Current task context                     │
+│  │   Working    │  "Refactoring auth module — phase 2"      │
+│  │   Memory     │  Updated every session                    │
+│  └──────────────┘                                           │
+│                                                              │
+│  ┌──────────────┐  Past events, outcomes                    │
+│  │   Episodic   │  "Migration on Aug 15 caused 3min down"  │
+│  │   Memory     │  Grows with each task                     │
+│  └──────────────┘                                           │
+│                                                              │
+│  ┌──────────────┐  Patterns, conventions                    │
+│  │   Semantic   │  "Always use Zod, never manual checks"   │
+│  │   Memory     │  Project-specific rules                   │
+│  └──────────────┘                                           │
+│                                                              │
+│  ┌──────────────┐  Step-by-step processes                   │
+│  │  Procedural  │  "1. Test → 2. Implement → 3. Commit"    │
+│  │   Memory     │  Workflows that repeat                    │
+│  └──────────────┘                                           │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
 
 | Memory Layer | What It Stores | Example |
 |--------------|----------------|---------|
@@ -99,23 +162,37 @@ When your task is complex, NassAI Praxis dispatches specialized sub-agents. Each
 **How orchestration works:**
 
 ```
-You: "Add user authentication with OAuth2"
-         │
-         ▼
-┌─────────────────┐
-│   Orchestrator   │
-└────────┬────────┘
-         │
-    ┌────┴────┬──────────┬───────────┐
-    ▼         ▼          ▼           ▼
-┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
-│Planner │ │Backend │ │Security│ │Tester  │
-│        │ │Dev     │ │Auditor │ │        │
-└────┬───┘ └────┬───┘ └────┬───┘ └────┬───┘
-     │          │          │          │
-     ▼          ▼          ▼          ▼
-  Tasks     API Code   Security   Test Suite
-  Created   Written    Reviewed   Generated
+┌─────────────────────────────────────────────────────────────┐
+│                  Agent Orchestration Flow                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  You: "Add user authentication with OAuth2"                 │
+│                            │                                 │
+│                            ▼                                 │
+│                   ┌─────────────────┐                        │
+│                   │   Orchestrator   │                        │
+│                   └────────┬────────┘                        │
+│                            │                                 │
+│            ┌───────────────┼───────────────┐                 │
+│            ▼               ▼               ▼                 │
+│     ┌──────────┐    ┌──────────┐    ┌──────────┐            │
+│     │ Planner  │    │ Backend  │    │ Security │            │
+│     │          │    │   Dev    │    │  Auditor │            │
+│     └────┬─────┘    └────┬─────┘    └────┬─────┘            │
+│          │               │               │                   │
+│          ▼               ▼               ▼                   │
+│     Task list      API endpoints    Security review          │
+│     created        written          completed                │
+│                            │                                 │
+│                            ▼                                 │
+│                   ┌─────────────────┐                        │
+│                   │     Tester      │                        │
+│                   └────────┬────────┘                        │
+│                            │                                 │
+│                            ▼                                 │
+│                   Test suite generated                       │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ### 3. Personas — Your AI Team
@@ -165,6 +242,33 @@ Each persona includes 4 files:
 
 ### 4. Skills — 29 Specialized Capabilities
 
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Skill Activation Flow                     │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  User Request                                                │
+│       │                                                      │
+│       ▼                                                      │
+│  ┌──────────────┐                                            │
+│  │   Intent     │  What is the user trying to do?           │
+│  │  Detection   │                                            │
+│  └──────┬───────┘                                            │
+│         │                                                    │
+│    ┌────┴────┬──────────┬───────────┐                        │
+│    ▼         ▼          ▼           ▼                        │
+│  ┌─────┐  ┌─────┐  ┌─────────┐  ┌─────┐                    │
+│  │Core │  │Tech │  │Method   │  │None │                    │
+│  │     │  │     │  │ology    │  │     │                    │
+│  └──┬──┘  └──┬──┘  └────┬────┘  └─────┘                    │
+│     │        │          │                                    │
+│     ▼        ▼          ▼                                    │
+│  Always   Domain-     Process-                               │
+│  active   specific    oriented                               │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
 #### Core Skills (Always Active)
 
 | Skill | What It Does | When It Activates |
@@ -207,29 +311,33 @@ Each persona includes 4 files:
 
 ### 5. Self-Improvement — Learning from Your Project
 
-NassAI Praxis includes a self-improvement loop:
-
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│  Evaluation  │────▶│   Pattern   │────▶│  Refinement  │
-│              │     │  Discovery  │     │              │
-│ Review what  │     │ Find what   │     │ Update skills│
-│ worked or    │     │ keeps       │     │ and patterns │
-│ did not      │     │ happening   │     │              │
-└─────────────┘     └─────────────┘     └─────────────┘
-       │                                       │
-       │                                       ▼
-       │                               ┌─────────────┐
-       │                               │ Skill Gen   │
-       │                               │             │
-       │                               │ Auto-create │
-       │                               │ new skills  │
-       │                               │ from        │
-       │                               │ patterns    │
-       │                               └─────────────┘
-       │                                       │
-       └───────────────────────────────────────┘
-                    Continuous Loop
+┌─────────────────────────────────────────────────────────────┐
+│                  Self-Improvement Loop                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐   │
+│  │  Evaluation  │────▶│   Pattern   │────▶│  Refinement  │   │
+│  │              │     │  Discovery  │     │              │   │
+│  │ Review what  │     │ Find what   │     │ Update skills│   │
+│  │ worked or    │     │ keeps       │     │ and patterns │   │
+│  │ did not      │     │ happening   │     │              │   │
+│  └─────────────┘     └─────────────┘     └─────────────┘   │
+│         │                                       │            │
+│         │                                       ▼            │
+│         │                               ┌─────────────┐     │
+│         │                               │  Skill Gen  │     │
+│         │                               │             │     │
+│         │                               │ Auto-create │     │
+│         │                               │ new skills  │     │
+│         │                               │ from        │     │
+│         │                               │ patterns    │     │
+│         │                               └─────────────┘     │
+│         │                                       │            │
+│         └───────────────────────────────────────┘            │
+│                    Continuous Loop                            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 **How it works:**
@@ -238,21 +346,6 @@ NassAI Praxis includes a self-improvement loop:
 2. **Pattern Discovery** — Identifies recurring patterns across multiple tasks
 3. **Refinement** — Updates existing skills based on project-specific learnings
 4. **Skill Generation** — Creates new skills from discovered patterns
-
----
-
-## Feature Comparison
-
-| Feature | NassAI Praxis | Superpowers | Agent Skills | Mem0 |
-|---------|---------------|-------------|--------------|------|
-| **Skills** | 29 | 24 | Varies | 0 |
-| **Sub-Agents** | 12 | Basic | 0 | 0 |
-| **Personas** | 10 | 0 | 0 | 0 |
-| **Memory Layers** | 4 | Basic | 0 | Vector-based |
-| **Self-Improvement** | Yes | No | No | Basic |
-| **Agent Support** | 8+ | Claude Code | Claude Code | General |
-| **Bilingual** | Yes | No | No | No |
-| **Markdown Only** | Yes | Yes | Yes | No |
 
 ---
 
