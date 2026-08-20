@@ -98,6 +98,56 @@ Agent MUST NOT:
 
 ---
 
+## 1.1 ONE PERSONA = ONE SUB-AGENT
+
+**A persona is a single human identity. One person cannot work 3 times in parallel.**
+
+### Rule: Never dispatch multiple instances of the same persona
+
+```
+❌ BAD: "I will dispatch 3 yasmin (tester) agents in parallel"
+❌ BAD: "Let me send 2 omar (frontend) sub-agents"
+❌ BAD: Multiple copies of the same persona working simultaneously
+
+✅ GOOD: One persona per task, sequentially
+✅ GOOD: Different personas for different tasks
+✅ GOOD: One persona does all related work, then next
+```
+
+### Why this matters
+
+1. **Each persona has unique memory** — experience.md, skills.md, preferences.md
+2. **Personas learn from past tasks** — parallel copies don't share learning
+3. **Identity is singular** — "Karim" is one person, not three clones
+4. **Evaluation requires history** — can't track outcomes from parallel instances
+
+### Correct approach for multiple tasks
+
+```
+User: "I need frontend, backend, and testing"
+
+Agent MUST:
+1. Dispatch omar (frontend-developer) → wait for result
+2. Dispatch fatima (backend-developer) → wait for result
+3. Dispatch yasmin (tester) → wait for result
+
+Agent MUST NOT:
+❌ Dispatch 3 omar agents in parallel
+❌ Dispatch 2 yasmin agents simultaneously
+❌ Clone personas for parallel work
+```
+
+### Parallel work with DIFFERENT personas
+
+If tasks are independent and involve different skills, you CAN dispatch different personas in parallel:
+
+```
+✅ ACCEPTABLE: Dispatch omar AND fatima in parallel (different personas, different tasks)
+❌ NOT ACCEPTABLE: Dispatch omar AND omar in parallel (same persona, impossible)
+```
+
+---
+
 ## 2. WORKFLOW (MANDATORY)
 
 **You MUST follow this exact sequence for EVERY task. No exceptions.**
