@@ -1,24 +1,23 @@
 /**
  * NassAI Praxis plugin for OpenCode.ai
  *
+ * CommonJS format for maximum compatibility.
  * Registers skills directory via config hook.
  * Injects bootstrap context via message transform.
  */
 
-import path from 'path';
-import fs from 'fs';
-import os from 'os';
-import { fileURLToPath } from 'url';
+const path = require('path');
+const fs = require('fs');
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nassaiRoot = path.resolve(__dirname, '../..');
 const nassaiSkillsDir = path.join(nassaiRoot, 'skills');
 const nassaiMemoryDir = path.join(nassaiRoot, 'memory');
 const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
+const nassaiScriptsDir = path.join(nassaiRoot, 'scripts');
 
 let _bootstrapCache = undefined;
 
-export const NassaiPraxisPlugin = async ({ client, directory }) => {
+function NassaiPraxisPlugin({ client, directory }) {
   const getBootstrapContent = () => {
     if (_bootstrapCache !== undefined) return _bootstrapCache;
 
@@ -32,59 +31,49 @@ export const NassaiPraxisPlugin = async ({ client, directory }) => {
 
     const toolMapping = `**Tool Mapping for OpenCode:**
 When skills request actions, substitute OpenCode equivalents:
-- Create or update todos → \`todowrite\`
-- \`Subagent (general-purpose):\` → \`task\` with \`subagent_type: "general"\`
-- Invoke a skill → OpenCode's native \`skill\` tool
-- Read files → \`read\`
-- Create, edit, or delete files → \`apply_patch\`
-- Run shell commands → \`bash\`
-- Search files → \`grep\`, \`glob\`
-- Fetch a URL → \`webfetch\`
+- Create or update todos → todowrite
+- Subagent (general-purpose) → task with subagent_type: "general"
+- Invoke a skill → OpenCode's native skill tool
+- Read files → read
+- Create, edit, or delete files → apply_patch
+- Run shell commands → bash
+- Search files → grep, glob
+- Fetch a URL → webfetch
 
-Use OpenCode's native \`skill\` tool to list and load skills.`;
+Use OpenCode's native skill tool to list and load skills.`;
 
     const pathsContext = `**NassAI Praxis Paths (Absolute):**
-- Skills: \`${nassaiSkillsDir}\`
-- Memory: \`${nassaiMemoryDir}\`
-  - Working: \`${path.join(nassaiMemoryDir, 'working')}\`
-  - Episodic: \`${path.join(nassaiMemoryDir, 'episodic')}\`
-  - Semantic: \`${path.join(nassaiMemoryDir, 'semantic')}\`
-  - Procedural: \`${path.join(nassaiMemoryDir, 'procedural')}\`
-- Self-Improvement: \`${nassaiEvolveDir}\`
-  - Evaluation: \`${path.join(nassaiEvolveDir, 'evaluation')}\`
-  - Refine: \`${path.join(nassaiEvolveDir, 'refine')}\`
-  - Skills Generation: \`${path.join(nassaiEvolveDir, 'skills-gen')}\`
-  - Agents Generation: \`${path.join(nassaiEvolveDir, 'agents-gen')}\`
-- Scripts: \`${path.join(nassaiRoot, 'scripts')}\`
+- Skills: ${nassaiSkillsDir}
+- Memory: ${nassaiMemoryDir}
+  - Working: ${path.join(nassaiMemoryDir, 'working')}
+  - Episodic: ${path.join(nassaiMemoryDir, 'episodic')}
+  - Semantic: ${path.join(nassaiMemoryDir, 'semantic')}
+  - Procedural: ${path.join(nassaiMemoryDir, 'procedural')}
+- Self-Improvement: ${nassaiEvolveDir}
+  - Evaluation: ${path.join(nassaiEvolveDir, 'evaluation')}
+  - Refine: ${path.join(nassaiEvolveDir, 'refine')}
+  - Skills Generation: ${path.join(nassaiEvolveDir, 'skills-gen')}
+  - Agents Generation: ${path.join(nassaiEvolveDir, 'agents-gen')}
+- Scripts: ${nassaiScriptsDir}
 
 Use these absolute paths when reading/writing memory or evolve files.`;
 
-    const scriptsDir = path.join(nassaiRoot, 'scripts');
-
-    const automationWorkflow = `**MANDATORY AUTOMATION WORKFLOW — YOU MUST FOLLOW THIS:**
+    const automationWorkflow = `**MANDATORY AUTOMATION WORKFLOW - YOU MUST FOLLOW THIS:**
 
 After EVERY significant task completion, run these scripts IN ORDER:
 
 ### Step 1: Evaluate the task
-\`\`\`bash
-node "${path.join(scriptsDir, 'evaluate.js')}" --task "<task name>" --score <0-33> --agent "<agent or main>" --notes "<what happened>" --lessons "<what was learned>"
-\`\`\`
+node "${path.join(nassaiScriptsDir, 'evaluate.js')}" --task "<task name>" --score <0-33> --agent "<agent or main>" --notes "<what happened>" --lessons "<what was learned>"
 Score breakdown: CodeQuality(0-6) + Testing(0-6) + Security(0-6) + Documentation(0-5) + MemoryLearning(0-5) + ProcessAdherence(0-5) = 33
 
 ### Step 2: Update the persona (if a sub-agent was used)
-\`\`\`bash
-node "${path.join(scriptsDir, 'update-persona.js')}" --persona "<persona name>" --task "<task name>" --outcome "success|failure" --skill "<skill if learned>" --experience "<what was gained>" --lessons "<lessons>"
-\`\`\`
+node "${path.join(nassaiScriptsDir, 'update-persona.js')}" --persona "<persona name>" --task "<task name>" --outcome "success|failure" --skill "<skill if learned>" --experience "<what was gained>" --lessons "<lessons>"
 
 ### Step 3: Check for new skills (run after evaluation)
-\`\`\`bash
-node "${path.join(scriptsDir, 'auto-skill.js')}"
-\`\`\`
+node "${path.join(nassaiScriptsDir, 'auto-skill.js')}"
 
 ### Step 4: Check for new agents (run after evaluation)
-\`\`\`bash
-node "${path.join(scriptsDir, 'auto-agent.js')}"
-\`\`\`
+node "${path.join(nassaiScriptsDir, 'auto-agent.js')}"
 
 **WHEN to run:** After ANY task that involves coding, debugging, reviewing, planning, or architecture.
 **DO NOT skip evaluation.** This is how the system learns and improves.
@@ -128,7 +117,7 @@ ${automationWorkflow}
       firstUser.parts.unshift({ ...ref, type: 'text', text: bootstrap });
     }
   };
-};
+}
 
-// Default export for OpenCode plugin loader
-export default NassaiPraxisPlugin;
+module.exports = NassaiPraxisPlugin;
+module.exports.default = NassaiPraxisPlugin;
