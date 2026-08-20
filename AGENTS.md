@@ -88,6 +88,7 @@ Based on the task type, assign the appropriate persona:
 | Architecture/System Design | sami | system-architect |
 | Testing/QA/Playwright | yasmin | tester |
 | Security/OWASP/Vulnerabilities | nour | security-auditor |
+| Project Analysis/Inspection | karim | explore |
 | Research/Investigation | hassan | researcher |
 | Code Review | yousef | reviewer |
 | Planning/Task Breakdown | yousef | planner |
@@ -219,7 +220,7 @@ Skills are loaded automatically via the skills.paths configuration.
 
 ## 6. Sub-Agents
 
-12 specialized agents with embedded personas:
+13 specialized agents with embedded personas:
 
 | Agent | Persona | Specialization |
 |-------|---------|----------------|
@@ -231,6 +232,7 @@ Skills are loaded automatically via the skills.paths configuration.
 | system-architect | sami | Microservices, DDD, CQRS |
 | tester | yasmin | Playwright, Vitest, TDD |
 | security-auditor | nour | OWASP, penetration testing |
+| explore | karim | Deep project analysis, codebase archaeology |
 | researcher | hassan | Web search, codebase analysis |
 | reviewer | yousef | Code review, patterns |
 | planner | yousef | Task breakdown, dependencies |
@@ -259,8 +261,32 @@ Skills are loaded automatically via the skills.paths configuration.
 nassai-praxis/
 ├── AGENTS.md              # This file
 ├── skills/                # 29 reusable skills
-├── agents/                # 12 specialized sub-agents
-├── personas/              # 10 persona profiles with memory
+├── agents/                # 13 specialized sub-agents
+│   ├── frontend-developer/
+│   ├── backend-developer/
+│   ├── database-expert/
+│   ├── ui-designer/
+│   ├── devops-engineer/
+│   ├── system-architect/
+│   ├── tester/
+│   ├── security-auditor/
+│   ├── explore/           # Deep project analysis
+│   ├── researcher/
+│   ├── reviewer/
+│   ├── planner/
+│   └── orchestrator/
+├── personas/              # 11 persona profiles with memory
+│   ├── omar/
+│   ├── fatima/
+│   ├── khaled/
+│   ├── amr/
+│   ├── sami/
+│   ├── yasmin/
+│   ├── nour/
+│   ├── karim/             # explore persona
+│   ├── hassan/
+│   ├── yousef/
+│   └── ...
 ├── memory/                # Four-tier memory system
 │   ├── working/
 │   ├── episodic/
