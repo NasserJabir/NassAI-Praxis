@@ -13,6 +13,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nassaiRoot = path.resolve(__dirname, '../..');
 const nassaiSkillsDir = path.join(nassaiRoot, 'skills');
+const nassaiMemoryDir = path.join(nassaiRoot, 'memory');
+const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
 
 let _bootstrapCache = undefined;
 
@@ -41,6 +43,21 @@ When skills request actions, substitute OpenCode equivalents:
 
 Use OpenCode's native \`skill\` tool to list and load skills.`;
 
+    const pathsContext = `**NassAI Praxis Paths (Absolute):**
+- Skills: \`${nassaiSkillsDir}\`
+- Memory: \`${nassaiMemoryDir}\`
+  - Working: \`${path.join(nassaiMemoryDir, 'working')}\`
+  - Episodic: \`${path.join(nassaiMemoryDir, 'episodic')}\`
+  - Semantic: \`${path.join(nassaiMemoryDir, 'semantic')}\`
+  - Procedural: \`${path.join(nassaiMemoryDir, 'procedural')}\`
+- Self-Improvement: \`${nassaiEvolveDir}\`
+  - Evaluation: \`${path.join(nassaiEvolveDir, 'evaluation')}\`
+  - Refine: \`${path.join(nassaiEvolveDir, 'refine')}\`
+  - Skills Generation: \`${path.join(nassaiEvolveDir, 'skills-gen')}\`
+  - Agents Generation: \`${path.join(nassaiEvolveDir, 'agents-gen')}\`
+
+Use these absolute paths when reading/writing memory or evolve files.`;
+
     _bootstrapCache = `<EXTREMELY_IMPORTANT>
 You have NassAI Praxis loaded.
 
@@ -49,6 +66,8 @@ You have NassAI Praxis loaded.
 ${introContent}
 
 ${toolMapping}
+
+${pathsContext}
 </EXTREMELY_IMPORTANT>`;
 
     return _bootstrapCache;
