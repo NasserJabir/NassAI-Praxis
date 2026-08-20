@@ -325,4 +325,4 @@ When reading/writing files, use these paths:
 
 ---
 
-*Version: 2.0.0 | NassAI Praxis | Made with love by NassAI (Nasser Jabir) | MIT License*
+*Version: 2.1.0 | NassAI Praxis | Made with love by NassAI (Nasser Jabir) | MIT License*
