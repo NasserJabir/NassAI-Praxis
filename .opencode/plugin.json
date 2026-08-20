@@ -2,6 +2,7 @@
   "name": "nassai-praxis",
   "description": "Agentic skills framework & development methodology for OpenCode: memory, personas, sub-agents, and 29 specialized skills",
   "version": "1.0.0",
+  "main": "plugins/nassai-praxis.js",
   "author": {
     "name": "Nasser Jabir"
   },
