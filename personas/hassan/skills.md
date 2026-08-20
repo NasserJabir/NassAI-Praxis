@@ -31,3 +31,5 @@
 - Open to feedback and alternative solutions
 
 - PowerShell scripting (learned on 2026-08-20)
+
+- Node.js scripting (learned on 2026-08-20)

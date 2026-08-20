@@ -353,8 +353,10 @@ When a procedure is repeated 3+ times with success:
 1. Run quality checklist
 2. **Run automation scripts (MANDATORY):**
    ```bash
-   powershell -ExecutionPolicy Bypass -File "scripts/evaluate.ps1" -TaskName "<name>" -TotalScore <0-33> -AgentName "<agent>" -Notes "<what>" -Lessons "<learned>"
-   powershell -ExecutionPolicy Bypass -File "scripts/update-persona.ps1" -PersonaName "<persona>" -TaskName "<name>" -Outcome "success|failure" -NewSkill "<skill>" -NewExperience "<exp>" -LessonsLearned "<lessons>"
+   node scripts/evaluate.js --task "<name>" --score <0-33> --agent "<agent>" --notes "<what>" --lessons "<learned>"
+   node scripts/update-persona.js --persona "<persona>" --task "<name>" --outcome "success|failure" --skill "<skill>" --experience "<exp>" --lessons "<lessons>"
+   node scripts/auto-skill.js
+   node scripts/auto-agent.js
    ```
 3. Update working memory
 4. Record episode if lesson was learned
@@ -389,11 +391,11 @@ nassai-praxis/
 │   ├── evaluation/
 │   ├── refine/
 │   └── skills-gen/
-├── scripts/               # Automation scripts
-│   ├── evaluate.ps1       # Task evaluation & memory recording
-│   ├── auto-skill.ps1     # Auto-generate new skills
-│   ├── auto-agent.ps1     # Auto-generate new agents
-│   └── update-persona.ps1 # Update persona experience/skills
+├── scripts/               # Automation scripts (cross-platform Node.js)
+│   ├── evaluate.js        # Task evaluation & memory recording
+│   ├── auto-skill.js      # Auto-generate new skills
+│   ├── auto-agent.js      # Auto-generate new agents
+│   └── update-persona.js  # Update persona experience/skills
 └── package.json           # Package metadata
 ```
 

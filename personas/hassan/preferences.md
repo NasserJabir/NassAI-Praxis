@@ -26,3 +26,5 @@
 - Debugging via logs and breakpoints as needed
 
 - likes: test automation setup (succeeded on 2026-08-20)
+
+- likes: cross-platform test (succeeded on 2026-08-20)

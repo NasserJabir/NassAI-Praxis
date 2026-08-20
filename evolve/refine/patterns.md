@@ -132,3 +132,9 @@ After each task:
 - **Agent:** main
 - **Lesson:** Pattern solid
 - **Status:** confirmed
+
+### Pattern: 2026-08-20 13:07 — cross-platform test
+- **Score:** 30/33
+- **Agent:** main
+- **Lesson:** Node.js works everywhere
+- **Status:** confirmed
