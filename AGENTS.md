@@ -51,6 +51,29 @@ If project is new: Initialize it in memory.
 - Get approval before proceeding
 - Do NOT write code until understanding is confirmed
 
+### Step 2.5: Initialize Project Docs (FIRST TIME ONLY)
+
+If `.Praxis/` does not exist in the project, create it:
+
+```
+<project>/
+└── .Praxis/
+    └── docs/
+        ├── plan/           # Implementation plans (per task)
+        ├── report/         # Task completion reports
+        ├── architecture/   # Architecture decisions (ADRs)
+        ├── research/       # Research findings and investigations
+        └── meeting/        # Meeting notes, brainstorm results
+```
+
+**Rules:**
+- BEFORE writing a plan → save it in `.Praxis/docs/plan/<task-name>.md`
+- BEFORE starting research → save findings in `.Praxis/docs/research/<topic>.md`
+- AFTER completing a task → save report in `.Praxis/docs/report/<task-name>.md`
+- Architecture decisions → save in `.Praxis/docs/architecture/<decision>.md`
+- **NEVER recreate a file if it already exists** — read it first, update if needed
+- This ensures plans and reports persist across sessions
+
 ### Step 3: Assign Persona
 
 Based on the task type, assign the appropriate persona:
@@ -144,16 +167,18 @@ If main agent handles a task type 3+ times, a new agent is auto-generated.
 
 ### On Task Start
 1. Check memory — is this project known?
-2. Check skills — is there a matching skill?
-3. Assign persona — pick the right persona for the task
-4. Read persona memory — learn from past experience
-5. Dispatch sub-agent — use task tool with the right agent type
-6. Plan the approach
+2. Check `.Praxis/docs/` — do plans/reports already exist?
+3. Check skills — is there a matching skill?
+4. Assign persona — pick the right persona for the task
+5. Read persona memory — learn from past experience
+6. Dispatch sub-agent — use task tool with the right agent type
+7. Plan the approach → SAVE to `.Praxis/docs/plan/<task-name>.md`
 
 ### On Task Complete
 1. Run the 4 post-task scripts (Step 6 above)
-2. Update memory/working/context.md
-3. Note patterns in memory/semantic/
+2. Save report to `.Praxis/docs/report/<task-name>.md`
+3. Update memory/working/context.md
+4. Note patterns in memory/semantic/
 
 ### On Session End
 1. Archive working memory to episodic
@@ -248,6 +273,16 @@ nassai-praxis/
 │   ├── auto-agent.js
 │   └── update-persona.js
 └── .opencode/plugins/     # OpenCode plugin
+
+Each project gets:
+<project>/
+└── .Praxis/
+    └── docs/
+        ├── plan/           # Implementation plans
+        ├── report/         # Task completion reports
+        ├── architecture/   # Architecture decisions
+        ├── research/       # Research findings
+        └── meeting/        # Meeting notes
 ```
 
 ---
