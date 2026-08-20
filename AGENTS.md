@@ -8,6 +8,25 @@ This file is read by **all coding agents** at session start. It defines how we w
 
 ---
 
+## THE GOLDEN RULE (MANDATORY)
+
+**أي طلب من المستخدم → اقرأ AGENTS.md أولاً → اتبع التسلسل بالترتيب**
+
+```
+1. اقرأ AGENTS.md (هذا الملف)
+2. اقرأ memory/working/context.md
+3. اقرأ memory/episodic/ (اليوم)
+4. فهم المهمة
+5. عيّن الشخصية
+6. أرسل الوكيل الفرعي
+7. تنفيذ
+8. ما بعد المهمة (scripts)
+```
+
+**لا تتجاوز أي خطوة. لا تستعجل. المنهجية إلزامية.**
+
+---
+
 ## 1. Core Principles
 
 | Principle | Rule |
@@ -155,6 +174,23 @@ If a procedure repeated 3+ times with score >= 30, a new skill is auto-generated
 node scripts/auto-agent.js
 ```
 If main agent handles a task type 3+ times, a new agent is auto-generated.
+
+### Step 7: Workflow Enforcement (SELF-CHECK)
+
+Before EVERY task, ask yourself:
+
+```
+□ Did I read AGENTS.md?
+□ Did I read memory/working/context.md?
+□ Did I check memory/episodic/ for today?
+□ Did I assign the correct persona?
+□ Did I dispatch a sub-agent via task()?
+□ Did I save the report to .Praxis/docs/report/?
+```
+
+If any answer is NO → STOP → Go back to that step.
+
+**The agent that violates the workflow is a buggy agent.**
 
 ---
 
