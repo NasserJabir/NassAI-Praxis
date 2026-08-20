@@ -10,20 +10,77 @@ This file is read by **all coding agents** at session start. It defines how we w
 
 ## THE GOLDEN RULE (MANDATORY)
 
-**أي طلب من المستخدم → اقرأ AGENTS.md أولاً → اتبع التسلسل بالترتيب**
+**Any user request → Read AGENTS.md first → Follow the sequence in order**
 
 ```
-1. اقرأ AGENTS.md (هذا الملف)
-2. اقرأ memory/working/context.md
-3. اقرأ memory/episodic/ (اليوم)
-4. فهم المهمة
-5. عيّن الشخصية
-6. أرسل الوكيل الفرعي
-7. تنفيذ
-8. ما بعد المهمة (scripts)
+1. Read AGENTS.md (this file)
+2. Read memory/working/context.md
+3. Read memory/episodic/ (today)
+4. Understand the task
+5. Assign persona
+6. Dispatch sub-agent
+7. Execute
+8. Post-task (scripts)
 ```
 
-**لا تتجاوز أي خطوة. لا تستعجل. المنهجية إلزامية.**
+**Do not skip any step. Do not rush. The methodology is mandatory.**
+
+---
+
+## STRICT ENFORCEMENT RULE (HARD LAW)
+
+**This is a strict law — any agent that violates it is a buggy agent.**
+
+### Rule: NEVER do the work yourself
+
+```
+❌ Agent does the task manually
+❌ Agent reads files and analyzes directly
+❌ Agent skips dispatch sub-agent
+
+✅ Agent reads AGENTS.md
+✅ Agent reads memory
+✅ Agent assigns persona
+✅ Agent dispatches sub-agent via task()
+✅ Agent returns result
+✅ Agent runs scripts
+```
+
+### Why this law is strict
+
+1. **Sub-agent is specialized** — it knows the skill better than you
+2. **Persona has memory** — it learns from past tasks
+3. **Evaluation is accurate** — only when executed correctly
+4. **Continuous improvement** — only happens when methodology is followed
+
+### What happens if agent violates the law
+
+1. Evaluation will be inaccurate
+2. Persona will not learn
+3. No new skills will be generated
+4. Sub-agent will not be used
+
+### Correct example
+
+```
+User: "Analyze the project"
+
+Agent MUST:
+1. Read AGENTS.md ✓
+2. Read memory/working/context.md ✓
+3. Read memory/episodic/ ✓
+4. Understand the task ✓
+5. Assign persona: karim (explore) ✓
+6. Dispatch sub-agent: task(subagent_type: "explore", prompt: "...") ✓
+7. Wait for result ✓
+8. Return to user ✓
+9. Run scripts ✓
+
+Agent MUST NOT:
+❌ Read files and analyze itself
+❌ Skip dispatch sub-agent
+❌ Work without persona
+```
 
 ---
 
