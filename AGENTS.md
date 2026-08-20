@@ -351,10 +351,15 @@ When a procedure is repeated 3+ times with success:
 
 ### On Task Complete
 1. Run quality checklist
-2. Update working memory
-3. Record episode if lesson was learned
-4. Note patterns in semantic memory
-5. Update procedural memory if new procedure was created
+2. **Run automation scripts (MANDATORY):**
+   ```bash
+   powershell -ExecutionPolicy Bypass -File "scripts/evaluate.ps1" -TaskName "<name>" -TotalScore <0-33> -AgentName "<agent>" -Notes "<what>" -Lessons "<learned>"
+   powershell -ExecutionPolicy Bypass -File "scripts/update-persona.ps1" -PersonaName "<persona>" -TaskName "<name>" -Outcome "success|failure" -NewSkill "<skill>" -NewExperience "<exp>" -LessonsLearned "<lessons>"
+   ```
+3. Update working memory
+4. Record episode if lesson was learned
+5. Note patterns in semantic memory
+6. Update procedural memory if new procedure was created
 
 ### On Session End
 1. Archive working memory to episodic
@@ -384,6 +389,11 @@ nassai-praxis/
 │   ├── evaluation/
 │   ├── refine/
 │   └── skills-gen/
+├── scripts/               # Automation scripts
+│   ├── evaluate.ps1       # Task evaluation & memory recording
+│   ├── auto-skill.ps1     # Auto-generate new skills
+│   ├── auto-agent.ps1     # Auto-generate new agents
+│   └── update-persona.ps1 # Update persona experience/skills
 └── package.json           # Package metadata
 ```
 

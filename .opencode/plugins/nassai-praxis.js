@@ -55,8 +55,35 @@ Use OpenCode's native \`skill\` tool to list and load skills.`;
   - Refine: \`${path.join(nassaiEvolveDir, 'refine')}\`
   - Skills Generation: \`${path.join(nassaiEvolveDir, 'skills-gen')}\`
   - Agents Generation: \`${path.join(nassaiEvolveDir, 'agents-gen')}\`
+- Scripts: \`${path.join(nassaiRoot, 'scripts')}\`
 
 Use these absolute paths when reading/writing memory or evolve files.`;
+
+    const scriptsDir = path.join(nassaiRoot, 'scripts');
+
+    const automationWorkflow = `**MANDATORY AUTOMATION WORKFLOW — YOU MUST FOLLOW THIS:**
+
+After EVERY significant task completion, run these scripts IN ORDER:
+
+### Step 1: Evaluate the task
+\`\`\`bash
+powershell -ExecutionPolicy Bypass -File "${path.join(scriptsDir, 'evaluate.ps1')}" -TaskName "<task name>" -TotalScore <0-33> -AgentName "<agent or main>" -Notes "<what happened>" -Lessons "<what was learned>"
+\`\`\`
+Score breakdown: CodeQuality(0-6) + Testing(0-6) + Security(0-6) + Documentation(0-5) + MemoryLearning(0-5) + ProcessAdherence(0-5) = 33
+
+### Step 2: Update the persona (if a sub-agent was used)
+\`\`\`bash
+powershell -ExecutionPolicy Bypass -File "${path.join(scriptsDir, 'update-persona.ps1')}" -PersonaName "<persona name>" -TaskName "<task name>" -Outcome "success|failure" -NewSkill "<skill if learned>" -NewExperience "<what was gained>" -LessonsLearned "<lessons>"
+\`\`\`
+
+### Step 3: Check for new skills (runs automatically in evaluate.ps1)
+If a task repeats 3+ times with score >= 30, a new skill is auto-generated.
+
+### Step 4: Check for new agents (runs automatically in evaluate.ps1)
+If main agent handles a task type 3+ times, a new agent is auto-generated.
+
+**WHEN to run:** After ANY task that involves coding, debugging, reviewing, planning, or architecture.
+**DO NOT skip evaluation.** This is how the system learns and improves.`;
 
     _bootstrapCache = `<EXTREMELY_IMPORTANT>
 You have NassAI Praxis loaded.
@@ -68,6 +95,8 @@ ${introContent}
 ${toolMapping}
 
 ${pathsContext}
+
+${automationWorkflow}
 </EXTREMELY_IMPORTANT>`;
 
     return _bootstrapCache;
