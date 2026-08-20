@@ -129,3 +129,6 @@ ${automationWorkflow}
     }
   };
 };
+
+// Default export for OpenCode plugin loader
+export default NassaiPraxisPlugin;
