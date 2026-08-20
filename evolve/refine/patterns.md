@@ -114,3 +114,21 @@ After each task:
 - **0.3-0.6:** Partially validated, used 1-2 times
 - **0.6-0.8:** Well validated, used 3+ times
 - **0.8-1.0:** Highly validated, universally applicable
+
+### Pattern: 2026-08-20 12:37 - test automation setup
+- **Score:** 31/33
+- **Agent:** main
+- **Lesson:** Pattern works
+- **Status:** confirmed
+
+### Pattern: 2026-08-20 12:37 - test automation setup
+- **Score:** 32/33
+- **Agent:** main
+- **Lesson:** Pattern confirmed
+- **Status:** confirmed
+
+### Pattern: 2026-08-20 12:37 - test automation setup
+- **Score:** 33/33
+- **Agent:** main
+- **Lesson:** Pattern solid
+- **Status:** confirmed

@@ -11,10 +11,10 @@ $EvolveDir = Join-Path $PSScriptRoot "..\evolve\agents-gen"
 $PendingFile = Join-Path $EvolveDir "auto-agents.md"
 $EpisodicDir = Join-Path $MemoryRoot "episodic"
 
-Write-Host "=== فحص توليد الوكلاء التلقائي ==="
+Write-Host "=== Auto Agent Generation Check ==="
 Write-Host ""
 
-# --- 1. اجمع الوكلاء الحاليين ---
+# --- 1. Collect existing agents ---
 $ExistingAgents = @()
 Get-ChildItem $AgentsRoot -Directory -ErrorAction SilentlyContinue | ForEach-Object {
     $agentFile = Join-Path $_.FullName "AGENT.md"
@@ -26,20 +26,20 @@ Get-ChildItem $AgentsRoot -Directory -ErrorAction SilentlyContinue | ForEach-Obj
             Role = $role
             Dir = $_.FullName
         }
-        Write-Host "[existing] $($_.Name) — $role"
+        Write-Host "[existing] $($_.Name) - $role"
     }
 }
 
 Write-Host ""
-Write-Host "وكلاء موجودين: $($ExistingAgents.Count)"
+Write-Host "Existing agents: $($ExistingAgents.Count)"
 
-# --- 2. اجمع المهام من الذاكرة ---
+# --- 2. Collect tasks from memory ---
 $TaskAgents = @{}
-$ Episodes = Get-ChildItem $EpisodicDir -Filter "*.md" -ErrorAction SilentlyContinue
+$Episodes = Get-ChildItem $EpisodicDir -Filter "*.md" -ErrorAction SilentlyContinue
 
 foreach ($ep in $Episodes) {
     $content = Get-Content $ep.FullName -Raw
-    $matches = [regex]::Matches($content, "## (\d{2}:\d{2}) — (.+?)\r?\n.*Agent: (\w+)")
+    $matches = [regex]::Matches($content, "## (\d{2}:\d{2}) - (.+?)\r?\n.*Agent: (\w+)")
     foreach ($m in $matches) {
         $taskName = $m.Groups[2].Value.Trim()
         $agent = $m.Groups[3].Value.Trim()
@@ -50,9 +50,9 @@ foreach ($ep in $Episodes) {
     }
 }
 
-# --- 3. تحقق من المهام التي لا يتناسب أي وكيل معها ---
+# --- 3. Check for tasks without suitable agent ---
 Write-Host ""
-Write-Host "=== فحص المهام بدون وكيل مناسب ==="
+Write-Host "=== Checking tasks without suitable agent ==="
 
 $NeedNewAgent = @()
 foreach ($task in $TaskAgents.GetEnumerator()) {
@@ -65,17 +65,17 @@ foreach ($task in $TaskAgents.GetEnumerator()) {
             TaskName = $taskName
             Count = $count
         }
-        Write-Host "[need-agent] $taskName — نُفّذ $count مرات بواسطة main"
+        Write-Host "[need-agent] $taskName - executed $count times by main"
     }
 }
 
 if ($NeedNewAgent.Count -eq 0) {
     Write-Host ""
-    Write-Host "لا توجد مهام تحتاج وكيل جديد"
+    Write-Host "No tasks need a new agent"
     exit 0
 }
 
-# --- 4. أنشئ وكلاء جدد ---
+# --- 4. Create new agents ---
 $AgentNames = @("reza", "mariam", "ali", "zahra", "mahdi", "sara", "hamed", "mona")
 $UsedNames = $ExistingAgents | ForEach-Object { $_.Name }
 $AvailableNames = $AgentNames | Where-Object { $UsedNames -notcontains $_ }
@@ -85,7 +85,7 @@ if ($AvailableNames.Count -eq 0) {
 }
 
 Write-Host ""
-Write-Host "=== إنشاء وكلاء جدد ==="
+Write-Host "=== Creating new agents ==="
 
 foreach ($need in $NeedNewAgent) {
     if ($AvailableNames.Count -eq 0) { break }
@@ -101,23 +101,23 @@ foreach ($need in $NeedNewAgent) {
 # $agentName
 
 ## Identity
-- **Name:** $agentName (مولّد تلقائياً)
-- **Role:** متخصص في: $($need.TaskName)
+- **Name:** $agentName (auto-generated)
+- **Role:** Specialized in: $($need.TaskName)
 - **Level:** mid
 - **Generated:** $(Get-Date -Format "yyyy-MM-dd")
 
 ## Capabilities
 - [x] $($need.TaskName)
-- [ ] مهام أخرى تحتاج تقييم
+- [ ] Other tasks pending evaluation
 
 ## Interactions
 - Receives from: main agent
 - Sends to: main agent
 
 ## Constraints
-- يجب تقييم الأداء بعد كل مهمة
-- لا يتجاوز نطاق التخصص المحدد
-- يسجل كل تجربة في الذاكرة
+- Must evaluate performance after each task
+- Must not exceed defined specialization scope
+- Must record every experience in memory
 
 ## Memory
 - Working: current task
@@ -128,13 +128,13 @@ foreach ($need in $NeedNewAgent) {
     
     Set-Content -Path $agentFile -Value $agentContent -Encoding UTF8
     
-    # أنشئ مجلدات الذاكرة
+    # Create memory directories
     New-Item -ItemType Directory -Path "$agentDir\memory" -Force | Out-Null
     New-Item -ItemType Directory -Path "$agentDir\skills" -Force | Out-Null
     New-Item -ItemType Directory -Path "$agentDir\experiences" -Force | Out-Null
     
-    Write-Host "[created] وكيل جديد: $agentName — $($need.TaskName)"
+    Write-Host "[created] New agent: $agentName - $($need.TaskName)"
 }
 
 Write-Host ""
-Write-Host "=== اكتمل توليد الوكلاء ==="
+Write-Host "=== Agent Generation Complete ==="

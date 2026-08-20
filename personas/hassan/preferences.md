@@ -24,3 +24,5 @@
 - Uses IDE features (autocomplete, go-to-definition)
 - Comfortable with CLI tools and basic shell scripting
 - Debugging via logs and breakpoints as needed
+
+- likes: test automation setup (succeeded on 2026-08-20)

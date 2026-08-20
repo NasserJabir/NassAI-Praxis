@@ -29,3 +29,5 @@
 - Reads documentation and technical blogs
 - Evaluates trade-offs between libraries and approaches
 - Open to feedback and alternative solutions
+
+- PowerShell scripting (learned on 2026-08-20)

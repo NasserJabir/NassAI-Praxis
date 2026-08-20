@@ -12,32 +12,45 @@ $EvolveDir = Join-Path $PSScriptRoot "..\evolve\skills-gen"
 $PendingFile = Join-Path $EvolveDir "auto-skills.md"
 $EpisodicDir = Join-Path $MemoryRoot "episodic"
 
-Write-Host "=== فحص توليد المهارات التلقائي ==="
+Write-Host "=== Auto Skill Generation Check ==="
 Write-Host ""
 
-# --- 1. اجمع كل المهام من الذاكرة العرضية ---
+# --- 1. Collect all tasks from episodic memory ---
 $Tasks = @{}
-$ Episodes = Get-ChildItem $EpisodicDir -Filter "*.md" -ErrorAction SilentlyContinue
+$Episodes = Get-ChildItem $EpisodicDir -Filter "*.md" -ErrorAction SilentlyContinue
 
 foreach ($ep in $Episodes) {
-    $content = Get-Content $ep.FullName -Raw
-    $matches = [regex]::Matches($content, "## (\d{2}:\d{2}) — (.+?)\r?\n.*Score: (\d+)/33")
-    foreach ($m in $matches) {
-        $name = $m.Groups[2].Value.Trim()
-        $score = [int]$m.Groups[3].Value
-        if (-not $Tasks.ContainsKey($name)) {
-            $Tasks[$name] = @{ Count = 0; TotalScore = 0; Scores = @() }
+    if ($ep.Name -eq "template.md") { continue }
+    
+    $lines = Get-Content $ep.FullName
+    $currentTask = $null
+    $currentScore = $null
+    
+    foreach ($line in $lines) {
+        # Check for task header: ## HH:MM - TaskName
+        if ($line -match "^## (\d{2}:\d{2}) - (.+)$") {
+            $currentTask = $Matches[2].Trim()
         }
-        $Tasks[$name].Count++
-        $Tasks[$name].TotalScore += $score
-        $Tasks[$name].Scores += $score
+        # Check for score line: - **Score:** XX/33
+        elseif ($line -match "Score:\*\* (\d+)/33" -and $currentTask) {
+            $currentScore = [int]$Matches[1]
+            
+            if (-not $Tasks.ContainsKey($currentTask)) {
+                $Tasks[$currentTask] = @{ Count = 0; TotalScore = 0 }
+            }
+            $Tasks[$currentTask].Count++
+            $Tasks[$currentTask].TotalScore += $currentScore
+            
+            $currentTask = $null
+            $currentScore = $null
+        }
     }
 }
 
-Write-Host "تم العثور على $($Tasks.Count) مهام فريدة في الذاكرة"
+Write-Host "Found $($Tasks.Count) unique tasks in memory"
 Write-Host ""
 
-# --- 2. تحقق من المهام المتكررة ---
+# --- 2. Check for repeated tasks ---
 $Candidates = @()
 foreach ($task in $Tasks.GetEnumerator()) {
     $name = $task.Key
@@ -50,18 +63,18 @@ foreach ($task in $Tasks.GetEnumerator()) {
             Count = $count
             AvgScore = [math]::Round($avgScore, 1)
         }
-        Write-Host "[candidate] $name — تكرر $count مرات، متوسط $avgScore"
+        Write-Host "[candidate] $name - repeated $count times, avg $avgScore"
     }
 }
 
 if ($Candidates.Count -eq 0) {
     Write-Host ""
-    Write-Host "لا توجد مهام تحقق شروط التوليد بعد"
-    Write-Host "المطلوب: تكرار >= $MinRepeats + متوسط 점수 >= $MinScore"
+    Write-Host "No tasks meet generation criteria yet"
+    Write-Host "Required: repeats >= $MinRepeats + avg score >= $MinScore"
     exit 0
 }
 
-# --- 3. أنشئ مهارات جديدة ---
+# --- 3. Create new skills ---
 $SkillsDir = Join-Path $SkillsRoot "auto-generated"
 if (-not (Test-Path $SkillsDir)) {
     New-Item -ItemType Directory -Path $SkillsDir -Force | Out-Null
@@ -73,7 +86,7 @@ foreach ($candidate in $Candidates) {
     $skillFile = Join-Path $skillDir "SKILL.md"
     
     if (Test-Path $skillFile) {
-        Write-Host "[skip] المهارة '$skillName' موجودة مسبقاً"
+        Write-Host "[skip] Skill '$skillName' already exists"
         continue
     }
     
@@ -83,22 +96,22 @@ foreach ($candidate in $Candidates) {
 # $($candidate.Name)
 
 ## Description
-مهارة مولّدة تلقائياً من تكرار الإجراء "$($candidate.Name)" ($($candidate.Count) مرات).
+Auto-generated skill from repeating procedure "$($candidate.Name)" ($($candidate.Count) times).
 
 ## When to Activate
-- عند تنفيذ: $($candidate.Name)
-- عندما يكون السياق مماثلاً للمهام السابقة
+- When executing: $($candidate.Name)
+- When context is similar to previous tasks
 
 ## Process
-1. ارجع للذاكرة العرضية واطلع على المهام السابقة بنفس الاسم
-2. استخرج الأنماط الناجحة من refine/patterns.md
-3. نفّذ الإجراء مع تجنب الأنماط الضعيفة
-4. قيّم النتيجة وسجّل في الذاكرة
+1. Check episodic memory for previous tasks with same name
+2. Extract success patterns from refine/patterns.md
+3. Execute procedure avoiding weak patterns
+4. Evaluate result and record in memory
 
 ## Quality Criteria
-- [ ] الإجراء نُفّذ بنجاح (점수 >= 25/33)
-- [ ] لا توجد أنماط ضعيفة متكررة
-- [ ] النتيجة قابلة للتكرار
+- [ ] Procedure executed successfully (score >= 25/33)
+- [ ] No repeated weak patterns
+- [ ] Result is reproducible
 
 ## Stats
 - **Generated:** $(Get-Date -Format "yyyy-MM-dd")
@@ -107,13 +120,13 @@ foreach ($candidate in $Candidates) {
 - **Status:** auto-generated (draft)
 
 ## References
-- راجع أنماط في: evolve/refine/patterns.md
-- راجع المهام السابقة في: memory/episodic/
+- Review patterns in: evolve/refine/patterns.md
+- Review past tasks in: memory/episodic/
 "@
     
     Set-Content -Path $skillFile -Value $skillContent -Encoding UTF8
-    Write-Host "[created] مهارة جديدة: $skillName"
+    Write-Host "[created] New skill: $skillName"
 }
 
 Write-Host ""
-Write-Host "=== اكتمل توليد المهارات ==="
+Write-Host "=== Skill Generation Complete ==="
