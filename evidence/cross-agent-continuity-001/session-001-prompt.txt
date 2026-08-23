@@ -1,0 +1,5 @@
+Work in this isolated project. Follow the OpenCode Praxis startup protocol. Do not edit files outside this project.
+
+Create a durable semantic project decision at `memory/semantic/agent-interface-invariance-policy.md`. The decision must state that semantic project decisions are owned by the Markdown project memory, not by an agent-specific instruction file or interface. A later coding-agent harness that relies on such a decision must name and read the exact semantic source, explain why the semantic source outranks a harness adapter for the decision itself, and consume the policy read-only. Explain the rationale and record that the decision was created in OpenCode Session 1.
+
+Create `trials/cross-agent-continuity-001/session-001-note.md` with the decision source, a concise decision summary, and the files changed. Do not modify any other memory file. Reply with the files changed and the decision source.

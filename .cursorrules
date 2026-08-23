@@ -1,0 +1,9 @@
+# Cursor + NassAI-Praxis
+
+- Always load NassAI-Praxis before coding.
+- Read `praxis.config.md`, `memory/semantic/conventions.md`, and `memory/working/current.md`.
+- Check `skills/` before implementing any feature.
+- Use PascalCase for components/classes, camelCase for application variables/functions, snake_case for database fields, and kebab-case for files.
+- Keep repositories responsible for data access, services responsible for business logic, and controllers responsible for HTTP concerns.
+- Before writing memory, scan against `memory/security/deny-list.md` and classify the content.
+- When `.cursorrules` conflicts with `memory/semantic/conventions.md`, Praxis wins; resolve the conflict explicitly and log it.

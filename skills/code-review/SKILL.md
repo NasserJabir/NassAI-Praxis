@@ -59,3 +59,7 @@ Systematic review of code changes to ensure quality, correctness, and adherence 
 - Being too pedantic about style
 - Not testing the code locally
 - Approving without understanding
+
+## Graph and Loop Integration
+
+This skill participates in the Execution Loop. Record the relevant task, selected skill, agent, persona, verification evidence, and any resulting experience using the controlled vocabulary in `graph/relationships.md`. If verification fails, return to diagnosis and correction rather than ending the task. Feed only useful, validated learning into the Learning Loop.

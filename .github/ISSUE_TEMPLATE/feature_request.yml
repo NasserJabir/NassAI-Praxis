@@ -1,0 +1,47 @@
+name: Bounded improvement request
+description: Propose an evidence-aware documentation, adapter, or workflow improvement.
+title: "proposal: "
+labels:
+  - proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        NassAI-Praxis is intentionally Markdown-first and runtime-independent. Explain the problem before proposing a solution, and do not assume a runtime, database, vector store, daemon, queue, automatic self-modification, or mandatory CLI is in scope.
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: What concrete user or maintainer problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and provenance
+      description: Link to observed sessions, issues, public reproductions, or other evidence. State clearly if the proposal is exploratory.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Architecture-boundary check
+      description: Explain how the request respects the Markdown-first, runtime-independent boundary.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and trade-offs
+      description: What simpler documentation, convention, or project-local approach was considered?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I read docs/ARCHITECTURE_FREEZE.md and docs/VALIDATION_RESULTS.md.
+          required: true
+        - label: I understand that a proposal is not approval to change Core.
+          required: true

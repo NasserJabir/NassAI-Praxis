@@ -351,12 +351,10 @@ When a procedure is repeated 3+ times with success:
 
 ### On Task Complete
 1. Run quality checklist
-2. **Run automation scripts (MANDATORY):**
+2. **Optionally use local automation helpers:**
    ```bash
-   node scripts/evaluate.js --task "<name>" --score <0-33> --agent "<agent>" --notes "<what>" --lessons "<learned>"
-   node scripts/update-persona.js --persona "<persona>" --task "<name>" --outcome "success|failure" --skill "<skill>" --experience "<exp>" --lessons "<lessons>"
-   node scripts/auto-skill.js
-   node scripts/auto-agent.js
+   # Optional only; the Markdown workflow remains canonical.
+   # Use any local helper only if the host project already permits it.
    ```
 3. Update working memory
 4. Record episode if lesson was learned
@@ -391,12 +389,8 @@ nassai-praxis/
 │   ├── evaluation/
 │   ├── refine/
 │   └── skills-gen/
-├── scripts/               # Automation scripts (cross-platform Node.js)
-│   ├── evaluate.js        # Task evaluation & memory recording
-│   ├── auto-skill.js      # Auto-generate new skills
-│   ├── auto-agent.js      # Auto-generate new agents
-│   └── update-persona.js  # Update persona experience/skills
-└── package.json           # Package metadata
+├── scripts/               # Optional helpers; not required by Praxis Core
+└── package.json           # Optional host-project metadata
 ```
 
 ---

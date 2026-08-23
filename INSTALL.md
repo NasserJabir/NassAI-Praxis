@@ -1,5 +1,7 @@
 # NassAI Praxis — Installation Prompts
 
+> **Recommended path:** use the project-local installation instructions beginning at “Phase 3: Agent Integration Prompts.” They keep Praxis knowledge with the project and make review through Git straightforward. The global-copy prompts above that section are retained as legacy compatibility instructions; do not copy `memory/private/` into a public project.
+
 Copy the prompt for your agent and paste it. The agent will install NassAI Praxis automatically.
 
 ## OpenCode
@@ -131,3 +133,151 @@ rm -rf /tmp/nassai-praxis
 
 After installing, tell me: what skills and personas are now available?
 ```
+
+## Phase 3: Agent Integration Prompts
+
+The following prompts install the project-local four-file plugin and shared Praxis core. Do not copy `memory/private/` into a public project.
+
+### Claude Code
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .claude
+cp -r /tmp/nassai-praxis/.claude/* .claude/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Claude Code in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### Cursor
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .cursor
+cp -r /tmp/nassai-praxis/.cursor/* .cursor/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Cursor in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### GitHub Copilot
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .copilot
+cp -r /tmp/nassai-praxis/.copilot/* .copilot/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start GitHub Copilot in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### Kimi
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .kimi
+cp -r /tmp/nassai-praxis/.kimi/* .kimi/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Kimi in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### Codex CLI
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .codex
+cp -r /tmp/nassai-praxis/.codex/* .codex/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Codex CLI in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### Gemini CLI
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .gemini
+cp -r /tmp/nassai-praxis/.gemini/* .gemini/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Gemini CLI in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### OpenCode
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .opencode
+cp -r /tmp/nassai-praxis/.opencode/* .opencode/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start OpenCode in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### Pi
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .pi
+cp -r /tmp/nassai-praxis/.pi/* .pi/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Pi in the project and run the five-minute test in `docs/AGENT_TESTING.md`.
+
+### Windsurf
+
+```bash
+git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+mkdir -p .windsurf
+cp -r /tmp/nassai-praxis/.windsurf/* .windsurf/
+cp -r /tmp/nassai-praxis/praxis.config.md .
+cp -r /tmp/nassai-praxis/memory .
+cp -r /tmp/nassai-praxis/skills .
+cp -r /tmp/nassai-praxis/agents .
+cp -r /tmp/nassai-praxis/personas .
+rm -rf /tmp/nassai-praxis
+```
+
+Then start Windsurf in the project and run the five-minute test in `docs/AGENT_TESTING.md`.

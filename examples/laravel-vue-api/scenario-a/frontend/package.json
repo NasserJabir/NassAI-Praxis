@@ -1,0 +1,8 @@
+{
+  "name": "nassai-benchmark-web",
+  "private": true,
+  "type": "module",
+  "scripts": {"dev": "vite", "build": "vite build", "test": "vitest run"},
+  "dependencies": {"@vitejs/plugin-vue": "latest", "axios": "^1.7.0", "pinia": "^2.1.7", "vue": "^3.4.0", "vue-router": "^4.3.0", "vite": "^5.4.0"},
+  "devDependencies": {"vitest": "^2.0.0"}
+}

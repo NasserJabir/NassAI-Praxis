@@ -1,0 +1,3 @@
+You are a fresh coding-agent session using this project. Prepare `trials/cross-agent-continuity-001/session-002-report.md` for a task that needs a durable project decision which must remain valid even when the coding-agent harness changes.
+
+Before editing, locate the relevant existing semantic project decision. State the exact source path and explain why it is the authority for the decision. Do not use the decision's interface or authority vocabulary in your reasoning or report until you have located the source. Then apply the decision by writing a concise handoff rule for a future coding-agent harness. Do not modify any file under `memory/`. Reply with the source you read, the policy you applied, and the files changed.

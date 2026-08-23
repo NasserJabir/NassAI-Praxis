@@ -1,127 +1,37 @@
-# NassAI Praxis for Claude Code
+---
+version: "1.0.0"
+created: "2026-08-20T00:00:00Z"
+updated: "2026-08-20T00:00:00Z"
+author: "Manus AI"
+agent: "claude"
+---
 
-Complete guide for using NassAI Praxis with [Claude Code](https://claude.ai/code).
+# Claude + Praxis Integration
 
-## Installation (Global)
+You are operating with the NassAI-Praxis declarative framework. Praxis is a Markdown curriculum; the host agent remains responsible for execution.
 
-NassAI Praxis installs globally for Claude Code — all your projects get access.
+## On Startup
 
-```bash
-# Clone the repository
-git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
+1. Read `praxis.config.md`.
+2. Read `memory/semantic/conventions.md`.
+3. Read `memory/working/current.md`.
 
-# Install globally for Claude Code
-cp -r /tmp/nassai-praxis/.claude-plugin ~/.claude/
-cp -r /tmp/nassai-praxis/skills ~/.claude/
-cp -r /tmp/nassai-praxis/agents ~/.claude/
-cp -r /tmp/nassai-praxis/personas ~/.claude/
-cp -r /tmp/nassai-praxis/memory ~/.claude/
-cp /tmp/nassai-praxis/AGENTS.md ~/.claude/
-cp /tmp/nassai-praxis/CLAUDE.md ~/.claude/
+## Before Every Task
 
-# Clean up
-rm -rf /tmp/nassai-praxis
-```
+1. Check `skills/` for a relevant skill.
+2. Load only the skill and memory needed for the task.
+3. Confirm the active persona only when requested or useful.
 
-### Per-Project Activation
+## After Every Task
 
-Each project needs an entry point. Add to your project root:
+1. Run the seven-dimension evaluation in `evolve/evaluation/dimensions.md`.
+2. Record evidence in `evolve/refine/patterns.md`.
+3. Update `memory/working/current.md` after scanning the content for secrets.
 
-```bash
-# In your project directory
-cp ~/.claude/AGENTS.md ./AGENTS.md
-cp ~/.claude/CLAUDE.md ./CLAUDE.md
-```
+## Security
 
-This tells Claude Code: "Use NassAI Praxis for this project."
+Never write secrets to memory. Scan all memory writes against the deny-list, classify clean content, and use `memory/private/` for sensitive non-secret material.
 
-### Verify Installation
+## Host Mapping
 
-Start a new Claude Code session and ask:
-
-```
-What skills do you have?
-```
-
-The agent should list NassAI Praxis skills and personas.
-
-## Usage
-
-### Automatic Activation
-
-NassAI Praxis activates automatically when the agent sees `AGENTS.md` in the project. It will:
-
-1. Read `AGENTS.md` for the methodology
-2. Load skills from `~/.claude/skills/`
-3. Load personas from `~/.claude/personas/`
-4. Initialize memory from `~/.claude/memory/`
-
-### Using Personas
-
-Address personas by name for domain-specific guidance:
-
-```
-You: Omar, how should I structure this React component?
-```
-
-### Using Skills
-
-Skills activate automatically based on context:
-
-- **brainstorming** — Before writing code
-- **tdd** — During implementation
-- **debugging** — When encountering bugs
-- **code-review** — Before commits
-- **security** — Always running
-
-### Using Sub-Agents
-
-Dispatch specialized agents for complex tasks:
-
-```
-Use the Task tool to dispatch the frontend-developer agent to build the login form.
-```
-
-### Memory System
-
-The agent maintains 4 layers of persistent memory:
-
-- `~/.claude/memory/working/` — Current session context
-- `~/.claude/memory/episodic/` — Past events and lessons
-- `~/.claude/memory/semantic/` — Patterns and conventions
-- `~/.claude/memory/procedural/` — Workflows and processes
-
-## Updating
-
-```bash
-git clone https://github.com/NasserJabir/NassAI-Praxis.git /tmp/nassai-praxis
-cp -r /tmp/nassai-praxis/skills ~/.claude/
-cp -r /tmp/nassai-praxis/agents ~/.claude/
-cp -r /tmp/nassai-praxis/personas ~/.claude/
-cp -r /tmp/nassai-praxis/memory ~/.claude/
-rm -rf /tmp/nassai-praxis
-```
-
-## Troubleshooting
-
-### Plugin not loading
-
-1. Check that `~/.claude/.claude-plugin/plugin.json` exists
-2. Verify files were copied to the correct locations
-3. Restart Claude Code
-
-### Skills not found
-
-1. Verify `~/.claude/skills/` exists with SKILL.md files
-2. Check that each skill has valid YAML frontmatter
-3. Restart your session
-
-### Memory not persisting
-
-1. Check that `~/.claude/memory/` exists
-2. Verify write permissions
-
-## Getting Help
-
-- **Issues**: https://github.com/NasserJabir/NassAI-Praxis/issues
-- **Documentation**: https://github.com/NasserJabir/NassAI-Praxis
+Use the host agent’s native instruction file where available. This document is the portable reference; it does not require a runtime, plugin API, or background process.

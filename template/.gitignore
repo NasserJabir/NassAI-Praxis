@@ -1,0 +1,5 @@
+memory/private/
+*.log
+evolve/skills-gen/
+evolve/agents-gen/
+.env

@@ -1,0 +1,3 @@
+Create `trials/baseline-001/task-output.md` that truthfully summarizes what the project can say about Cross-Agent Continuity 001, in which OpenCode created a semantic decision and Pi retrieved and applied it with a shared `opencode/big-pickle` backend.
+
+The report must contain a headline, direct evidence scope, bounded conclusion, unsupported claims, next evidence needed, provenance sources, and a final headline/body consistency check. Do not modify any other file. Reply with the files changed and sources used.

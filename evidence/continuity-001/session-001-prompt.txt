@@ -1,0 +1,5 @@
+Work in this isolated project. Follow the OpenCode Praxis startup protocol. Do not edit files outside this project.
+
+Create a durable, semantic project decision at `memory/semantic/continuity-status-policy.md`. The decision is: behavioral validation claims may use only `observed` when direct evidence exists, or `not_run` when the behavior has not been executed. A task that has not been executed must not be reported as a success or failure. Explain the rationale and record that this decision was created in Session 1.
+
+Create `trials/continuity-001/session-001-note.md` with the source path, the decision summary, and the files changed. Do not modify any other memory file. Reply with the files changed and the decision source.

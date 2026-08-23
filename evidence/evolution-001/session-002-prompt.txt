@@ -1,0 +1,5 @@
+Work in this isolated project as a fresh independent session. Do not edit files outside this project.
+
+Review the existing evidence package at `evidence/continuity-002/`. Create only `trials/evolution-001/experiences/experience-002.md`. Record the concrete problem of reporting two distinct observed continuity results without misrepresenting them as identical repeatability, the action taken in that package, direct evidence paths, the observed outcome, and the limitation. State clearly that this is an `observed` experience and not a reusable skill, candidate pattern, or proposal.
+
+Do not modify `skills/`, `memory/`, `evolve/`, `trials/evolution-001/candidates/`, `trials/evolution-001/proposals/`, `trials/evolution-001/evaluations/`, or `trials/evolution-001/review/HUMAN_REVIEW.md`. Reply with the files changed and source evidence paths.

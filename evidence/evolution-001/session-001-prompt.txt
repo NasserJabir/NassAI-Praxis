@@ -1,0 +1,5 @@
+Work in this isolated project. Follow the OpenCode Praxis startup protocol. Do not edit files outside this project.
+
+Review the existing evidence package at `evidence/continuity-001/`. Create only `trials/evolution-001/experiences/experience-001.md`. Record the concrete problem of reporting a single observed continuity result without overstating it, the action taken in that package, direct evidence paths, the observed outcome, and the limitation. State clearly that this is an `observed` experience and not a reusable skill, candidate pattern, or proposal.
+
+Do not modify `skills/`, `memory/`, `evolve/`, `trials/evolution-001/candidates/`, `trials/evolution-001/proposals/`, `trials/evolution-001/evaluations/`, or `trials/evolution-001/review/HUMAN_REVIEW.md`. Reply with the files changed and source evidence paths.

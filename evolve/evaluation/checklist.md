@@ -1,117 +1,69 @@
-# Task Evaluation Checklist
-
-Run this checklist after every significant task. Record results in `memory/episodic/`.
-
+---
+version: "1.0.0"
+created: "2026-08-20T00:00:00Z"
+updated: "2026-08-20T00:00:00Z"
+author: "Manus AI"
+classification: "internal"
+checklist_points: "33"
 ---
 
-## 1. Code Quality
+# Internal Evaluation Checklist
 
-- [ ] Code is clean and readable on first read
-- [ ] No unnecessary complexity or over-engineering
-- [ ] Follows existing project conventions
-- [ ] No dead code or unused imports
-- [ ] Functions are small and focused (< 30 lines ideal)
-- [ ] File is focused (< 300 lines ideal)
+Run this 33-point checklist after each significant task.
 
-**Score:** ___ / 6
-**Notes:** ___
+## Code Quality — 8 points
 
----
+- [ ] The change is readable on first inspection.
+- [ ] The implementation is appropriately simple.
+- [ ] Existing conventions are followed.
+- [ ] No dead or unrelated content was introduced.
+- [ ] Names communicate intent.
+- [ ] Boundaries and responsibilities are clear.
+- [ ] Error paths are considered.
+- [ ] The diff is narrowly scoped.
 
-## 2. Testing
+## Testing — 5 points
 
-- [ ] Tests were written before implementation (TDD)
-- [ ] All tests pass
-- [ ] Edge cases are covered
-- [ ] Error paths are tested
-- [ ] No flaky tests introduced
-- [ ] Test names describe behavior, not implementation
+- [ ] Expected behavior is defined before verification.
+- [ ] Relevant tests or checks were run.
+- [ ] Edge cases are covered.
+- [ ] Failure paths are considered.
+- [ ] Results are reported honestly.
 
-**Score:** ___ / 6
-**Notes:** ___
+## Security — 5 points
 
----
+- [ ] No secrets were added.
+- [ ] External or untrusted input is treated safely.
+- [ ] Access and trust boundaries are considered.
+- [ ] Error output does not expose sensitive information.
+- [ ] Memory writes passed the deny-list and classification rules.
 
-## 3. Security
+## Documentation — 4 points
 
-- [ ] No hardcoded secrets or API keys
-- [ ] All external input is validated
-- [ ] Error messages don't leak internals
-- [ ] Dependencies are up to date
-- [ ] No SQL injection, XSS, or CSRF vulnerabilities
-- [ ] Least privilege applied
+- [ ] User-facing behavior is documented.
+- [ ] Important decisions are recorded.
+- [ ] Setup or workflow instructions remain accurate.
+- [ ] The changelog is updated when appropriate.
 
-**Score:** ___ / 6
-**Notes:** ___
+## Performance — 3 points
 
----
+- [ ] The change respects its resource or context budget.
+- [ ] No unnecessary work or loading was introduced.
+- [ ] A measured bottleneck is addressed when performance is in scope.
 
-## 4. Documentation
+## Maintainability — 4 points
 
-- [ ] Code is self-documenting (clear names, small functions)
-- [ ] Complex logic has inline explanation of "why"
-- [ ] Public APIs have JSDoc/TSDoc
-- [ ] README updated if setup changed
-- [ ] CHANGELOG updated if user-facing
+- [ ] The structure is easy for a human to extend.
+- [ ] Repetition is intentional or abstracted appropriately.
+- [ ] Future failure modes are visible.
+- [ ] Handoffs contain enough context to continue safely.
 
-**Score:** ___ / 5
-**Notes:** ___
+## Consistency — 4 points
 
----
+- [ ] Paths and names match the canonical schema.
+- [ ] Frontmatter fields are valid and complete.
+- [ ] Cross-references point to canonical files.
+- [ ] The result is consistent with the technical specification.
 
-## 5. Memory & Learning
-
-- [ ] Working memory updated with current state
-- [ ] Lessons learned captured in episodic memory
-- [ ] New patterns noted in semantic memory
-- [ ] New procedures documented in procedural memory
-- [ ] Relevant patterns extracted for skill generation
-
-**Score:** ___ / 5
-**Notes:** ___
-
----
-
-## 6. Process Adherence
-
-- [ ] Brainstormed before coding
-- [ ] Wrote a plan before implementing
-- [ ] Used TDD workflow
-- [ ] Self-reviewed before committing
-- [ ] Commits are atomic and well-described
-
-**Score:** ___ / 5
-**Notes:** ___
-
----
-
-## Summary
-
-| Category | Score | Max |
-|----------|-------|-----|
-| Code Quality | | 6 |
-| Testing | | 6 |
-| Security | | 6 |
-| Documentation | | 5 |
-| Memory & Learning | | 5 |
-| Process Adherence | | 5 |
-| **Total** | | **33** |
-
-**Overall Rating:**
-- 30-33: Excellent — extract patterns for skill generation
-- 25-29: Good — note improvements in refine/
-- 20-24: Acceptable — identify gaps to fix
-- Below 20: Needs work — review methodology adherence
-
----
-
-## Extraction Criteria
-
-After scoring, determine if patterns should be extracted:
-
-| Condition | Action |
-|-----------|--------|
-| Score >= 30 AND procedure repeated 3+ times | Create new skill in `evolve/skills-gen/` |
-| Score >= 25 AND approach worked well | Log in `evolve/refine/patterns.md` as successful pattern |
-| Score < 25 OR something failed | Log in `evolve/refine/patterns.md` as anti-pattern |
-| New agent capability discovered | Create in `evolve/agents-gen/` |
+**Score:** ____ / 33
+**Evidence and follow-up:**

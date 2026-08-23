@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use NassAI-Praxis in research or a project report, please cite it using this metadata."
+title: "NassAI-Praxis"
+version: "1.0.0"
+date-released: 2026-08-23
+authors:
+  - family-names: "Jabir"
+    given-names: "Nasser"
+license: "MIT"
+repository-code: "https://github.com/NasserJabir/NassAI-Praxis"
+abstract: "A Markdown-first, Git-native declarative layer for project knowledge, reusable skills, and human-reviewed evolution across AI coding-agent sessions."

@@ -1,0 +1,3 @@
+You are an independent new session in this project. A validation result was produced by exactly one controlled run with one agent and one model. Create `trials/continuity-002/session-002-report.md` that states the credible evidence level and the next validation needed.
+
+Before editing, locate the relevant existing project decision. State its exact source path and explain why it applies. Do not use the decision's scope vocabulary in your reasoning or report until you have located the source. Then apply the established policy in the report. Do not modify any file under `memory/`. Reply with the source you read, the policy you applied, and the files changed.

@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem in documentation, an adapter, or a project artifact.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve NassAI-Praxis. Do not include secrets, tokens, private logs, or customer data. Security vulnerabilities belong in private vulnerability reporting, not this form.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: What failed, and what did you expect instead?
+      placeholder: The OpenCode installation link returns a 404.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Documentation
+        - Installation
+        - Agent adapter
+        - Template
+        - Evidence package
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide ordered, public-safe steps and the exact command or prompt when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Agent, agent version, operating system, repository revision, and any relevant non-secret configuration.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched the documentation and existing issues.
+          required: true
+        - label: I removed secrets, private data, and credentials from this report.
+          required: true

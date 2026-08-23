@@ -1,0 +1,13 @@
+Work in this isolated project as a fresh independent session. Read these files before writing:
+
+- `trials/evolution-001/review/HUMAN_REVIEW.md`
+- `trials/evolution-001/proposals/evidence-scope-validation-skill-proposal.md`
+- `trials/evolution-001/candidates/evidence-scope-validation-pattern.md`
+- `trials/evolution-001/evaluations/evidence-scope-validation-evaluation.md`
+- `skills/methodology/self-improvement/SKILL.md`
+
+Proceed only if `HUMAN_REVIEW.md` is explicitly `status: approved` and `skill_creation_authorized: true` for the proposed path. If that condition is met, create exactly one trial-only file: `skills/verification/evidence-scope-validation/SKILL.md`.
+
+The skill must use normal Praxis `SKILL.md` frontmatter and implement the approved scope: enumerate direct evidence before claims; state claims at the precise evidence scope; disclose shared infrastructure; exclude unsupported generalizations; name next evidence needed; prefer raw execution records and hashes over generated self-reported metadata; and re-read headline/body scope before finalizing a report. Include activation conditions, non-goals, risks, verification steps, provenance links to the proposal and review, and a firm boundary that this skill does not authorize automatic promotion or memory mutation.
+
+Do not modify `memory/`, `evolve/`, the proposal, candidate, evaluation, or `HUMAN_REVIEW.md`. Do not modify any other skill. Reply with the approval condition observed, the created path, and files changed.

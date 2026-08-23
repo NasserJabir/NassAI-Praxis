@@ -1,0 +1,68 @@
+# Praxis Documentation TODO
+
+- [x] Map Student Manager work to the Praxis validation protocol without claiming unobserved benefits.
+- [x] Document the real-project trial scope, evidence collected, and evidence still pending.
+- [x] Add a Student Manager validation case study to the Praxis evidence package.
+- [x] Link the case study from the validation results and project continuity documentation.
+- [x] Validate Markdown links, evidence-status language, and the Markdown-first architecture boundary.
+- [x] Package and deliver Praxis documentation only.
+- [x] Remove the local Student Manager example project and its local delivery artifacts.
+- [x] Verify that the NassAI-Praxis repository and documentation package remain intact after cleanup.
+- [x] Package and deliver the complete NassAI-Praxis repository as a compressed archive.
+- [x] Define a frozen Project Continuity scenario with an explicit prior decision and later independent task.
+- [x] Identify an available real coding-agent environment for the later-session behavior test.
+- [x] Record separate session evidence without fabricating retrieval or reuse results.
+- [x] Update continuity results only from observed agent behavior.
+- [x] Verify OpenCode installation and the exact Big Pickle model identifier before running the test.
+- [x] Run the Continuity 001 scenario in isolated OpenCode sessions and retain raw transcripts.
+- [x] Verify that opencode/big-pickle accepts a real request without a configured credential in this environment.
+- [x] Define and freeze Continuity 002 with a decision distinct from Continuity 001.
+- [x] Run an isolated OpenCode Session 1 and preserve the raw JSON transcript.
+- [x] Run an independent OpenCode Session 2 without session continuation and preserve the raw JSON transcript.
+- [x] Evaluate retrieval, interpretation, application, and memory-boundary criteria from direct evidence.
+- [x] Record only evidence-supported Continuity 002 results and package the audit artifacts.
+- [x] Identify Pi Coding Agent as a separately available no-login coding-agent harness for Cross-Agent Continuity 001, while documenting that it uses the same Big Pickle model backend.
+- [x] Define and freeze an isolated OpenCode-to-Pi cross-harness continuity protocol with a decision distinct from prior trials and a shared-model disclosure.
+- [x] Run OpenCode Session 1 and preserve the raw knowledge-creation transcript.
+- [x] Run Pi Coding Agent in a fresh session and preserve raw retrieval evidence, with the shared Big Pickle model backend disclosed for evaluation.
+- [x] Evaluate source retrieval, policy application, harness separation, shared-model limitation, and memory-boundary preservation from direct evidence.
+- [x] Record only bounded cross-harness evidence and package the audit artifacts.
+- [x] Check only no-login independent-agent alternatives after the user skipped Codex authorization.
+- [x] Freeze Evolution 001 with three comparable experiences, candidate-only pattern and proposal artifacts, and a mandatory explicit human approval gate.
+- [x] Run three independent sessions that record evidence only and do not create or update a reusable skill.
+- [ ] Verify candidate pattern, provenance, evaluation, and proposal artifacts from direct evidence.
+- [x] Obtain explicit human approval before creating the approved reusable skill.
+- [x] Run a later independent session to verify approved-skill discovery and reuse without skill mutation.
+- [x] Record only bounded Evolution 001 evidence and package the audit artifacts.
+- [x] Freeze Baseline 001 with identical fixture snapshots, task, acceptance criteria, and declared condition differences.
+- [x] Run the unguided baseline session and preserve its raw transcript, output, and tool evidence.
+- [x] Run the Praxis-guided session and preserve its raw transcript, output, and tool evidence.
+- [x] Compare context restatement, source/skill discovery, claim correctness, scope violations, and human intervention from direct artifacts.
+- [x] Record only bounded Baseline 001 Before/After evidence and package the audit artifacts.
+- [x] Freeze Baseline 002 with three natural coding tasks, matched task fixtures, random execution order, and pre-registered independent scoring criteria.
+- [x] Prepare and verify six isolated fixture conditions with identical pairwise starting states.
+- [x] Run all three Baseline conditions and preserve raw transcripts, diffs, checks, and task outputs.
+- [x] Run all three Praxis conditions and preserve raw transcripts, diffs, checks, and task outputs.
+- [x] Score correctness, rework, context repetition, knowledge reuse, convention violations, and human interventions independently from agent self-reports.
+- [x] Record the bounded Baseline 002 outcome and adoption-positioning decision without adding new Praxis features.
+- [x] Select the existing Fatima Persona and freeze a Markdown-only Persona Validation 001 protocol with identity, memory, skill, isolation, and policy-concurrency criteria.
+- [x] Run independent persona sessions that create scoped observed experiences, retrieval evidence, and candidate-only evolution artifacts without changing a canonical Persona.
+- [x] Obtain explicit human approval before creating any trial-only Persona skill and testing later reuse.
+- [x] Test persona knowledge isolation and the documented same-persona active-work policy without claiming runtime enforcement.
+- [x] Record only bounded Persona Validation 001 evidence, limitations, and audit artifacts without adding Praxis features.
+- [x] Define an isolated real-world dogfooding project and freeze the rule that observed Praxis friction is recorded rather than immediately fixed.
+- [x] Create the isolated project workspace, normal development backlog, frozen Praxis snapshot, and Markdown session-record structure.
+- [x] Run initial normal development sessions that record reused context, missing context, friction, outcomes, new experience, and evidence.
+- [x] Review the initial accumulated dogfooding evidence before proposing any Praxis improvement.
+- [x] Add a comparable Praxis Value Signal and five-indicator observation section to the isolated dogfooding project records without changing Praxis.
+- [x] Continue initial FS-001 through FS-005 work attempts and record context reuse, discovery, cost, decision continuity, and Persona value.
+- [x] Preserve observed benefits and friction without attributing cause or changing Praxis during the initial experiment period.
+- [x] Record the official bounded Dogfooding Cycle 001 conclusion without inferring general performance effects.
+- [x] Extend only the dogfooding project record template with context-reach and task-closure observations for Cycle 002.
+- [ ] Perform natural Cycle 002 specialized and general work while recording whether context was reached, used, verified, and closed.
+- [ ] Preserve Cycle 002 evidence without changing or diagnosing Praxis until a later human-reviewed evidence threshold is met.
+- [ ] Select and complete the next ordinary Field Service backlog task without forcing Praxis context access; preserve the resulting session record and behavioral evidence.
+- [ ] Preserve Session 009 as Infrastructure Interrupted — No Praxis Observation, then await the next genuine Field Service development need before opening Session 010.
+- [x] Review and improve external-facing repository readiness—documentation, supported claims, onboarding, evidence presentation, and metadata—without changing Praxis architecture or opening a synthetic dogfooding task.
+- [ ] Apply the E0–E5 evidence ladder only to future natural dogfooding records, beginning with Session 010 when genuine Field Service work arises; do not treat the ladder as a Praxis feature or architectural change.
+- [ ] Prepare, validate, commit, and push an evidence-safe external publication package with GitHub community-health documentation and distribution best practices.

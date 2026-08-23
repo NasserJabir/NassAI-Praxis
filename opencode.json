@@ -1,4 +1,5 @@
 {
+  "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "nassai-praxis@git+https://github.com/NasserJabir/NassAI-Praxis.git"
   ]

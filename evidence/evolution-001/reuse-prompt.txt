@@ -1,0 +1,7 @@
+Work in this isolated project as a fresh independent session. A human-approved trial skill may exist for evidence-scope validation.
+
+Prepare only `trials/evolution-001/reuse/session-006-reuse-report.md` for this task: summarize what the project can truthfully say about Cross-Agent Continuity 001 after an OpenCode session created a semantic decision and a Pi Coding Agent session retrieved and applied it through a shared `opencode/big-pickle` backend.
+
+Before writing, locate and read the relevant approved skill. State its exact path, then use it to produce: (1) the direct evidence scope, (2) a bounded conclusion, (3) claims that remain unsupported, (4) the next evidence required to strengthen those claims, and (5) provenance sources. Verify that the headline and body have the same scope.
+
+Do not modify the skill, any file under `memory/`, `evolve/`, candidates, proposals, evaluations, or `HUMAN_REVIEW.md`. Reply with the skill source you read, how it was used, and the files changed.

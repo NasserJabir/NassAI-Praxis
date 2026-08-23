@@ -1,0 +1,6 @@
+{
+  "name": "nassai-praxis-gemini",
+  "version": "1.0.0",
+  "description": "NassAI-Praxis integration placeholder for Gemini CLI",
+  "entrypoint": "../docs/README.gemini.md"
+}

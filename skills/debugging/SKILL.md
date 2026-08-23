@@ -54,3 +54,7 @@ Systematic approach to finding and fixing bugs in code.
 - Fixing symptoms without understanding cause
 - Not writing a test for the bug
 - Refactoring while debugging
+
+## Graph and Loop Integration
+
+This skill participates in the Execution Loop. Record the relevant task, selected skill, agent, persona, verification evidence, and any resulting experience using the controlled vocabulary in `graph/relationships.md`. If verification fails, return to diagnosis and correction rather than ending the task. Feed only useful, validated learning into the Learning Loop.

@@ -1,0 +1,5 @@
+Work in this isolated project. Follow the OpenCode Praxis startup protocol. Do not edit files outside this project.
+
+Create a durable semantic project decision at `memory/semantic/evidence-scope-policy.md`. The decision must state that a result from one controlled agent-and-model run can be described only as a narrow observed outcome for that exact environment. It must not be represented as repeatability, cross-agent portability, universal compatibility, or a general product benefit. Explain the rationale and require reports to state their claim scope, limitations, and the next needed replication. Record that this decision was created in Session 1.
+
+Create `trials/continuity-002/session-001-note.md` with the decision source, a concise decision summary, and the files changed. Do not modify any other memory file. Reply with the files changed and the decision source.
