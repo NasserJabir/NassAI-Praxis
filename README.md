@@ -29,6 +29,27 @@ git clone https://github.com/NasserJabir/NassAI-Praxis.git
 | A portable layer that agent adapters can read when relevant to a task. | A guarantee that every agent will automatically discover or apply every file. |
 | An evidence-first evolution process in which people approve reusable changes. | Autonomous self-modification or automatic promotion into Core. |
 
+## Visual Overview
+
+```mermaid
+flowchart LR
+    Task[Real task] --> Host[Coding agent runtime]
+    Host -. reads selectively .-> Praxis[Praxis Markdown]
+    Praxis --> Context[Relevant task context]
+    Context --> Host
+    Host --> Verify[Artifact and verification]
+    Verify --> Evidence[Evidence record]
+    Evidence -. repeated evidence only .-> Review[Human-reviewed evolution]
+```
+
+The coding agent executes. Praxis is the readable project layer it may consult when context is relevant. The full [visual guide](docs/VISUAL_GUIDE.md) explains the components, normal task flow, Persona behavior, and the E0–E5 evidence ladder.
+
+## Personas: How Decisions Are Approached
+
+A **Persona** makes a task’s reasoning style explicit: priorities, risk tolerance, review questions, and communication style. It complements rather than replaces an Agent role, a Skill procedure, or project Memory. Personas are especially useful for meaningful trade-offs such as security, architecture, and user experience; they are optional for small tasks.
+
+The same Persona may be read concurrently by multiple sessions. Its canonical Markdown definition changes only through **evidence → proposal → human review**, with no runtime lock or automatic mutation. Read the [Persona guide](docs/PERSONAS.md) and the [visual composition diagram](docs/VISUAL_GUIDE.md#3-what-a-persona-adds).
+
 ## Why Praxis?
 
 It gives a project a reviewable place for conventions, decisions, procedures, and scoped experiences that a later coding-agent session can consult. The aim is continuity and governance, not a claim that every task needs persistent context.

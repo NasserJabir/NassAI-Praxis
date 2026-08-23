@@ -31,6 +31,8 @@ Agent + Persona + Skill + Relevant Memory = Task Execution Context
 
 The **Agent** supplies the role. The **Persona** supplies thinking style, priorities, decision principles, risk tolerance, and communication style. The **Skill** supplies a reusable method. **Memory** supplies project knowledge. The selected coding agent performs the task in its own native environment.
 
+For a rendered, Markdown-native explanation of the complete composition, normal work loop, Persona contribution, concurrent reading policy, and evidence levels, see [`VISUAL_GUIDE.md`](VISUAL_GUIDE.md). The diagrams are documentation, not a runtime topology.
+
 ## Graph Engineering
 
 Graph Engineering is a declarative documentation and schema layer. It defines entities and controlled Markdown relationships such as `Task → uses → Skill`, `Task → assigned_to → Agent`, and `Experience → creates → Pattern`. It does not create a graph engine or database. See [`graph/model.md`](../graph/model.md), [`graph/relationships.md`](../graph/relationships.md), and [`graph/conventions.md`](../graph/conventions.md).
