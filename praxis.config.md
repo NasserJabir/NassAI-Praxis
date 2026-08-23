@@ -4,7 +4,7 @@ project_name: "NassAI-Praxis"
 language: "en"
 created: "2026-08-20T00:00:00Z"
 updated: "2026-08-20T00:00:00Z"
-author: "Manus AI"
+author: "Nasser Jabir"
 ---
 
 # Praxis Configuration

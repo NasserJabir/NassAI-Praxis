@@ -67,3 +67,5 @@
 - [ ] Apply the E0–E5 evidence ladder only to future natural dogfooding records, beginning with Session 010 when genuine Field Service work arises; do not treat the ladder as a Praxis feature or architectural change.
 - [x] Prepare, validate, commit, and push an evidence-safe external publication package with GitHub community-health documentation and distribution best practices.
 - [x] Add Markdown-native diagrams that explain Praxis composition and workflow, and make Persona purpose, boundaries, and value explicit in public onboarding without changing the frozen architecture.
+- [ ] Review the proposed Development Workflow Protocol against natural evidence and architecture boundaries only; do not implement or modify Praxis as part of the review.
+- [x] Replace the repository documentation author attribution with Nasser Jabir, validate all occurrences, and publish the metadata-only correction.

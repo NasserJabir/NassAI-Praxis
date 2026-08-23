@@ -2,7 +2,7 @@
 version: "1.3.0"
 created: "2026-08-22T00:00:00Z"
 updated: "2026-08-22T13:00:00Z"
-author: "Manus AI"
+author: "Nasser Jabir"
 classification: "internal"
 type: "continuity-case-study"
 status: "observed"

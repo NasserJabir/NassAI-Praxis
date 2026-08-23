@@ -1,7 +1,7 @@
 ---
 version: "0.1.0"
 created: "2026-08-23T09:40:00Z"
-author: "Manus AI"
+author: "Nasser Jabir"
 classification: "public-review"
 type: "external-readiness-review"
 status: "draft"

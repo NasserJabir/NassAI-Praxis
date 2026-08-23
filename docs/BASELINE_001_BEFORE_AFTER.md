@@ -1,7 +1,7 @@
 ---
 version: "1.0.0"
 created: "2026-08-22T20:35:00Z"
-author: "Manus AI"
+author: "Nasser Jabir"
 classification: "internal"
 type: "before-after-evidence"
 status: "observed_inconclusive_for_advantage"
