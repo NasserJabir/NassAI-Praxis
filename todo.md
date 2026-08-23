@@ -65,4 +65,4 @@
 - [ ] Preserve Session 009 as Infrastructure Interrupted — No Praxis Observation, then await the next genuine Field Service development need before opening Session 010.
 - [x] Review and improve external-facing repository readiness—documentation, supported claims, onboarding, evidence presentation, and metadata—without changing Praxis architecture or opening a synthetic dogfooding task.
 - [ ] Apply the E0–E5 evidence ladder only to future natural dogfooding records, beginning with Session 010 when genuine Field Service work arises; do not treat the ladder as a Praxis feature or architectural change.
-- [ ] Prepare, validate, commit, and push an evidence-safe external publication package with GitHub community-health documentation and distribution best practices.
+- [x] Prepare, validate, commit, and push an evidence-safe external publication package with GitHub community-health documentation and distribution best practices.
