@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: security
+description: Identify and reduce security risks in code, configuration, and memory.
+triggers:
+  - "auth, secrets, input validation, or dependency changes"
+tokens: ~758
 ---
 
 # Security Skill

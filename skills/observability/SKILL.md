@@ -1,6 +1,9 @@
 ---
 name: observability
 description: Structured logging, RED metrics, OpenTelemetry distributed tracing, and alerting for production systems.
+triggers:
+  - "logging, metrics, tracing, alerting work"
+tokens: ~1349
 ---
 
 # Observability

@@ -8,6 +8,13 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: debugging
+description: Diagnose failures from evidence and make the smallest safe correction.
+triggers:
+  - "a bug is reported"
+  - "tests fail unexpectedly"
+  - "root-cause investigation"
+tokens: ~668
 ---
 
 # Debugging Skill

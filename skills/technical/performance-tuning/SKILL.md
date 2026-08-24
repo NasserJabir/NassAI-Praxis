@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: performance-tuning
+description: Measure and improve latency, throughput, memory, and resource use.
+triggers:
+  - "latency/throughput optimization required"
+tokens: ~609
 ---
 
 # Performance Tuning Skill

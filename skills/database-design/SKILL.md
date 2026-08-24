@@ -1,6 +1,9 @@
 ---
 name: database-design
 description: PostgreSQL schema design, indexing strategies, migration patterns, and connection pooling for production workloads.
+triggers:
+  - "schema, migration, index, or query design"
+tokens: ~1130
 ---
 
 # Database Design

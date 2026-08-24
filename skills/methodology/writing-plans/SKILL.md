@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: writing-plans
+description: Write implementation plans that are explicit, reviewable, and executable.
+triggers:
+  - "implementation plan must be written to disk"
+tokens: ~602
 ---
 
 # Writing Plans Skill

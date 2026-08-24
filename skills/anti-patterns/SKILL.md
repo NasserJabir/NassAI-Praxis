@@ -1,6 +1,9 @@
 ---
 name: anti-patterns
 description: Common excuses agents use to skip steps with counter-arguments.
+triggers:
+  - "tempted to skip process steps"
+tokens: ~867
 ---
 
 # Anti-Patterns

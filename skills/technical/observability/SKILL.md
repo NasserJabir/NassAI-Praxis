@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: observability
+description: Make system behavior diagnosable through logs, metrics, traces, and alerts.
+triggers:
+  - "logging, metrics, tracing, alerting work"
+tokens: ~612
 ---
 
 # Observability Skill

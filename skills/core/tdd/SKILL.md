@@ -8,6 +8,13 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: tdd
+description: Use tests to define behavior before production implementation.
+triggers:
+  - "writing tests"
+  - "implementing features"
+  - "before writing code"
+tokens: ~602
 ---
 
 # Tdd Skill

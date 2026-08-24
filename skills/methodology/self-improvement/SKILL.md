@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: self-improvement
+description: Convert evaluated outcomes into human-reviewed improvements to Praxis.
+triggers:
+  - "recording lessons after task completion"
+tokens: ~607
 ---
 
 # Self Improvement Skill

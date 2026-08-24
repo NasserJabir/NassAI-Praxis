@@ -1,3 +1,11 @@
+---
+name: subagent-management
+description: Orchestrating multiple agents to work on complex, multi-step tasks in parallel.
+version: "1.0.0"
+triggers:
+  - "work should be parallelized across sub-agents"
+tokens: ~433
+---
 # Subagent Management
 
 ## Description

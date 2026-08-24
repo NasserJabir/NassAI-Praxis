@@ -1,6 +1,9 @@
 ---
 name: self-improvement
 description: Build loops where the harness itself is the optimization target.
+triggers:
+  - "recording lessons after task completion"
+tokens: ~757
 ---
 
 # Self-Improvement

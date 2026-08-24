@@ -1,6 +1,9 @@
 ---
 name: verification
 description: Evidence before assertions. Run tests, linters, build. Never claim success without proof.
+triggers:
+  - "confirming work is actually done and correct"
+tokens: ~671
 ---
 
 # Verification

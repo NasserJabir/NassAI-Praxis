@@ -1,6 +1,9 @@
 ---
 name: devops-pipelines
 description: CI/CD pipeline design, Docker containerization, Kubernetes orchestration, deployment strategies, and rollback procedures.
+triggers:
+  - "CI/CD, Docker, Kubernetes, deployment tasks"
+tokens: ~1262
 ---
 
 # DevOps Pipelines

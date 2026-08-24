@@ -1,6 +1,9 @@
 ---
 name: multi-agent-patterns
 description: Orchestrator, peer-to-peer, and hierarchical multi-agent architectures.
+triggers:
+  - "orchestrating multiple cooperating agents"
+tokens: ~781
 ---
 
 # Multi-Agent Patterns

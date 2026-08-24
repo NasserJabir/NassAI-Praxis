@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: frontend-ui-engineering
+description: Build accessible, maintainable frontend interfaces and state flows.
+triggers:
+  - "React/Vue component or page implementation"
+tokens: ~616
 ---
 
 # Frontend Ui Engineering Skill

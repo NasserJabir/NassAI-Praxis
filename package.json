@@ -1,9 +1,18 @@
 {
   "name": "nassai-praxis",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Agentic skills framework & development methodology for coding agents",
+  "type": "module",
   "author": "Nasser Jabir",
   "license": "MIT",
+  "bin": {
+    "praxis-init": "./scripts/praxis-init.js"
+  },
+  "scripts": {
+    "build": "node scripts/praxis-build.js",
+    "validate": "node scripts/praxis-validate.js",
+    "init": "node scripts/praxis-init.js"
+  },
   "keywords": [
     "ai",
     "coding-agent",

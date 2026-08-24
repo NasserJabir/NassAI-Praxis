@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: executing-plans
+description: Execute an approved plan while preserving scope and recording deviations.
+triggers:
+  - "an approved implementation plan exists"
+tokens: ~611
 ---
 
 # Executing Plans Skill

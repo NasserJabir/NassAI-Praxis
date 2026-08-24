@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: planning
+description: Turn a request into a sequenced, scoped implementation plan.
+triggers:
+  - "multi-step feature work is about to start"
+tokens: ~685
 ---
 
 # Planning Skill

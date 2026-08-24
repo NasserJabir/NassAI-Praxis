@@ -1,6 +1,9 @@
 ---
 name: executing-plans
 description: Execute plans in batches with human checkpoints. Dispatch subagents per task.
+triggers:
+  - "an approved implementation plan exists"
+tokens: ~569
 ---
 
 # Executing Plans

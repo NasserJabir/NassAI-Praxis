@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: database-design
+description: Design durable schemas, indexes, migrations, and data boundaries.
+triggers:
+  - "schema, migration, index, or query design"
+tokens: ~612
 ---
 
 # Database Design Skill

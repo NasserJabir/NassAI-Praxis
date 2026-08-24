@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: pr-review
+description: Prepare and assess pull requests for clarity, risk, and merge readiness.
+triggers:
+  - "GitHub pull request review requested"
+tokens: ~607
 ---
 
 # Pr Review Skill

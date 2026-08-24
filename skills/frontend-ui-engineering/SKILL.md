@@ -1,6 +1,9 @@
 ---
 name: frontend-ui-engineering
 description: Component architecture, design systems, state management, responsive design, and WCAG 2.1 AA accessibility for modern frontend applications.
+triggers:
+  - "React/Vue component or page implementation"
+tokens: ~1126
 ---
 
 # Frontend UI Engineering

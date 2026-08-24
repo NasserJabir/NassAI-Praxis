@@ -13,10 +13,21 @@ You are operating with NassAI-Praxis declarative framework.
 ## Startup Protocol
 
 1. Read `praxis.config.md`.
-2. Read `memory/semantic/conventions.md` or its summary when the context budget requires it.
-3. Read `memory/working/current.md`.
-4. Identify the task type and load only matching skills.
-5. Load episodic memory for bugs, fixes, and incidents; load procedural memory for workflows and deployment.
+2. Read `PRAXIS.md` — the machine-readable skill index. Scan its trigger
+   table FIRST; it tells you which SKILL.md files match the current task.
+3. Read `memory/semantic/conventions.summary.md` (full `conventions.md`
+   only if the summary is insufficient for the task).
+4. Read `memory/working/current.md`.
+5. Load episodic memory for bugs/fixes/incidents; procedural memory for
+   workflows and deployment.
+
+## Skill Loading Rules
+
+- Load at most ~8K tokens of Praxis content per task. Each skill's
+  frontmatter lists approximate token cost — prefer small, precise skills.
+- Never load a skill whose trigger conditions do not match the task.
+- If two skills match, load both only if their combined cost stays in budget;
+  otherwise pick the more specific one.
 
 ## Lazy Loading
 

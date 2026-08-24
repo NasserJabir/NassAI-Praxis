@@ -1,3 +1,11 @@
+---
+name: planning
+description: Breaking down complex tasks into manageable, ordered steps before execution.
+version: "1.0.0"
+triggers:
+  - "multi-step feature work is about to start"
+tokens: ~439
+---
 # Planning
 
 ## Description

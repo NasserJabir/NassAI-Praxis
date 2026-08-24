@@ -1,3 +1,13 @@
+---
+name: debugging
+description: Systematic approach to finding and fixing bugs in code.
+version: "1.0.0"
+triggers:
+  - "a bug is reported"
+  - "tests fail unexpectedly"
+  - "root-cause investigation"
+tokens: ~420
+---
 # Debugging
 
 ## Description

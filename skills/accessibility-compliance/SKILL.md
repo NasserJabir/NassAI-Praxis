@@ -1,6 +1,9 @@
 ---
 name: accessibility-compliance
 description: WCAG 2.2 compliance, ARIA patterns, keyboard navigation, screen reader support, and color contrast requirements.
+triggers:
+  - "WCAG/ARIA/keyboard-nav requirements apply"
+tokens: ~1302
 ---
 
 # Accessibility Compliance

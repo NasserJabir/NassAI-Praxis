@@ -1,3 +1,11 @@
+---
+name: test-automation-setup
+description: Auto-generated skill from repeating procedure "test automation setup" (4 times).
+version: "1.0.0"
+triggers:
+  - "setting up test runners or CI test jobs"
+tokens: ~198
+---
 ﻿# test automation setup
 
 ## Description

@@ -1,3 +1,11 @@
+---
+name: code-review
+description: Systematic review of code changes to ensure quality, correctness, and adherence to standards.
+version: "1.0.0"
+triggers:
+  - "reviewing diffs before commit or PR"
+tokens: ~463
+---
 # Code Review
 
 ## Description

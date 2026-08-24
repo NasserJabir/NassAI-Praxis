@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: context-engineering
+description: Shape the smallest useful context for reliable agent decisions.
+triggers:
+  - "deciding what context an agent needs"
+tokens: ~612
 ---
 
 # Context Engineering Skill

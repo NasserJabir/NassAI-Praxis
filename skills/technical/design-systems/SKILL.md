@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: design-systems
+description: Define reusable visual tokens, components, and interaction patterns.
+triggers:
+  - "design tokens or component library work"
+tokens: ~608
 ---
 
 # Design Systems Skill

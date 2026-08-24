@@ -1,6 +1,9 @@
 ---
 name: api-design
 description: Contract-first API design with Hyrum's Law awareness, versioning strategies, error semantics, and boundary validation.
+triggers:
+  - "designing HTTP/GraphQL interfaces or contracts"
+tokens: ~1033
 ---
 
 # API Design

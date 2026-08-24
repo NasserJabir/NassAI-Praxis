@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: verification
+description: Gather objective evidence that a change meets its requirements.
+triggers:
+  - "confirming work is actually done and correct"
+tokens: ~605
 ---
 
 # Verification Skill

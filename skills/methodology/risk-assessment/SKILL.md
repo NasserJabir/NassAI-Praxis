@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: risk-assessment
+description: Identify, rank, mitigate, and communicate delivery and technical risks.
+triggers:
+  - "evaluating blast radius of risky changes"
+tokens: ~613
 ---
 
 # Risk Assessment Skill

@@ -1,3 +1,11 @@
+---
+name: security
+description: Background security awareness to prevent common vulnerabilities in code.
+version: "1.0.0"
+triggers:
+  - "auth, secrets, input validation, or dependency changes"
+tokens: ~425
+---
 # Security
 
 ## Description

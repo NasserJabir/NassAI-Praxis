@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: system-architecture
+description: Choose boundaries, dependencies, and trade-offs for system design.
+triggers:
+  - "cross-service boundaries or architecture decisions"
+tokens: ~616
 ---
 
 # System Architecture Skill

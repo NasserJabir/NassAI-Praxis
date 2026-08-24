@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: api-design
+description: Define consistent REST or GraphQL contracts and integration behavior.
+triggers:
+  - "designing HTTP/GraphQL interfaces or contracts"
+tokens: ~610
 ---
 
 # Api Design Skill

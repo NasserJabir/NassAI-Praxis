@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: devops-pipelines
+description: Create reliable build, test, security, and deployment pipelines.
+triggers:
+  - "CI/CD, Docker, Kubernetes, deployment tasks"
+tokens: ~613
 ---
 
 # Devops Pipelines Skill

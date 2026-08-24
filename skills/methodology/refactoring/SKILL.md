@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: refactoring
+description: Improve internal structure without changing externally observable behavior.
+triggers:
+  - "improving structure without changing behavior"
+tokens: ~607
 ---
 
 # Refactoring Skill

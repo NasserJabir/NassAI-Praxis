@@ -1,6 +1,9 @@
 ---
 name: writing-plans
 description: Break work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.
+triggers:
+  - "implementation plan must be written to disk"
+tokens: ~588
 ---
 
 # Writing Plans

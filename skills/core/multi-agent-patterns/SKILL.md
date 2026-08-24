@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: multi-agent-patterns
+description: Select collaboration patterns for multiple specialist agents.
+triggers:
+  - "orchestrating multiple cooperating agents"
+tokens: ~608
 ---
 
 # Multi Agent Patterns Skill

@@ -1,6 +1,9 @@
 ---
 name: system-architecture
 description: Microservices, event-driven architecture, CQRS, saga patterns, and service mesh design for distributed systems.
+triggers:
+  - "cross-service boundaries or architecture decisions"
+tokens: ~1217
 ---
 
 # System Architecture

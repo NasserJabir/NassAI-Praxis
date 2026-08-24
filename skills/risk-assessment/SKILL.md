@@ -1,6 +1,9 @@
 ---
 name: risk-assessment
 description: Risk-based question flow. Security, external API, data changes trigger different question sets.
+triggers:
+  - "evaluating blast radius of risky changes"
+tokens: ~929
 ---
 
 # Risk Assessment

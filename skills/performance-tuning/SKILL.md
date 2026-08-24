@@ -1,6 +1,9 @@
 ---
 name: performance-tuning
 description: Core Web Vitals optimization, query performance, caching strategies, CDN configuration, and bundle analysis.
+triggers:
+  - "latency/throughput optimization required"
+tokens: ~1134
 ---
 
 # Performance Tuning

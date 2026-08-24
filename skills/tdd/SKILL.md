@@ -1,3 +1,13 @@
+---
+name: tdd
+description: Discipline of writing tests before implementation code to ensure correctness and maintainability.
+version: "1.0.0"
+triggers:
+  - "writing tests"
+  - "implementing features"
+  - "before writing code"
+tokens: ~464
+---
 # Test-Driven Development
 
 ## Description

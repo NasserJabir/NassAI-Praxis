@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: memory-systems
+description: Maintain working, semantic, episodic, and procedural memory coherently.
+triggers:
+  - "building agent memory architectures"
+tokens: ~610
 ---
 
 # Memory Systems Skill

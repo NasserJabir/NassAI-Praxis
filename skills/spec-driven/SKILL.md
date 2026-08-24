@@ -1,6 +1,9 @@
 ---
 name: spec-driven
 description: Spec before code. Interface contracts with Given/When/Then + TypeScript interface + invariants.
+triggers:
+  - "converting specs into executable requirements"
+tokens: ~734
 ---
 
 # Spec-Driven Development

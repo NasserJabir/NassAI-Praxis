@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: subagent-management
+description: Delegate bounded work and coordinate specialist handoffs.
+triggers:
+  - "work should be parallelized across sub-agents"
+tokens: ~738
 ---
 
 # Subagent Management Skill

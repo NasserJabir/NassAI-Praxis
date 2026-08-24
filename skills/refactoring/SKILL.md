@@ -1,6 +1,9 @@
 ---
 name: refactoring
 description: Safe refactoring with smell analysis and TDD verification. Chesterton's Fence principle.
+triggers:
+  - "improving structure without changing behavior"
+tokens: ~856
 ---
 
 # Refactoring

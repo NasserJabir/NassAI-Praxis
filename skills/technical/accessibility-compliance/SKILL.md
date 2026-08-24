@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: accessibility-compliance
+description: Make interfaces and content usable across diverse abilities and input modes.
+triggers:
+  - "WCAG/ARIA/keyboard-nav requirements apply"
+tokens: ~615
 ---
 
 # Accessibility Compliance Skill

@@ -1,3 +1,11 @@
+---
+name: brainstorming
+description: Structured ideation process to explore requirements, alternatives, and design before writing any code.
+version: "1.0.0"
+triggers:
+  - "requirements are vague; design alternatives needed"
+tokens: ~366
+---
 # Brainstorming
 
 ## Description

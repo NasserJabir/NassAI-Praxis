@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: brainstorming
+description: Generate and compare candidate approaches before implementation.
+triggers:
+  - "requirements are vague; design alternatives needed"
+tokens: ~610
 ---
 
 # Brainstorming Skill

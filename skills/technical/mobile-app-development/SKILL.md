@@ -8,6 +8,11 @@ category: "technical"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: mobile-app-development
+description: Apply mobile-specific architecture, UX, performance, and release practices.
+triggers:
+  - "iOS/Android app development"
+tokens: ~612
 ---
 
 # Mobile App Development Skill

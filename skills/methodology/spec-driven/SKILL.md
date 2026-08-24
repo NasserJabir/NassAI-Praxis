@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: spec-driven
+description: Translate a written specification into traceable deliverables and checks.
+triggers:
+  - "converting specs into executable requirements"
+tokens: ~611
 ---
 
 # Spec Driven Skill

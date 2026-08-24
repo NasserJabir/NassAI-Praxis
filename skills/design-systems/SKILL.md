@@ -1,6 +1,9 @@
 ---
 name: design-systems
 description: Design tokens (DTCG), component specifications, Atomic Design methodology, and theming systems for scalable UI.
+triggers:
+  - "design tokens or component library work"
+tokens: ~1316
 ---
 
 # Design Systems

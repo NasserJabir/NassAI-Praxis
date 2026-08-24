@@ -8,6 +8,11 @@ category: "core"
 status: "active"
 auto_load: true
 estimated_tokens: "1500"
+name: code-review
+description: Review changes for correctness, safety, maintainability, and consistency.
+triggers:
+  - "reviewing diffs before commit or PR"
+tokens: ~600
 ---
 
 # Code Review Skill

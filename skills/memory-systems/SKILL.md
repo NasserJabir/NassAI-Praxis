@@ -1,6 +1,9 @@
 ---
 name: memory-systems
 description: Design short-term, long-term, and graph-based memory architectures for AI agents.
+triggers:
+  - "building agent memory architectures"
+tokens: ~915
 ---
 
 # Memory Systems

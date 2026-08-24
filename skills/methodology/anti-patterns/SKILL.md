@@ -8,6 +8,11 @@ category: "methodology"
 status: "active"
 auto_load: false
 estimated_tokens: "1500"
+name: anti-patterns
+description: Detect recurring approaches that create defects, drift, or unnecessary complexity.
+triggers:
+  - "tempted to skip process steps"
+tokens: ~611
 ---
 
 # Anti Patterns Skill

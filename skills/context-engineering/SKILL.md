@@ -1,6 +1,9 @@
 ---
 name: context-engineering
 description: Feed agents the right information at the right time. Rules files, context packing, progressive disclosure.
+triggers:
+  - "deciding what context an agent needs"
+tokens: ~773
 ---
 
 # Context Engineering

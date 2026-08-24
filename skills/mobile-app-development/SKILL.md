@@ -1,6 +1,9 @@
 ---
 name: mobile-app-development
 description: Cross-platform mobile development patterns for React Native, Flutter, iOS, and Android with responsive design and offline support.
+triggers:
+  - "iOS/Android app development"
+tokens: ~1133
 ---
 
 # Mobile App Development

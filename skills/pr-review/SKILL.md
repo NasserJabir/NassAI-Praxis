@@ -1,6 +1,9 @@
 ---
 name: pr-review
 description: Five specialist agents in parallel: correctness, error-handling, type-design, test-risk, security.
+triggers:
+  - "GitHub pull request review requested"
+tokens: ~819
 ---
 
 # PR Review
