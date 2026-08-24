@@ -2,6 +2,17 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [1.3.0] - 2026-08-25
+
+### Changed
+
+- **Opt-in activation (breaking)**: the OpenCode plugin no longer injects Praxis context into every conversation. Praxis activates only when the user explicitly invokes it — mentioning "NassAI Praxis", "use praxis", or "praxis mode" in the request. All other requests run with no Praxis context at all.
+- The first-use initialization notice now appears only within activated sessions.
+
+### Rationale
+
+User decision from first real-world usage: always-on injection forced the methodology onto every task, including trivial ones. Opt-in keeps ordinary requests untouched while making the full framework available on demand.
+
 ## [1.2.0] - 2026-08-25
 
 ### Added

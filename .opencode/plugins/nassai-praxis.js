@@ -138,8 +138,20 @@ ${automationWorkflow}
 
   return {
     'experimental.chat.messages.transform': async (_input, output) => {
+      if (!output.messages.length) return;
+
+      // OPT-IN MODE: Praxis is inert unless the user explicitly invokes it.
+      const allText = output.messages
+        .flatMap(m => m.parts || [])
+        .filter(p => p.type === 'text')
+        .map(p => p.text || '')
+        .join('\n');
+
+      const invoked = /nassai[- ]?praxis|use praxis|praxis mode/i.test(allText);
+      if (!invoked) return;
+
       const bootstrap = getBootstrapContent();
-      if (!bootstrap || !output.messages.length) return;
+      if (!bootstrap) return;
       const firstUser = output.messages.find(m => m.info.role === 'user');
       if (!firstUser || !firstUser.parts.length) return;
 
