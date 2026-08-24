@@ -56,13 +56,31 @@ It gives a project a reviewable place for conventions, decisions, procedures, an
 
 ## Quick Start
 
-```bash
-# 1. Clone the repository or begin from template/
-# 2. Use the recommended project-local path for your agent in INSTALL.md
-# 3. Start a small task; when context is relevant, ask the agent to inspect the project knowledge it needs
+### Adopt Praxis in an Existing Project
+
+Start from the real project where you want a coding agent to retain reviewable context. Choose the agent you use and follow its **project-local** setup in [`INSTALL.md`](INSTALL.md#recommended-project-local-installation). This is the recommended route: it copies the host adapter and Markdown core into that project without creating a Runtime, database, or service.
+
+### Start a New Project from the Starter Directory
+
+[`template/`](template/) is a copyable starter directory, not a GitHub Template repository. Follow [`template/README.md`](template/README.md) to copy it into a new project, then use the same project-local installation path.
+
+### First Useful Result — Not a Validation Protocol
+
+```text
+Install Praxis in a real project
+  ↓
+Start the coding agent in that project
+  ↓
+Ask it to read the context relevant to the task
+  ↓
+Give it one real, bounded task
+  ↓
+Observe whether it cites and uses the relevant project knowledge
 ```
 
-Read the five-minute guide in [`GETTING_STARTED.md`](GETTING_STARTED.md).
+For the first observation, ask: **“Read my Praxis context and tell me the active project conventions and their source files.”** A useful result should identify the relevant Markdown source, such as `memory/semantic/conventions.md`; it is not a guarantee that every host will discover every file automatically. Continue with one real, low-risk task and observe the result. Use [`docs/AGENT_TESTING.md`](docs/AGENT_TESTING.md) only when you intentionally want to run the separate integration-validation protocol.
+
+Read the detailed first-use guide in [`GETTING_STARTED.md`](GETTING_STARTED.md).
 
 ## Before / After Praxis
 

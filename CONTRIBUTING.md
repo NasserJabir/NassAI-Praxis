@@ -50,4 +50,6 @@ A pull request should explain what changed, why it adds value, which quality gat
 
 ## Community
 
-Join [GitHub Discussions](https://github.com/NasserJabir/NassAI-Praxis/discussions) to ask questions, propose ideas, or **share your Praxis setup**. Show-and-tell examples are welcome when they contain no private memory or credentials.
+Use [GitHub Issues](https://github.com/NasserJabir/NassAI-Praxis/issues) for public questions, bounded improvement ideas, and documentation or installation problems. Search existing documentation and issues first, then choose the relevant issue form. A proposal for a Skill, Knowledge pattern, or architecture-adjacent change should explain the user problem, available evidence, trade-offs, and how it respects the Architecture Freeze; opening an issue does not authorize a Core change.
+
+Show-and-tell examples are welcome in an issue when they contain no private memory, credentials, or sensitive project data. Follow [`SUPPORT.md`](SUPPORT.md) for routing questions and [`SECURITY.md`](SECURITY.md) rather than public issues for vulnerabilities.
