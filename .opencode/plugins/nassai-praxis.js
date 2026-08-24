@@ -18,6 +18,16 @@ const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
 
 let _bootstrapCache = undefined;
 const _initNoticeSent = new Set();
+const _inactiveMarked = new Set();
+
+function _sessionId(output) {
+  for (const m of output.messages) {
+    if (m.info && (m.info.sessionID || m.info.session_id || m.info.id)) {
+      return String(m.info.sessionID || m.info.session_id || m.info.id);
+    }
+  }
+  return 'default';
+}
 
 export const NassaiPraxisPlugin = async ({ client, directory }) => {
   const getBootstrapContent = () => {
@@ -150,7 +160,21 @@ ${automationWorkflow}
         .join('\n');
 
       const invoked = /nassai[- ]?praxis|use praxis|praxis mode/i.test(allText);
-      if (!invoked) return;
+      if (!invoked) {
+        // Inactive marker: appended once so the user can see Praxis is
+        // present but dormant, instead of wondering whether it loaded.
+        if (!_inactiveMarked.has(_sessionId(output))) {
+          _inactiveMarked.add(_sessionId(output));
+          const last = output.messages[output.messages.length - 1];
+          if (last && last.parts && last.parts.length && last.info.role !== 'user') {
+            const part = { ...last.parts[last.parts.length - 1], type: 'text' };
+            part.text = (part.text || '') +
+              '\n\n_[praxis: inactive — say "use praxis" to activate the NassAI Praxis methodology]_';
+            last.parts[last.parts.length - 1] = part;
+          }
+        }
+        return;
+      }
 
       const bootstrap = getBootstrapContent();
       if (!bootstrap) return;

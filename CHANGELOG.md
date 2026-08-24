@@ -2,6 +2,12 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [1.3.2] - 2026-08-25
+
+### Added
+
+- **Inactive-state marker**: in non-invoked sessions, the plugin appends a one-time `[praxis: inactive — say "use praxis" to activate]` note to the assistant's response, so users can see Praxis is installed but dormant instead of wondering whether it loaded. Marker appears once per session; activated sessions never show it.
+
 ## [1.3.1] - 2026-08-25
 
 ### Added
