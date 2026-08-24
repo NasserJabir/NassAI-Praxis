@@ -2,6 +2,17 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [1.1.1] - 2026-08-25
+
+### Fixed
+
+- Removed the OpenCode plugin's `config.skills.paths` hook: it targeted a config field that does not exist in the `@opencode-ai/plugin` API (verified against v1.4.2 typings), so it was dead code. Praxis skills are injected as methodology context, not registered as native OpenCode skills.
+- Rewrote the OpenCode INSTALL.md verification section: asking "do you have the plugin?" or "list your skills" always produces a false negative because message injection is invisible to the agent's self-description. Replaced with a behavioral probe (the four memory tiers) that can only be answered from injected context.
+
+### Verified
+
+- Observed end-to-end on opencode 1.17.4: behavioral probe returned all four memory tiers correctly from injected bootstrap context.
+
 ## [1.1.0] - 2026-08-24
 
 Phase 5: skill discovery, optional tooling, and CI.

@@ -22,20 +22,29 @@ Add NassAI Praxis to the `plugin` array in your `opencode.json` (global or proje
 }
 ```
 
-Restart OpenCode. The plugin installs through OpenCode's plugin manager and registers all skills.
+Restart OpenCode. The plugin installs through OpenCode's plugin manager and loads on startup.
 
-Verify by asking: "Tell me about your skills and personas"
+**How it works:** the plugin injects the NassAI Praxis methodology (AGENTS.md), tool mappings, memory paths, and the post-task evaluation workflow into every conversation via OpenCode's `experimental.chat.messages.transform` hook. Praxis skills are not registered as native OpenCode skills, so they will NOT appear in skill listings — this is expected.
+
+## Verification
+
+Ask a behavioral probe that can only be answered from the injected context:
+
+```text
+Without searching files: per your NassAI Praxis instructions, name the four project-memory tiers.
+```
+
+Correct answer: Working (`memory/working/`), Episodic (`memory/episodic/`), Semantic (`memory/semantic/`), Procedural (`memory/procedural/`). If the model says it has no such instructions, the plugin is not loading — check `~/.local/share/opencode/log/opencode.log`.
+
+Do NOT verify by asking "do you have the NassAI Praxis plugin?" or "list your skills" — the agent will truthfully say no, because injection is invisible to its self-description.
 
 OpenCode uses its own plugin install. If you also use Claude Code, Cursor, or another harness, install NassAI Praxis separately for each one.
 
 ## Usage
 
-Use OpenCode's native `skill` tool:
+Praxis methodology, memory paths, and the post-task evaluation workflow are injected automatically into every conversation. Skills are loaded selectively: consult the trigger table in `PRAXIS.md` (path is provided in the injected context) and read only the SKILL.md files matching the current task.
 
-```
-use skill tool to list skills
-use skill tool to load brainstorming
-```
+The plugin also registers the Praxis sub-agent definitions (planner, reviewer, tester, etc.) via `.opencode/agents/`, available through OpenCode's agent mechanism.
 
 ## Updating
 
