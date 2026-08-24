@@ -9,7 +9,7 @@ type: "composition-guide"
 
 # Agent + Persona + Skill Composition
 
-Agents do not permanently own a single persona. A task execution context is composed at load time:
+Agents do not permanently own a single Persona. When the host agent and task make the components relevant, a task execution context may be composed as:
 
 ```text
 Agent
@@ -35,7 +35,7 @@ Architecture Review Skill
 Project Architecture Memory
 ```
 
-The agent supplies the role, the persona supplies thinking style, the skill supplies method, and memory supplies learned project knowledge. Plugins should load the selected combination lazily and record it in working memory when it affects a decision.
+The Agent supplies the role, the Persona supplies thinking style, the Skill supplies method, and Memory supplies scoped project knowledge. A Persona may reference relevant project knowledge and canonical Skills, but it owns neither. Plugin instructions should advise lazy loading and record a selected combination when it affects a decision; actual context access remains host- and task-dependent.
 
 ## Concurrent Read, Reviewed Mutation
 

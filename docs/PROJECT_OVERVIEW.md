@@ -16,7 +16,7 @@ The unified delivery contains **Phase 0**, **Phase 1**, **Phase 2**, **Phase 3**
 
 | Phase | Capability added | Canonical project locations | How it is used now |
 |---|---|---|---|
-| 0 — Foundation | Configuration, memory layers, 29 skills, 12 agents, 10 personas, evolution templates | `praxis.config.md`, `memory/`, `skills/`, `agents/`, `personas/`, `evolve/` | Core source of truth loaded by every integration. |
+| 0 — Foundation | Configuration, memory layers, 29 skills, 12 agents, 10 personas, evolution templates | `praxis.config.md`, `memory/`, `skills/`, `agents/`, `personas/`, `evolve/` | Canonical source of truth referenced by integrations; actual context access is host- and task-dependent. |
 | 1 — Benchmark | Laravel + Vue controlled comparison, transcripts, metrics, and report | `examples/laravel-vue-api/`, `benchmarks/benchmark-001/` | Evidence and regression reference; not a separate application product. |
 | 2 — Hardening | Security gate, classification, token management, diagnostics, and conflict resolution | `memory/security/`, `memory/CLASSIFICATION.md`, `docs/praxis-doctor-*.md` | Protects writes, controls context, and keeps the framework self-governing. |
 | 3 — Agent Integration | Native adapters for nine agents, compatibility matrix, and installation/testing docs | `.claude/`, `.cursor/`, `.copilot/`, `.kimi/`, `.codex/`, `.gemini/`, `.opencode/`, `.pi/`, `.windsurf/`, `docs/` | Connects each host environment to the same Praxis core. |
@@ -57,7 +57,7 @@ flowchart TD
 
 ## Runtime Flow
 
-Native adapters instruct a selected agent to consult `praxis.config.md` and relevant project knowledge at task start, then to load only the skills, Persona, episodic events, and procedures that match the task. Actual retrieval and use are host- and task-dependent, so they must be recorded rather than presumed. During and after execution, agents apply the documented security procedure before memory writes, while evaluation and evolution retain reviewed Markdown records. Benchmark and ecosystem documents explain and test this behavior; they do not replace a runtime core.
+Native adapters may instruct a selected agent to consult `praxis.config.md` and relevant project knowledge, then to load only the Skills, Persona, episodic events, and procedures that match the task. Actual retrieval and use are host- and task-dependent, so they must be recorded rather than presumed. A Persona is a versioned Markdown reasoning profile that may reference project knowledge and Skills without owning either. During and after execution, agents apply the documented security procedure before memory writes, while evaluation and evolution retain reviewed Markdown records. Benchmark and ecosystem documents explain and test this behavior; they do not replace a runtime core.
 
 ## Repository Boundaries
 
@@ -65,7 +65,7 @@ Native adapters instruct a selected agent to consult `praxis.config.md` and rele
 |---|---|
 | Core | `praxis.config.md`, `memory/`, `skills/`, `agents/`, `personas/`, `evolve/`, `graph/`, and `loops/` are canonical and shared by all integrations. |
 | Plugins | Native instruction directories contain adapters and must reference the same root core. |
-| Personas | Concurrent reading of the same Persona is allowed. Canonical Persona changes require a proposal and human review; active-work records provide Markdown coordination rather than a runtime lock. |
+| Personas | A Persona is a versioned Markdown reasoning profile. Concurrent reading is allowed; it may reference project knowledge and Skills but owns neither. Canonical changes require evidence, a proposal, and human review; active-work records provide Markdown coordination rather than a runtime lock. No automatic cross-project transfer exists. |
 | Evidence | `benchmarks/` records controlled evidence and case studies; it does not define runtime behavior. |
 | Examples | `examples/` demonstrates framework use; it is not a second Praxis installation. |
 | Template | `template/` is a starter snapshot for new projects and is intentionally smaller than the full root configuration. |

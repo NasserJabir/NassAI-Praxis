@@ -46,9 +46,9 @@ The coding agent executes. Praxis is the readable project layer it may consult w
 
 ## Personas: How Decisions Are Approached
 
-A **Persona** makes a task’s reasoning style explicit: priorities, risk tolerance, review questions, and communication style. It complements rather than replaces an Agent role, a Skill procedure, or project Memory. Personas are especially useful for meaningful trade-offs such as security, architecture, and user experience; they are optional for small tasks.
+A **Persona** is a versioned Markdown reasoning profile that makes a task’s identity, reasoning and decision principles, curated expertise, priorities, risk tolerance, review questions, and communication style explicit. It complements rather than replaces an Agent role, a Skill procedure, or project Memory. A Persona may reference relevant project knowledge and canonical Skills, but it owns neither a memory subsystem nor Skills, and Praxis provides no automatic cross-project knowledge transfer. Personas are especially useful for meaningful trade-offs such as security, architecture, and user experience; they are optional for small tasks.
 
-The same Persona may be read concurrently by multiple sessions. Its canonical Markdown definition changes only through **evidence → proposal → human review**, with no runtime lock or automatic mutation. Read the [Persona guide](docs/PERSONAS.md) and the [visual composition diagram](docs/VISUAL_GUIDE.md#3-what-a-persona-adds).
+The same Persona may be read concurrently by multiple sessions. Its canonical Markdown definition changes only through **evidence → candidate → human review → approved Markdown**, with no runtime lock, automatic learning, or automatic mutation. Read the [Persona guide](docs/PERSONAS.md), the [Persona Architecture Review](docs/PERSONA_ARCHITECTURE_REVIEW.md), and the [visual composition diagram](docs/VISUAL_GUIDE.md#3-what-a-persona-adds).
 
 ## Why Praxis?
 

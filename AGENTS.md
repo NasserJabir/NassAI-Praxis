@@ -2,9 +2,9 @@
 
 > From Greek: πρᾶξις (praxis) = practice, action, the application of theory.
 
-NassAI Praxis is a methodology layer that transforms any coding agent into an intelligent agent with persistent memory, custom personas, specialized sub-agents, continuous self-improvement, and a unified workflow.
+NassAI Praxis is a Markdown-first methodology layer for project knowledge, custom Personas, specialized Agent definitions, reusable Skills, and evidence-based, human-reviewed evolution.
 
-This file is read by **all coding agents** at session start. It defines how we work.
+Host integrations may load this file as project guidance. Actual context access and use remain dependent on the host coding agent and the task; this document defines repository methodology, not a runtime guarantee.
 
 ---
 
@@ -77,9 +77,9 @@ Write a concise commit message:
 
 ---
 
-## 3. Memory System
+## 3. Project Memory Structure
 
-NassAI Praxis uses a four-tier memory model:
+NassAI Praxis defines a four-tier **project memory** model. Persona profiles may reference relevant project knowledge, but they do not own or operate this memory structure.
 
 ### 3.1 Working Memory (`memory/working/`)
 
@@ -87,8 +87,8 @@ NassAI Praxis uses a four-tier memory model:
 
 - Active task, project state, recent decisions
 - Max 4,000 tokens equivalent
-- Evicted on session end
-- Update after every significant state change
+- Intended to be archived or cleared at session end under the documented workflow
+- Update when relevant, safe, and permitted by the host project
 
 ```markdown
 # Working Context
@@ -210,24 +210,26 @@ Practical usage examples.
 
 ### 4.3 Using Skills
 
-1. At session start, read `skills/` to know available skills
-2. When a task matches a skill's activation conditions, use it
-3. Follow the skill's steps exactly
-4. Verify success criteria before moving on
+1. When the host and task make it relevant, consult the available Skills.
+2. When a task matches a Skill's activation conditions, use its documented method.
+3. Apply the relevant steps in the host project context.
+4. Verify the applicable success criteria before moving on.
 
-### 4.4 Creating New Skills
+### 4.4 Proposing New Skills
 
-When you discover a reusable pattern:
-1. Write it as a skill in `skills/`
-2. Follow the standard structure
-3. Test it across at least 2 different tasks
-4. Move to `evolve/skills-gen/` for promotion
+When observed work suggests a reusable pattern:
+1. Record the supporting experience and evaluation evidence.
+2. Create a candidate proposal with provenance and clear generalization boundaries.
+3. Validate the candidate across relevant tasks when authorized.
+4. Obtain explicit human approval before a maintainer creates or changes a canonical Skill.
+
+A Persona may use or be related to a Skill proposal, but it does not automatically create, own, or promote canonical Skills.
 
 ---
 
 ## 5. Sub-Agents
 
-Sub-agents are specialized workers with their own identity, memory, and skills.
+Specialized Agent definitions describe roles a capable host agent may use for focused work. They do not create autonomous Praxis workers, dedicated runtime memory, or separate canonical Skill ownership.
 
 ### 5.1 Available Sub-Agents
 
@@ -244,8 +246,8 @@ When existing agents don't fit:
 
 1. Create directory: `agents/<name>/`
 2. Write `AGENT.md` with identity, capabilities, constraints
-3. Initialize `memory/`, `skills/`, `experiences/` directories
-4. Define interaction protocol (who it sends to / receives from)
+3. Document relevant project-memory references, applicable Skills, and evidence/provenance boundaries
+4. Define a handoff protocol when host-agent coordination is appropriate
 
 ### 5.3 Dispatching Sub-Agents
 
@@ -262,13 +264,13 @@ Use sub-agents when:
 
 ---
 
-## 6. Self-Improvement
+## 6. Evidence-Governed Evolution
 
-NassAI Praxis learns and evolves over time.
+NassAI Praxis documents a human-governed evolution method. It does not provide autonomous Persona learning or self-modification.
 
 ### 6.1 Evaluation (`evolve/evaluation/`)
 
-After significant tasks, evaluate:
+When the host project records evidence after a significant task, evaluate:
 - [ ] Was the code clean on first commit?
 - [ ] Were tests written before implementation?
 - [ ] Did the plan accurately predict complexity?
@@ -278,19 +280,19 @@ After significant tasks, evaluate:
 
 ### 6.2 Refinement (`evolve/refine/`)
 
-Track patterns for improvement:
+Record candidate patterns for human-reviewed improvement:
 - User preferences (likes X, dislikes Y)
 - Successful approaches (repeat these)
 - Failed approaches (avoid these)
 - Codebase-specific conventions
 
-### 6.3 Skill Generation (`evolve/skills-gen/`)
+### 6.3 Skill Proposals (`evolve/skills-gen/`)
 
-When a procedure is repeated 3+ times with success:
-1. Extract it as a new skill
-2. Document in standard skill format
-3. Test across different contexts
-4. Promote to `skills/` if universally applicable
+When a procedure is repeated with successful, evaluated evidence:
+1. Record it as a candidate procedure and Skill proposal.
+2. Link the supporting experiences, evaluations, and generalization rationale.
+3. Test it across relevant contexts when authorized.
+4. Promote it to `skills/` only after explicit human approval.
 
 ---
 
@@ -324,7 +326,7 @@ When a procedure is repeated 3+ times with success:
 - [ ] README is updated if setup changed
 - [ ] CHANGELOG is updated if user-facing
 
-### Memory & Learning
+### Project Memory & Evidence
 - [ ] Working memory is current
 - [ ] Lessons learned are captured in episodic memory
 - [ ] New patterns are noted in semantic memory
@@ -332,22 +334,23 @@ When a procedure is repeated 3+ times with success:
 
 ---
 
-## 8. Session Lifecycle
+## 8. Suggested Session Context Workflow
+
+The following is repository methodology for a host agent that can access these files. It does not mean every host automatically loads every file or that a Persona has independent runtime state.
 
 ### On Session Start
-1. Read `AGENTS.md` (this file) — know the methodology
-2. Read `CLAUDE.md` or agent-specific instructions — know your tool
-3. Read `personas/` — know the user's preferences
-4. Read `memory/working/` — know the current context
-5. Read `memory/episodic/` recent entries — know recent history
-6. Read `skills/` — know available skills
+1. Read the host-recognized project guidance needed for the task.
+2. Consult relevant agent-specific instructions where the host supports them.
+3. Select a Persona only when its reasoning profile is materially relevant.
+4. Read the relevant project Memory and recent records within the task's context budget.
+5. Consult applicable Skills and procedures.
 
 ### On Task Start
-1. Check `skills/` — is there a matching skill?
-2. Check `memory/semantic/` — are there relevant patterns?
-3. Check `agents/` — should a sub-agent handle this?
-4. Plan the approach
-5. Execute with TDD
+1. Check relevant `skills/` — is there a matching Skill?
+2. Check relevant `memory/semantic/` — are there approved patterns or decisions?
+3. Check `agents/` — should a specialized Agent role handle or review the work?
+4. Plan the approach.
+5. Execute with TDD where applicable.
 
 ### On Task Complete
 1. Run quality checklist
@@ -356,17 +359,16 @@ When a procedure is repeated 3+ times with success:
    # Optional only; the Markdown workflow remains canonical.
    # Use any local helper only if the host project already permits it.
    ```
-3. Update working memory
-4. Record episode if lesson was learned
-5. Note patterns in semantic memory
-6. Update procedural memory if new procedure was created
+3. Update relevant project memory when safe, useful, and permitted by the host project
+4. Record an episode when the session produced useful evidence
+5. Note candidate patterns in semantic memory with the appropriate status and provenance
+6. Propose procedural guidance when a new reusable procedure is evidenced; do not promote it automatically
 
 ### On Session End
-1. Archive working memory to episodic
-2. Consolidate semantic patterns
-3. Update procedural procedures
-4. Commit all changes
-5. Clear working memory
+1. Archive or clear working context according to the host project’s documented workflow
+2. Consolidate only reviewed and appropriately classified project knowledge
+3. Record candidate procedural changes through the evidence and human-review path
+4. Commit only when the host project’s review and version-control workflow permits it
 
 ---
 
@@ -379,13 +381,13 @@ nassai-praxis/
 ├── GEMINI.md              # Gemini CLI specific instructions
 ├── skills/                # Reusable skills
 ├── agents/                # Specialized sub-agents
-├── personas/              # User personality profiles
+├── personas/              # Versioned reasoning profiles
 ├── memory/                # Four-tier memory system
 │   ├── working/
 │   ├── episodic/
 │   ├── semantic/
 │   └── procedural/
-├── evolve/                # Self-improvement
+├── evolve/                # Evidence-based, human-reviewed evolution
 │   ├── evaluation/
 │   ├── refine/
 │   └── skills-gen/

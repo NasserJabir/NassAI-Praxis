@@ -29,7 +29,7 @@ No CLI is required. Runtime execution, orchestration, session managers, queues, 
 Agent + Persona + Skill + Relevant Memory = Task Execution Context
 ```
 
-The **Agent** supplies the role. The **Persona** supplies thinking style, priorities, decision principles, risk tolerance, and communication style. The **Skill** supplies a reusable method. **Memory** supplies project knowledge. The selected coding agent performs the task in its own native environment.
+The **Agent** supplies the role. The **Persona** is a **versioned Markdown reasoning profile** that supplies identity, thinking style, priorities, decision principles, risk tolerance, communication style, and curated expertise. The **Skill** supplies a reusable method. **Memory** supplies scoped project knowledge. A Persona may reference relevant project knowledge and canonical Skills, but it owns neither a memory subsystem nor canonical Skills. Knowledge related to a Persona remains project-scoped unless a human explicitly reviews and adopts it elsewhere; Praxis provides no automatic cross-project transfer. The selected coding agent performs the task in its own native environment.
 
 For a rendered, Markdown-native explanation of the complete composition, normal work loop, Persona contribution, concurrent reading policy, and evidence levels, see [`VISUAL_GUIDE.md`](VISUAL_GUIDE.md). The diagrams are documentation, not a runtime topology.
 
