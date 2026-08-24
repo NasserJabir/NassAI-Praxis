@@ -10,11 +10,11 @@
  *
  * Usage: node scripts/praxis-validate.js   (exit 1 on any error)
  */
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const fs = require('fs');
+const path = require('path');
+const { fileURLToPath } = require('url');
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.resolve(path.dirname(__filename), '..');
 const errors = [];
 let checked = 0;
 

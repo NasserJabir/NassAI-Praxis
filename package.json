@@ -2,7 +2,6 @@
   "name": "nassai-praxis",
   "version": "1.1.0",
   "description": "Agentic skills framework & development methodology for coding agents",
-  "type": "module",
   "author": "Nasser Jabir",
   "license": "MIT",
   "bin": {

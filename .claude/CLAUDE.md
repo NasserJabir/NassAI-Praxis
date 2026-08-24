@@ -23,11 +23,14 @@ You are operating with NassAI-Praxis declarative framework.
 
 ## Skill Loading Rules
 
-- Load at most ~8K tokens of Praxis content per task. Each skill's
-  frontmatter lists approximate token cost — prefer small, precise skills.
+- Use an advisory context budget of approximately 8K tokens of Praxis
+  content per task by default; adjust it according to the host, model,
+  task, and available context window.
+- Each skill's frontmatter lists approximate token cost — prefer small,
+  precise skills.
 - Never load a skill whose trigger conditions do not match the task.
-- If two skills match, load both only if their combined cost stays in budget;
-  otherwise pick the more specific one.
+- If two skills match, load both only if their combined cost stays within
+  your budget; otherwise pick the more specific one.
 
 ## Lazy Loading
 

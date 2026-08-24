@@ -9,12 +9,11 @@
  *
  * Usage: node <praxis-root>/scripts/praxis-init.js [target-dir]
  */
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const { fileURLToPath } = require('url');
 
-const praxisRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const praxisRoot = path.resolve(path.dirname(__filename), '..');
 const target = path.resolve(process.argv[2] || process.cwd());
 
 if (!fs.existsSync(target)) {
@@ -106,35 +105,45 @@ TDD first (RED-GREEN-REFACTOR), small atomic commits, security-first,
 human-reviewed evolution. Full methodology: \`${rel(path.join(praxisRoot, 'AGENTS.md'))}\`.
 `;
 
-for (const name of ['CLAUDE.md', 'AGENTS.md']) {
-  const dest = path.join(target, name);
-  if (fs.existsSync(dest)) {
-    console.log(`  skip ${name} (exists)`);
-    continue;
+const results = [];
+function writeIfAbsent(dest, content, label) {
+  try {
+    if (fs.existsSync(dest)) {
+      results.push(`  SKIPPED  ${label} (already exists - left unchanged)`);
+      return;
+    }
+    fs.writeFileSync(dest, content, 'utf8');
+    results.push(`  CREATED  ${label}`);
+  } catch (err) {
+    results.push(`  FAILED   ${label} (${err.message})`);
   }
-  fs.writeFileSync(dest, guidance, 'utf8');
-  console.log(`  wrote ${name}`);
+}
+
+for (const name of ['CLAUDE.md', 'AGENTS.md']) {
+  writeIfAbsent(path.join(target, name), guidance, name);
 }
 
 // starter memory
 const memDir = path.join(target, '.praxis', 'memory');
-const workFile = path.join(memDir, 'working.md');
-if (!fs.existsSync(workFile)) {
-  fs.mkdirSync(memDir, { recursive: true });
-  fs.writeFileSync(workFile,
+fs.mkdirSync(memDir, { recursive: true });
+writeIfAbsent(path.join(memDir, 'working.md'),
 `# Working Context
 - Project: ${path.basename(target)}
 - Current Task: none
 - Last Action: Praxis initialized
 - Next Step: start first task
 - Blockers: none
-`, 'utf8');
-  console.log('  wrote .praxis/memory/working.md');
-} else {
-  console.log('  skip .praxis/memory/working.md (exists)');
-}
+`, '.praxis/memory/working.md');
+
+console.log('\nSummary:');
+for (const line of results) console.log(line);
+const failed = results.filter(r => r.startsWith('  FAILED')).length;
+if (failed) console.error(`\n${failed} operation(s) FAILED - review the output above.`);
 
 console.log(`
-Done. Open ${target}/CLAUDE.md in Claude Code or ${target}/AGENTS.md in
-OpenCode to activate. Re-run praxis-build.js in the Praxis repo after
-editing any skill.`);
+Next steps:
+1. REVIEW the generated/skipped files listed above before committing them.
+2. Generated skill links point into this Praxis clone at:
+   ${praxisRoot}
+   If you move or delete that clone, regenerate these files.
+3. Open CLAUDE.md (Claude Code) or AGENTS.md (OpenCode) to activate.`);
