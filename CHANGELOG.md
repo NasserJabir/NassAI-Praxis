@@ -2,6 +2,17 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [1.2.0] - 2026-08-25
+
+### Added
+
+- **Persona discovery protocol** in the OpenCode plugin bootstrap: the injected context now includes a persona-to-task matching table (10 personas with roles and trigger domains) and rules for proposing persona adoption — propose when a task strongly matches, always user-approved, prefer project-local personas over package defaults.
+- **First-use initialization notice**: when OpenCode runs in a project without a Praxis layer (`praxis.config.md` / `.praxis` missing), the plugin appends a one-time notice telling the agent the project is uninitialized and how it can be initialized with `praxis-init.js`. The notice never auto-writes to the user's repository; initialization remains an explicit user action.
+
+### Rationale
+
+Both additions address findings from first real-world usage: agents had no decision rule for reaching for personas, and un-initialized projects failed the startup protocol silently with no indication that Praxis was only partially active.
+
 ## [1.1.1] - 2026-08-25
 
 ### Fixed

@@ -17,6 +17,7 @@ const nassaiMemoryDir = path.join(nassaiRoot, 'memory');
 const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
 
 let _bootstrapCache = undefined;
+const _initNoticeSent = new Set();
 
 export const NassaiPraxisPlugin = async ({ client, directory }) => {
   const getBootstrapContent = () => {
@@ -90,6 +91,32 @@ node "${path.join(scriptsDir, 'auto-agent.js')}"
 **DO NOT skip evaluation.** This is how the system learns and improves.
 **Cross-platform:** These scripts work on Windows, Linux, and macOS (requires Node.js).`;
 
+    const personaGuide = `**PERSONA PROTOCOL — WHEN AND HOW TO USE PERSONAS:**
+
+Available Personas (read \`${nassaiRoot}/personas/<name>/PERSONA.md\` before adopting one):
+
+| Persona | Role | Propose for tasks involving... |
+|---|---|---|
+| fatima | Security Auditor | security review, auth, secrets, threat modeling |
+| yousef | Backend Developer | server-side features, APIs, business logic |
+| layla | Frontend Developer | UI components, pages, client state |
+| hassan | System Architect | architecture decisions, service boundaries |
+| khaled | Performance Engineer | latency, throughput, profiling |
+| omar | DevOps Engineer | CI/CD, deployment, infrastructure |
+| sami | QA Engineer | test plans, coverage, regression strategy |
+| amr | Researcher | exploration, documentation, comparisons |
+| nour | Technical Writer | documentation, guides, README quality |
+| yasmin | Product Analyst | requirements analysis, prioritization |
+
+Rules:
+1. If the current task strongly matches a persona's domain (see table), PROPOSE
+   adopting that persona before starting: "This matches the <name> persona
+   (<role>) — adopt it for this task?" Wait for user confirmation.
+2. If the project defines its own personas in a local \`personas/\` directory,
+   prefer those over the package defaults.
+3. Never adopt a persona silently; adoption is always user-approved.
+4. Personas are optional for small, single-step tasks.`;
+
     _bootstrapCache = `<EXTREMELY_IMPORTANT>
 You have NassAI Praxis loaded.
 
@@ -100,6 +127,8 @@ ${introContent}
 ${toolMapping}
 
 ${pathsContext}
+
+${personaGuide}
 
 ${automationWorkflow}
 </EXTREMELY_IMPORTANT>`;
@@ -114,10 +143,28 @@ ${automationWorkflow}
       const firstUser = output.messages.find(m => m.info.role === 'user');
       if (!firstUser || !firstUser.parts.length) return;
 
+      // First use in a non-Praxis project: append a one-time init notice
+      // instead of failing silently. Never auto-writes to the user's repo.
+      let initNotice = '';
+      try {
+        const cwd = process.cwd();
+        const hasPraxis = fs.existsSync(path.join(cwd, 'praxis.config.md')) ||
+          fs.existsSync(path.join(cwd, '.praxis'));
+        if (!hasPraxis && !_initNoticeSent.has(cwd)) {
+          _initNoticeSent.add(cwd);
+          initNotice = `\n\n**PROJECT NOT INITIALIZED:** This project (${cwd}) has no ` +
+            `Praxis layer (praxis.config.md / .praxis). Project-specific memory, personas, and ` +
+            `decisions are unavailable here. Mention this to the user once: this project can be ` +
+            `initialized with \`node "${path.join(nassaiRoot, 'scripts', 'praxis-init.js')}" "${cwd}"\` — ` +
+            `the tool never overwrites existing files. Until then, only package-level methodology ` +
+            `and skills apply.`;
+        }
+      } catch { /* never break the session over the notice */ }
+
       if (firstUser.parts.some(p => p.type === 'text' && p.text.includes('EXTREMELY_IMPORTANT'))) return;
 
       const ref = firstUser.parts[0];
-      firstUser.parts.unshift({ ...ref, type: 'text', text: bootstrap });
+      firstUser.parts.unshift({ ...ref, type: 'text', text: bootstrap + initNotice });
     }
   };
 };
