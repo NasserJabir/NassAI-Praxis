@@ -1,7 +1,7 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 created: "2026-08-20T00:00:00Z"
-updated: "2026-08-20T00:00:00Z"
+updated: "2026-08-24T00:00:00Z"
 author: "Nasser Jabir"
 ---
 
@@ -9,7 +9,7 @@ author: "Nasser Jabir"
 
 > **NassAI-Praxis is a Markdown-first, Git-native declarative layer for project knowledge, reusable skills, and human-reviewed evolution across coding-agent sessions.**
 
-[![Version](https://img.shields.io/badge/version-1.0.0--phase4-blue)](CHANGELOG.md) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Agents](https://img.shields.io/badge/agents-9-purple)](docs/COMPATIBILITY_MATRIX.md) [![Skills](https://img.shields.io/badge/skills-29-orange)](skills/) [![Personas](https://img.shields.io/badge/personas-10-teal)](personas/)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue)](CHANGELOG.md) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Agents](https://img.shields.io/badge/agents-9-purple)](docs/COMPATIBILITY_MATRIX.md) [![Skills](https://img.shields.io/badge/skills-59-orange)](PRAXIS.md) [![Personas](https://img.shields.io/badge/personas-10-teal)](personas/)
 
 ```bash
 git clone https://github.com/NasserJabir/NassAI-Praxis.git
@@ -59,6 +59,18 @@ It gives a project a reviewable place for conventions, decisions, procedures, an
 ### Adopt Praxis in an Existing Project
 
 Start from the real project where you want a coding agent to retain reviewable context. Choose the agent you use and follow its **project-local** setup in [`INSTALL.md`](INSTALL.md#recommended-project-local-installation). This is the recommended route: it copies the host adapter and Markdown core into that project without creating a Runtime, database, or service.
+
+### Scaffold a Project Automatically (Optional)
+
+```bash
+node /path/to/NassAI-Praxis/scripts/praxis-init.js /path/to/your-project
+```
+
+`praxis-init` detects your project's stack (React, Laravel, Go, Docker, ...) and generates starter `CLAUDE.md` / `AGENTS.md` files with recommended skills and working memory. It never overwrites existing files and prints a `CREATED / SKIPPED / FAILED` summary. This tool is optional developer tooling — Praxis works without it.
+
+### Skill Discovery with PRAXIS.md
+
+Agents should start from [`PRAXIS.md`](PRAXIS.md) — a generated index of all skills with trigger conditions ("Load when...") and approximate token costs. The agent scans the table first, then loads only the SKILL.md files whose triggers match the task, staying within an **advisory budget of ~8K tokens by default** (adjust for your host, model, and context window). PRAXIS.md is generated output; the individual `SKILL.md` files remain the canonical source.
 
 ### Start a New Project from the Starter Directory
 
@@ -118,7 +130,7 @@ The architecture is frozen while Praxis is tested on real projects. The next evi
 
 ## Architecture Boundary
 
-Praxis is the knowledge and behavior layer; the coding agent is the runtime. It has no database, server, runtime lock-in, or required CLI. Graph Engineering organizes Markdown relationships, Loop Engineering defines an explicit agent methodology, and Evolution remains evidence-based and human-reviewed. Read the one-page [architecture document](docs/ARCHITECTURE.md).
+Praxis is the knowledge and behavior layer; the coding agent is the runtime. It has no database, server, runtime lock-in, or required CLI. **Core** (Markdown knowledge, memory, skills, personas, evidence-governed evolution) functions entirely without any script. The scripts in [`scripts/`](scripts/) — `praxis-build.js` (index generation), `praxis-validate.js` (structural checks), `praxis-init.js` (project scaffolding) — are **optional developer tooling** that maintains Core; nothing in Core requires their presence at task time. Graph Engineering organizes Markdown relationships, Loop Engineering defines an explicit agent methodology, and Evolution remains evidence-based and human-reviewed. Read the one-page [architecture document](docs/ARCHITECTURE.md) and the [Core vs Optional Tooling boundary](GOVERNANCE.md).
 
 ## Agent Adapters
 
@@ -142,11 +154,13 @@ See the [compatibility matrix](docs/COMPATIBILITY_MATRIX.md) for all seven featu
 
 ```text
 praxis.config.md       Configuration and budgets
+PRAXIS.md              Generated skill index (triggers + token costs)
 memory/                Four memory layers and security
-skills/                29 reusable capabilities
+skills/                59 reusable capabilities (SKILL.md files are canonical)
 agents/                12 specialist definitions
 personas/              10 behavioral profiles
 evolve/                Evaluation and improvement
+scripts/               Optional tooling: build, validate, init
 docs/                  Unified integration, hardening, and ecosystem guides
 template/              Project starter files
 ```

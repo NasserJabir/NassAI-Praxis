@@ -1,7 +1,7 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 created: "2026-08-20T00:00:00Z"
-updated: "2026-08-20T00:00:00Z"
+updated: "2026-08-24T00:00:00Z"
 author: "Nasser Jabir"
 ---
 
@@ -9,7 +9,7 @@ author: "Nasser Jabir"
 
 > **NassAI-Praxis طبقة وصفية تعتمد Markdown وGit لتنظيم معرفة المشروع والمهارات القابلة لإعادة الاستخدام والتطور الذي يراجعه الإنسان عبر جلسات وكلاء البرمجة.**
 
-[![الإصدار](https://img.shields.io/badge/version-1.0.0--phase4-blue)](CHANGELOG.md) [![الترخيص](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![الوكلاء](https://img.shields.io/badge/agents-9-purple)](docs/COMPATIBILITY_MATRIX.md) [![المهارات](https://img.shields.io/badge/skills-29-orange)](skills/) [![الشخصيات](https://img.shields.io/badge/personas-10-teal)](personas/)
+[![الإصدار](https://img.shields.io/badge/version-1.1.0-blue)](CHANGELOG.md) [![الترخيص](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![الوكلاء](https://img.shields.io/badge/agents-9-purple)](docs/COMPATIBILITY_MATRIX.md) [![المهارات](https://img.shields.io/badge/skills-59-orange)](PRAXIS.md) [![الشخصيات](https://img.shields.io/badge/personas-10-teal)](personas/)
 
 ```bash
 git clone https://github.com/NasserJabir/NassAI-Praxis.git
@@ -62,6 +62,18 @@ flowchart LR
 
 المجلد [`template/`](template/) هو مجلد بداية قابل للنسخ، وليس مستودع GitHub Template مفعّلًا. اتبع [`template/README.md`](template/README.md) لنسخه إلى مشروع جديد، ثم استخدم مسار التثبيت المحلي نفسه.
 
+### تهيئة المشروع تلقائيًا (اختياري)
+
+```bash
+node /path/to/NassAI-Praxis/scripts/praxis-init.js /path/to/your-project
+```
+
+يتعرف `praxis-init` على تقنيات مشروعك (React أو Laravel أو Go أو Docker...) وينشئ ملفات `CLAUDE.md` و`AGENTS.md` الابتدائية مع المهارات الموصى بها وذاكرة العمل. لا يستبدل أي ملف موجود أبدًا، ويطبع ملخصًا واضحًا بما أنشأه وتجاوزه. هذه الأداة اختيارية — يعمل Praxis بدونها.
+
+### اكتشاف المهارات عبر PRAXIS.md
+
+يجب أن يبدأ الوكيل من [`PRAXIS.md`](PRAXIS.md) — فهرس مُولَّد لجميع المهارات يتضمن شروط التفعيل («متى تُحمَّل») والتكلفة التقريبية بالرموز. يمسح الوكيل الجدول أولًا، ثم يحمّل فقط ملفات SKILL.md التي تناسب المهمة، ضمن **ميزانية استرشادية ~8K رمز افتراضيًا** (عدّلها حسب المضيف والنموذج ونافذة السياق). ملف PRAXIS.md مُولَّد؛ تبقى ملفات SKILL.md هي المصدر الأساسي.
+
 ### أول نتيجة مفيدة — وليست بروتوكول تحقق
 
 ```text
@@ -106,11 +118,13 @@ flowchart LR
 
 ```text
 praxis.config.md       الإعدادات والميزانيات
+PRAXIS.md              فهرس المهارات المُولَّد (شروط التفعيل والتكلفة)
 memory/                الذاكرة والأمان
-skills/                29 مهارة قابلة لإعادة الاستخدام
+skills/                59 مهارة قابلة لإعادة الاستخدام (ملفات SKILL.md هي المصدر الأساسي)
 agents/                12 وكيلًا متخصصًا
 personas/              10 شخصيات سلوكية
 evolve/                التقييم والتحسين
+scripts/               أدوات اختيارية: بناء، تحقق، تهيئة
 docs/                  التكامل والتوثيق
 template/              ملفات بدء مشروع جديد
 ```
