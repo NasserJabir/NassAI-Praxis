@@ -22,7 +22,7 @@ Phase validation records are retained as evidence, while this index treats NassA
 | 3 — Agent Integration | [`phase-3-validation.md`](phase-3-validation.md) | Nine plugins, 36 required files, native entry points, compatibility, and testing docs. |
 | 4 — Ecosystem | [`phase-4-validation.md`](phase-4-validation.md) | Template, README, contribution guide, case study, FAQ, launch content, changelog, and Arabic mirror. |
 | Evidence — Evolution 001 | [`../evidence/evolution-001/EVALUATION.md`](../evidence/evolution-001/EVALUATION.md) | Three observed experiences, candidate pattern and proposal, explicit human approval, a trial-only skill, and one later read-only reuse. |
-| Evidence — Persona Validation 001 | [`../evidence/persona-validation-001/EVALUATION.md`](../evidence/persona-validation-001/EVALUATION.md) | Existing Fatima Persona lifecycle, candidate evolution, explicit human approval, trial-only reuse, one isolation observation, and policy-aware active-work deferral without runtime enforcement. |
+| Evidence — Persona Validation 001 | [`../evidence/persona-validation-001/evaluation.md`](../evidence/persona-validation-001/evaluation.md) | Existing Fatima Persona lifecycle, candidate evolution, explicit human approval, trial-only reuse, one isolation observation, and policy-aware active-work deferral without runtime enforcement. |
 | Evidence — Baseline 001 | [`BASELINE_001_BEFORE_AFTER.md`](BASELINE_001_BEFORE_AFTER.md) | One matched reporting-task comparison; it confirms guided skill use but is inconclusive for a performance advantage. |
 
 ## Unified Verification Order

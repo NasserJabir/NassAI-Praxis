@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    name: Praxis build & validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: PRAXIS.md index is up to date (praxis-build --check)
+        run: node scripts/praxis-build.js --check
+
+      - name: Skill frontmatter, links, and index coverage (praxis-validate)
+        run: node scripts/praxis-validate.js

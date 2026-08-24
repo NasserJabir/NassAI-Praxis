@@ -14,4 +14,4 @@
 
 ## Boundary
 
-The deferral outcome demonstrates **policy awareness when an active-work record is discovered**. It does not demonstrate technical exclusion, guaranteed discovery, atomic locking, or a requirement that only one session may use a Persona. See [`PERSONA_CONCURRENCY.md`](PERSONA_CONCURRENCY.md) and [`../evidence/persona-validation-001/EVALUATION.md`](../evidence/persona-validation-001/EVALUATION.md) for the canonical policy and evidence boundary.
+The deferral outcome demonstrates **policy awareness when an active-work record is discovered**. It does not demonstrate technical exclusion, guaranteed discovery, atomic locking, or a requirement that only one session may use a Persona. See [`PERSONA_CONCURRENCY.md`](PERSONA_CONCURRENCY.md) and [`../evidence/persona-validation-001/evaluation.md`](../evidence/persona-validation-001/evaluation.md) for the canonical policy and evidence boundary.

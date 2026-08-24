@@ -2,6 +2,32 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [1.1.0] - 2026-08-24
+
+Phase 5: skill discovery, optional tooling, and CI.
+
+### Added
+
+- Added `PRAXIS.md`, a generated index of all 59 skills with trigger conditions ("Load when...") and approximate token costs so agents load context selectively instead of scanning directories.
+- Added `scripts/praxis-build.js`: normalizes YAML frontmatter (name, description, triggers, tokens) across every `SKILL.md` and regenerates the `PRAXIS.md` index; idempotent, with a `--check` mode for CI.
+- Added `scripts/praxis-validate.js`: structural validation covering frontmatter schema, placeholder descriptions, broken internal links, and index coverage.
+- Added `scripts/praxis-init.js`: optional scaffolder that detects a target repository's stack and generates starter `CLAUDE.md` / `AGENTS.md` files with recommended skills and working memory. Never overwrites existing files; reports `CREATED / SKIPPED / FAILED` per path.
+- Added GitHub Actions CI (`.github/workflows/ci.yml`) running build idempotency check and validation on push and pull requests.
+
+### Changed
+
+- Updated the Claude Code (`.claude/CLAUDE.md`) and OpenCode (`.opencode/OPENCODE.md`) adapters: startup protocols now begin at `PRAXIS.md`, with explicit skill-loading rules and an **advisory** context budget (~8K tokens by default, adjustable per host/model/context window).
+- Updated both READMEs to document skill discovery, the scaffolding tool, and the tooling boundary.
+
+### Architecture
+
+- Documented the Core vs Optional Tooling boundary in [`GOVERNANCE.md`](GOVERNANCE.md): Praxis Core remains Markdown-first and runtime-independent; scripts are optional developer tooling, and nothing in Core requires their presence at task time. `SKILL.md` files remain canonical; `PRAXIS.md` is derived output.
+- Fixed a CommonJS compatibility regression (`type: "module"`) that broke the pre-existing automation scripts under Node.js.
+
+### Fixed
+
+- Resolved the Windows-incompatible case collision in `evidence/persona-validation-001/` (`EVALUATION.md` vs `evaluation.md`) by renaming the synthesis record to `evaluation-synthesis.md` and updating all documentation links.
+
 ## [1.0.0-phase5] - 2026-08-22
 
 ### Added

@@ -270,7 +270,7 @@ flowchart TD
 [2]: [Architecture Freeze](ARCHITECTURE_FREEZE.md)
 [3]: [Concurrent Persona Use and Safe Mutation](PERSONA_CONCURRENCY.md)
 [4]: [Praxis Validation Results](VALIDATION_RESULTS.md)
-[5]: [Persona Validation 001 — Results](../evidence/persona-validation-001/EVALUATION.md)
+[5]: [Persona Validation 001 — Results](../evidence/persona-validation-001/evaluation.md)
 [6]: [Persona Validation 001 — Protocol](../evidence/persona-validation-001/PROTOCOL.md)
 [7]: [Knowledge Status](../memory/knowledge-status.md)
 [8]: [Praxis Relationship Vocabulary](../graph/relationships.md)
