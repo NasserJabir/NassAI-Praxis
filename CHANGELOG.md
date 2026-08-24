@@ -2,6 +2,15 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [1.3.1] - 2026-08-25
+
+### Added
+
+- **Persona disclosure rule**: while working under an adopted persona, the agent must announce the persona's name and specialization at the start of responses (e.g. "[fatima — Security Auditor]"). Working under a persona without a visible label is prohibited.
+- **Post-task learning report**: on mission completion, the agent closes with an "Experience gained" summary announcing skills enhanced or experience acquired (techniques, lessons, patterns) and whether they were recorded via the evaluation workflow.
+
+Both rules are injected as part of the PERSONA PROTOCOL in the OpenCode plugin bootstrap.
+
 ## [1.3.0] - 2026-08-25
 
 ### Changed

@@ -115,7 +115,9 @@ Rules:
 2. If the project defines its own personas in a local \`personas/\` directory,
    prefer those over the package defaults.
 3. Never adopt a persona silently; adoption is always user-approved.
-4. Personas are optional for small, single-step tasks.`;
+4. Personas are optional for small, single-step tasks.
+5. **Persona disclosure:** while working under an adopted persona, announce it at the start of your responses with name and specialization, e.g. "[fatima - Security Auditor]". Never work under a persona without this label visible to the user.
+6. **Post-task learning report:** when the mission is complete, close with a short "Experience gained" summary announcing skills enhanced or new experience acquired during the task (techniques used, lessons learned, patterns worth remembering), and note whether they were recorded via the evaluation workflow.`;
 
     _bootstrapCache = `<EXTREMELY_IMPORTANT>
 You have NassAI Praxis loaded.
