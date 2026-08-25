@@ -145,11 +145,14 @@ Rules:
 5. **Persona disclosure:** while working under an adopted persona, announce it at the start of your responses with name and specialization, e.g. "[fatima - Security Auditor]". Never work under a persona without this label visible to the user.
 6. **Post-task learning report:** when the mission is complete, close with a short "Experience gained" summary announcing skills enhanced or new experience acquired during the task (techniques used, lessons learned, patterns worth remembering), and note whether they were recorded via the evaluation workflow.`;
 
-    _bootstrapCache = `<!-- nassai-praxis v1.4.0 -->
+    _bootstrapCache = `<!-- nassai-praxis v1.4.2 -->
 <EXTREMELY_IMPORTANT>
 You have NassAI Praxis loaded.
 
-**IMPORTANT: NassAI Praxis is ALREADY ACTIVE. Do NOT use the skill tool to reload it.**
+**IMPORTANT:** NassAI Praxis is ALREADY ACTIVE. It is NOT a native OpenCode
+skill and does not appear in any skill listing — do NOT search for a
+"nassai-praxis" skill or check .opencode directories for it. The methodology,
+paths, and protocols you need are entirely within THIS message. Just follow them.
 
 ${introContent}
 

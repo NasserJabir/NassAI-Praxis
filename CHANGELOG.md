@@ -8,6 +8,13 @@ All notable changes to NassAI-Praxis are documented here. The format follows [Ke
 
 - **Inactive-state marker**: in non-invoked sessions, the plugin appends a one-time `[praxis: inactive — say "use praxis" to activate]` note to the assistant's response, so users can see Praxis is installed but dormant instead of wondering whether it loaded. Marker appears once per session; activated sessions never show it.
 
+## [1.4.2] - 2026-08-25
+
+### Fixed
+
+- Bootstrap now explicitly tells agents that Praxis is NOT a native OpenCode skill and must not be searched for in skill listings or .opencode directories — prevents the observed "skill nassai-praxis is not found" detour after activation.
+- INSTALL.md: documents opt-in activation phrases ("use praxis" / "use nassai-praxis" / "praxis mode"), the deactivation phrase, and both expected non-failures (no skills in listings; possible harmless skill-search detour on invocation).
+
 ## [1.4.1] - 2026-08-25
 
 ### Fixed

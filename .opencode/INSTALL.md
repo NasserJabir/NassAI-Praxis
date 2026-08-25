@@ -24,7 +24,13 @@ Add NassAI Praxis to the `plugin` array in your `opencode.json` (global or proje
 
 Restart OpenCode. The plugin installs through OpenCode's plugin manager and loads on startup.
 
-**How it works:** the plugin injects the NassAI Praxis methodology (AGENTS.md), tool mappings, memory paths, and the post-task evaluation workflow into every conversation via OpenCode's `experimental.chat.messages.transform` hook. Praxis skills are not registered as native OpenCode skills, so they will NOT appear in skill listings — this is expected.
+**How it works:** the plugin is **opt-in** — it injects nothing until you explicitly invoke Praxis by saying **"use praxis"**, **"use nassai-praxis"**, or **"praxis mode"** in your request. When activated, it injects the methodology (AGENTS.md), tool mappings, memory paths, and the post-task evaluation workflow via OpenCode's `experimental.chat.messages.transform` hook.
+
+Two things that are expected (not failures):
+1. Praxis skills do NOT appear in OpenCode skill listings, and there is no "nassai-praxis" skill to invoke through the skill tool. The agent receives everything as injected context.
+2. Saying "use nassai-praxis" may still make the agent search for a nonexistent skill before following its injected instructions — this is harmless. If that happens, restate your task normally; the context is already active.
+
+To turn it off for a session: "stop praxis" / "praxis off".
 
 ## Verification
 
