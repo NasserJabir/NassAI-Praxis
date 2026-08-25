@@ -84,26 +84,39 @@ const guidance = `${header}
 
 ${stack.length ? stack.map(s => `- ${s}`).join('\n') : '- (not detected — edit this section)'}
 
+## Shared Knowledge (Single Source of Truth)
+
+Skills, personas, agents, and methodology live in the master NassAI-Praxis
+repository at \`${praxisRoot}\` — do NOT copy them into this project.
+Improvements made there apply here automatically.
+
 ## Skill Loading Protocol
 
 1. Consult the Praxis skill index at \`${rel(path.join(praxisRoot, 'PRAXIS.md'))}\`.
-2. Load ONLY the skills whose triggers match the current task (budget ~8K tokens).
+2. Load ONLY the skills whose triggers match the current task. Advisory
+   context budget: ~8K tokens of Praxis content per task by default —
+   adjust for host, model, and context window.
 3. Recommended starting skills for this project:
 
 | Skill | Notes |
 |-------|-------|
 ${skillTable}
 
-## Memory
+## Memory (project-owned)
 
-- Working memory: \`.praxis/memory/working.md\` — update at session end.
-- Episodic logs: \`.praxis/episodic/YYYY-MM-DD.md\` — record outcomes and lessons.
+This project's memory lives in \`memory/\` — reads AND writes stay here,
+never in the master repo:
+
+- Working: \`memory/working/current.md\` — update at session end.
+- Episodic: \`memory/episodic/YYYY-MM-DD.md\` — record outcomes and lessons.
+- Semantic: \`memory/semantic/conventions.md\` — project conventions.
 
 ## Methodology
 
 TDD first (RED-GREEN-REFACTOR), small atomic commits, security-first,
 human-reviewed evolution. Full methodology: \`${rel(path.join(praxisRoot, 'AGENTS.md'))}\`.
-`;
+
+To activate in OpenCode: say "use praxis" in a session.`;
 
 const results = [];
 function writeIfAbsent(dest, content, label) {
@@ -123,17 +136,28 @@ for (const name of ['CLAUDE.md', 'AGENTS.md']) {
   writeIfAbsent(path.join(target, name), guidance, name);
 }
 
-// starter memory
-const memDir = path.join(target, '.praxis', 'memory');
+// starter project-local memory (matches plugin's local-memory resolution:
+// <project>/memory/ takes precedence over the master repo's memory dir)
+const memDir = path.join(target, 'memory', 'working');
+fs.mkdirSync(path.join(target, 'memory', 'semantic'), { recursive: true });
+fs.mkdirSync(path.join(target, 'memory', 'episodic'), { recursive: true });
 fs.mkdirSync(memDir, { recursive: true });
-writeIfAbsent(path.join(memDir, 'working.md'),
+writeIfAbsent(path.join(memDir, 'current.md'),
 `# Working Context
 - Project: ${path.basename(target)}
 - Current Task: none
 - Last Action: Praxis initialized
 - Next Step: start first task
 - Blockers: none
-`, '.praxis/memory/working.md');
+`, 'memory/working/current.md');
+writeIfAbsent(path.join(target, 'memory', 'semantic', 'conventions.md'),
+`version: "1.0.0"
+created: "${new Date().toISOString().slice(0, 10)}"
+
+# Project Conventions
+
+(Seed this file with this project's actual conventions as they are established.)
+`, 'memory/semantic/conventions.md');
 
 console.log('\nSummary:');
 for (const line of results) console.log(line);

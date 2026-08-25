@@ -30,6 +30,14 @@ function _sessionId(output) {
 }
 
 export const NassaiPraxisPlugin = async ({ client, directory }) => {
+  // Project-local memory: if the working project has its own memory/ dir,
+  // it takes precedence for working/episodic/semantic/procedural reads and
+  // writes. Methodology (AGENTS.md, skills, personas) always comes from the
+  // master repo. Falls back to the master memory when no local dir exists.
+  const projectRoot = directory || process.cwd();
+  const localMemoryDir = path.join(projectRoot, 'memory');
+  const activeMemoryDir = fs.existsSync(localMemoryDir) ? localMemoryDir : nassaiMemoryDir;
+
   const getBootstrapContent = () => {
     if (_bootstrapCache !== undefined) return _bootstrapCache;
 
@@ -54,13 +62,18 @@ When skills request actions, substitute OpenCode equivalents:
 
 Use OpenCode's native \`skill\` tool to list and load skills.`;
 
+    const memorySource = activeMemoryDir === localMemoryDir
+      ? `**PROJECT-LOCAL** (this project owns its memory; do not write to the master repo's memory)`
+      : `master repository (this project has no local memory/ dir — create one with praxis-init if project-specific memory is needed)`;
+
     const pathsContext = `**NassAI Praxis Paths (Absolute):**
 - Skills: \`${nassaiSkillsDir}\`
-- Memory: \`${nassaiMemoryDir}\`
-  - Working: \`${path.join(nassaiMemoryDir, 'working')}\`
-  - Episodic: \`${path.join(nassaiMemoryDir, 'episodic')}\`
-  - Semantic: \`${path.join(nassaiMemoryDir, 'semantic')}\`
-  - Procedural: \`${path.join(nassaiMemoryDir, 'procedural')}\`
+- Personas: \`${path.join(nassaiRoot, 'personas')}\`
+- Memory: \`${activeMemoryDir}\` — source: ${memorySource}
+  - Working: \`${path.join(activeMemoryDir, 'working')}\`
+  - Episodic: \`${path.join(activeMemoryDir, 'episodic')}\`
+  - Semantic: \`${path.join(activeMemoryDir, 'semantic')}\`
+  - Procedural: \`${path.join(activeMemoryDir, 'procedural')}\`
 - Self-Improvement: \`${nassaiEvolveDir}\`
   - Evaluation: \`${path.join(nassaiEvolveDir, 'evaluation')}\`
   - Refine: \`${path.join(nassaiEvolveDir, 'refine')}\`
@@ -68,7 +81,9 @@ Use OpenCode's native \`skill\` tool to list and load skills.`;
   - Agents Generation: \`${path.join(nassaiEvolveDir, 'agents-gen')}\`
 - Scripts: \`${path.join(nassaiRoot, 'scripts')}\`
 
-Use these absolute paths when reading/writing memory or evolve files.`;
+Use these absolute paths when reading/writing memory or evolve files.
+All memory reads AND writes go to the Memory path above — never mix this
+project's context into another project's memory store.`;
 
     const scriptsDir = path.join(nassaiRoot, 'scripts');
 
@@ -129,7 +144,8 @@ Rules:
 5. **Persona disclosure:** while working under an adopted persona, announce it at the start of your responses with name and specialization, e.g. "[fatima - Security Auditor]". Never work under a persona without this label visible to the user.
 6. **Post-task learning report:** when the mission is complete, close with a short "Experience gained" summary announcing skills enhanced or new experience acquired during the task (techniques used, lessons learned, patterns worth remembering), and note whether they were recorded via the evaluation workflow.`;
 
-    _bootstrapCache = `<EXTREMELY_IMPORTANT>
+    _bootstrapCache = `<!-- nassai-praxis v1.4.0 -->
+<EXTREMELY_IMPORTANT>
 You have NassAI Praxis loaded.
 
 **IMPORTANT: NassAI Praxis is ALREADY ACTIVE. Do NOT use the skill tool to reload it.**

@@ -8,6 +8,18 @@ All notable changes to NassAI-Praxis are documented here. The format follows [Ke
 
 - **Inactive-state marker**: in non-invoked sessions, the plugin appends a one-time `[praxis: inactive — say "use praxis" to activate]` note to the assistant's response, so users can see Praxis is installed but dormant instead of wondering whether it loaded. Marker appears once per session; activated sessions never show it.
 
+## [1.4.0] - 2026-08-25
+
+### Added
+
+- **Project-local memory resolution**: the OpenCode plugin now resolves memory to `<project>/memory/` when the working project has its own memory directory, labeling it PROJECT-LOCAL; otherwise it falls back to the master repository with an explicit notice. All memory reads and writes stay in one store — fixes a cross-project context leak observed in Trial 001 (stale benchmark context appearing in an unrelated project's session).
+- **Version stamp** in the injected bootstrap (`<!-- nassai-praxis v1.4.0 -->`) so the active framework version is verifiable by asking the agent.
+- **TRIAL-001**: first real-project usage record (opencode 1.17.4, shu-portal) documenting six observed behaviors, five failures found with resolutions, and four hypothesis-stage behaviors.
+
+### Changed
+
+- `praxis-init.js` aligned with the single-source-of-truth model: no longer seeds copied skills/personas; writes project metadata correctly, documents shared knowledge vs project-owned memory, uses the standard `memory/{working,episodic,semantic}` layout that the plugin resolves locally, and mentions opt-in activation ("use praxis").
+
 ## [1.3.1] - 2026-08-25
 
 ### Added
