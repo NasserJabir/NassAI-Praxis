@@ -30,5 +30,16 @@
     "windsurf"
   ],
   "homepage": "https://github.com/NasserJabir/NassAI-Praxis",
-  "repository": "https://github.com/NasserJabir/NassAI-Praxis"
+  "repository": "https://github.com/NasserJabir/NassAI-Praxis",
+  "files": [
+    ".opencode",
+    "skills",
+    "personas",
+    "agents",
+    "memory",
+    "AGENTS.md",
+    "PRAXIS.md",
+    "praxis.config.md",
+    "scripts"
+  ]
 }
