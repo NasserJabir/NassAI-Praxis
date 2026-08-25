@@ -28,7 +28,8 @@ if (!personaName || !taskName) {
 }
 
 const scriptsDir = __dirname;
-const rootDir = path.resolve(scriptsDir, '..');
+const masterRoot = path.resolve(scriptsDir, '..');
+const rootDir = masterRoot;
 const personasRoot = path.join(rootDir, 'personas');
 const agentsDir = path.join(rootDir, 'agents');
 

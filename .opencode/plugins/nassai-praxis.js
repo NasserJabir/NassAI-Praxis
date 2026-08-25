@@ -19,6 +19,7 @@ const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
 let _bootstrapCache = undefined;
 const _initNoticeSent = new Set();
 const _inactiveMarked = new Set();
+const _deactivated = new Set();
 
 function _sessionId(output) {
   for (const m of output.messages) {
@@ -113,7 +114,7 @@ node "${path.join(scriptsDir, 'auto-agent.js')}"
 \`\`\`
 
 **WHEN to run:** After ANY task that involves coding, debugging, reviewing, planning, or architecture.
-**DO NOT skip evaluation.** This is how the system learns and improves.
+**Note:** These scripts RECORD EVIDENCE for human review — they do not auto-modify knowledge. Candidate skills/agents they surface require explicit human approval per the governance model.
 **Cross-platform:** These scripts work on Windows, Linux, and macOS (requires Node.js).`;
 
     const personaGuide = `**PERSONA PROTOCOL — WHEN AND HOW TO USE PERSONAS:**
@@ -168,12 +169,29 @@ ${automationWorkflow}
     'experimental.chat.messages.transform': async (_input, output) => {
       if (!output.messages.length) return;
 
-      // OPT-IN MODE: Praxis is inert unless the user explicitly invokes it.
+      // OPT-IN MODE: Praxis activates on explicit invocation and deactivates
+      // on an explicit off phrase ("stop praxis" / "praxis off").
       const allText = output.messages
         .flatMap(m => m.parts || [])
         .filter(p => p.type === 'text')
         .map(p => p.text || '')
         .join('\n');
+
+      // State = whichever phrase (activation vs deactivation) appears LAST
+      // in the conversation text.
+      const actRe = /nassai[- ]?praxis|use praxis|praxis mode/gi;
+      const deactRe = /stop praxis|praxis (mode )?off|deactivate praxis/gi;
+      let lastAct = -1, lastDeact = -1, m2;
+      while ((m2 = actRe.exec(allText)) !== null) lastAct = m2.index;
+      while ((m2 = deactRe.exec(allText)) !== null) lastDeact = m2.index;
+
+      if (lastDeact > lastAct) {
+        _deactivated.add(_sessionId(output));
+      } else if (lastAct >= 0) {
+        _deactivated.delete(_sessionId(output));
+      }
+
+      if (_deactivated.has(_sessionId(output))) return;
 
       const invoked = /nassai[- ]?praxis|use praxis|praxis mode/i.test(allText);
       if (!invoked) {

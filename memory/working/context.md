@@ -1,13 +1,5 @@
----
-version: "1.0.0"
-created: "2026-08-20T00:00:00Z"
-updated: "2026-08-20T00:00:00Z"
-author: "Nasser Jabir"
-classification: "internal"
----
-
 ## Last Task
-- Name: cross-platform test
+- Name: smoke-test
 - Score: 30/33 (Excellent)
 - Agent: main
-- Date: 2026-08-20 13:07
+- Date: 2026-08-25 13:55

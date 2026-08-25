@@ -33,7 +33,11 @@ if (!taskName || !totalScore) {
 }
 
 const scriptsDir = __dirname;
-const rootDir = path.resolve(scriptsDir, '..');
+const masterRoot = path.resolve(scriptsDir, '..');
+// Project-local memory resolution: use <cwd>/memory when the working
+// project has one; otherwise fall back to the master repository's memory.
+const cwdMemory = path.join(process.cwd(), 'memory');
+const rootDir = fs.existsSync(cwdMemory) ? process.cwd() : masterRoot;
 const memoryRoot = path.join(rootDir, 'memory');
 const evolveDir = path.join(rootDir, 'evolve');
 

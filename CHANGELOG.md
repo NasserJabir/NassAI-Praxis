@@ -8,6 +8,20 @@ All notable changes to NassAI-Praxis are documented here. The format follows [Ke
 
 - **Inactive-state marker**: in non-invoked sessions, the plugin appends a one-time `[praxis: inactive — say "use praxis" to activate]` note to the assistant's response, so users can see Praxis is installed but dormant instead of wondering whether it loaded. Marker appears once per session; activated sessions never show it.
 
+## [1.4.1] - 2026-08-25
+
+### Fixed
+
+- **Automation scripts honor project-local memory**: `evaluate.js`, `auto-skill.js`, and `auto-agent.js` now resolve memory to the working project's `memory/` directory when it exists (matching the plugin's resolution rule), instead of always writing to the master repository. Closes the second half of the cross-project memory leak from Trial 001.
+
+### Added
+
+- **Deactivation phrase**: "stop praxis" / "praxis off" / "deactivate praxis" turns Praxis off for the rest of the session; re-activate any time with "use praxis". State follows whichever phrase appears last in the conversation.
+
+### Changed
+
+- Automation workflow wording in the bootstrap no longer claims the scripts make "the system learn and improve"; it now states they record evidence for human review, consistent with the governance model (no auto-modification of knowledge).
+
 ## [1.4.0] - 2026-08-25
 
 ### Added

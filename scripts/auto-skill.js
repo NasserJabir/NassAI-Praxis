@@ -19,9 +19,13 @@ const minRepeats = parseInt(getArg('min-repeats', '3'), 10);
 const minScore = parseInt(getArg('min-score', '30'), 10);
 
 const scriptsDir = __dirname;
-const rootDir = path.resolve(scriptsDir, '..');
+const masterRoot = path.resolve(scriptsDir, '..');
+// Project-local memory resolution: use <cwd>/memory when the working
+// project has one; otherwise fall back to the master repository's memory.
+const cwdMemory = path.join(process.cwd(), 'memory');
+const rootDir = fs.existsSync(cwdMemory) ? process.cwd() : masterRoot;
 const memoryRoot = path.join(rootDir, 'memory');
-const skillsRoot = path.join(rootDir, 'skills');
+const skillsRoot = path.join(masterRoot, 'skills'); // shared: always master
 const episodicDir = path.join(memoryRoot, 'episodic');
 
 console.log('=== Auto Skill Generation Check ===');
