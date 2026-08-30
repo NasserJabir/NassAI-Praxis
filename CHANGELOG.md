@@ -2,6 +2,16 @@
 
 All notable changes to NassAI-Praxis are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning where applicable.
 
+## [Unreleased]
+
+### Changed
+
+- **Default-on activation**: the OpenCode plugin no longer requires an explicit "use praxis" invocation. The methodology, paths, and protocols are injected automatically into every session. Deactivation phrases ("stop praxis" / "praxis off" / "deactivate praxis") still turn Praxis off for the rest of the session.
+
+### Removed
+
+- Opt-in activation gate and the dormant/inactive-state marker (`[praxis: inactive ...]`), which are no longer needed now that Praxis is active by default.
+
 ## [1.3.2] - 2026-08-25
 
 ### Added

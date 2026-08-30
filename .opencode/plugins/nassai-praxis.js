@@ -16,9 +16,8 @@ const nassaiSkillsDir = path.join(nassaiRoot, 'skills');
 const nassaiMemoryDir = path.join(nassaiRoot, 'memory');
 const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
 
-let _bootstrapCache = undefined;
+const _bootstrapCache = undefined;
 const _initNoticeSent = new Set();
-const _inactiveMarked = new Set();
 const _deactivated = new Set();
 
 function _sessionId(output) {
@@ -172,8 +171,8 @@ ${automationWorkflow}
     'experimental.chat.messages.transform': async (_input, output) => {
       if (!output.messages.length) return;
 
-      // OPT-IN MODE: Praxis activates on explicit invocation and deactivates
-      // on an explicit off phrase ("stop praxis" / "praxis off").
+      // DEFAULT-ON MODE: Praxis is active by default on every session and
+      // deactivates only on an explicit off phrase ("stop praxis" / "praxis off").
       const allText = output.messages
         .flatMap(m => m.parts || [])
         .filter(p => p.type === 'text')
@@ -182,36 +181,17 @@ ${automationWorkflow}
 
       // State = whichever phrase (activation vs deactivation) appears LAST
       // in the conversation text.
-      const actRe = /nassai[- ]?praxis|use praxis|praxis mode/gi;
       const deactRe = /stop praxis|praxis (mode )?off|deactivate praxis/gi;
-      let lastAct = -1, lastDeact = -1, m2;
-      while ((m2 = actRe.exec(allText)) !== null) lastAct = m2.index;
+      let lastDeact = -1, m2;
       while ((m2 = deactRe.exec(allText)) !== null) lastDeact = m2.index;
 
-      if (lastDeact > lastAct) {
+      if (lastDeact >= 0) {
         _deactivated.add(_sessionId(output));
-      } else if (lastAct >= 0) {
+      } else {
         _deactivated.delete(_sessionId(output));
       }
 
       if (_deactivated.has(_sessionId(output))) return;
-
-      const invoked = /nassai[- ]?praxis|use praxis|praxis mode/i.test(allText);
-      if (!invoked) {
-        // Inactive marker: appended once so the user can see Praxis is
-        // present but dormant, instead of wondering whether it loaded.
-        if (!_inactiveMarked.has(_sessionId(output))) {
-          _inactiveMarked.add(_sessionId(output));
-          const last = output.messages[output.messages.length - 1];
-          if (last && last.parts && last.parts.length && last.info.role !== 'user') {
-            const part = { ...last.parts[last.parts.length - 1], type: 'text' };
-            part.text = (part.text || '') +
-              '\n\n_[praxis: inactive — say "use praxis" to activate the NassAI Praxis methodology]_';
-            last.parts[last.parts.length - 1] = part;
-          }
-        }
-        return;
-      }
 
       const bootstrap = getBootstrapContent();
       if (!bootstrap) return;
