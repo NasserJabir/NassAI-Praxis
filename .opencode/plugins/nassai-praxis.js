@@ -16,7 +16,7 @@ const nassaiSkillsDir = path.join(nassaiRoot, 'skills');
 const nassaiMemoryDir = path.join(nassaiRoot, 'memory');
 const nassaiEvolveDir = path.join(nassaiRoot, 'evolve');
 
-const _bootstrapCache = undefined;
+let _bootstrapCache = undefined;
 const _initNoticeSent = new Set();
 const _deactivated = new Set();
 
